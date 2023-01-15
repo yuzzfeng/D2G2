@@ -1,0 +1,169 @@
+title="Destination tutorial"
+
+[defaultTab]
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q1: Get building addresses
+SELECT *
+{
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+FILTER(CONTAINS(?address_label, "Koidu tänav")) .
+# EPSG 3301 used
+?address_id geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups]]
+
+name="Examples"
+
+[[tabGroups.tabs]]
+
+name="Building address"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q1: Get building addresses
+SELECT *
+{
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+FILTER(CONTAINS(?address_label, "Koidu tänav")) .
+# EPSG 3301 used
+?address_id geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Buildings over 40m"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q2: Get buildings with height over 40m
+SELECT *
+{
+?x a bldg:Building .
+?x bldg:measuredHeight ?buildingHeight .
+# Get buildings over 40 meters
+FILTER(?buildingHeight > 40) .
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+# EPSG 3301 used
+?address_id geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Buildings LoD2 surfaces"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX grp: <http://www.opengis.net/citygml/cityobjectgroup/2.0/>
+PREFIX gml: <http://www.opengis.net/gml/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q3: Get all surfaces of all buildings
+SELECT *
+{
+?x a gml:Geometry .
+?x geo:asWKT ?geom .
+?x grp:parent ?parent .
+?building bldg:lod2MultiSurface ?parent .
+?building bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+}
+LIMIT 300
+"""
+
+
+[[tabGroups.tabs]]
+
+name="Buildings ranked by most surfaces"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX grp: <http://www.opengis.net/citygml/cityobjectgroup/2.0/>
+PREFIX gml: <http://www.opengis.net/gml/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q4: Get all surfaces of buildings, rank by most surfaces
+SELECT ?building ?address_label (COUNT(?geom) AS ?count) {
+?x a gml:Geometry .
+?x geo:asWKT ?geom .
+?x grp:parent ?parent .
+?building bldg:lod2MultiSurface ?parent .
+?building bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+
+}
+GROUP BY ?building ?address_label
+ORDER BY DESC(?count)
+"""
+
+
+[[tabGroups.tabs]]
+
+name="Average number of surfaces by building"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX grp: <http://www.opengis.net/citygml/cityobjectgroup/2.0/>
+PREFIX gml: <http://www.opengis.net/gml/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q5: Get all surfaces of buildings, rank by most surfaces
+SELECT (AVG(?count) AS ?avg_surfaces_per_building) {
+SELECT ?building ?address_label (COUNT(?geom) AS ?count) {
+?x a gml:Geometry .
+?x geo:asWKT ?geom .
+?x grp:parent ?parent .
+?building bldg:lod2MultiSurface ?parent .
+?building bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+}
+GROUP BY ?building ?address_label
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Total buildings in area"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX grp: <http://www.opengis.net/citygml/cityobjectgroup/2.0/>
+PREFIX gml: <http://www.opengis.net/gml/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q6: Get total buildings in area
+
+SELECT (COUNT(DISTINCT ?building) AS ?total_buildings) {
+?x a gml:Geometry .
+?x geo:asWKT ?geom .
+?x grp:parent ?parent .
+?building bldg:lod2MultiSurface ?parent .
+?building bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+}
+"""
