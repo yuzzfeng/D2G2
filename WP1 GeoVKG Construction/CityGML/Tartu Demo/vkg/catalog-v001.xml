@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.opengis.net/ont/geosparql" uri="geosparql.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="duplicate:http://cui.unige.ch/citygml/2.0/" uri="citygml2.0.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="duplicate:http://cui.unige.ch/citygml/2.0/" uri="citygml2.0-original.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://schema.org/" uri="schemaorg.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.opengis.net/ont/geosparql" uri="geosparql.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.opengis.net/ont/gml" uri="gml.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.opengis.net/ont/sf" uri="sf.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.w3.org/2004/02/skos/core" uri="core.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.w3.org/ns/sosa/" uri="sosa.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.w3.org/ns/ssn/" uri="ssn.owl"/>
+    </group>
+</catalog>
