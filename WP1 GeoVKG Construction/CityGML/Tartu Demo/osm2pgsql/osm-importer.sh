@@ -8,7 +8,7 @@ mkdir -p DATADIR
 echo PBF=${PBF:=$DATADIR/$(echo $REGION | grep -o '[^/]*$')-latest.osm.pbf}
 HOST=download.geofabrik.de
 
-
+# For this demo we do not wish to apply any updates
 #if psql --no-password -h $PG_PORT_5432_TCP_ADDR -U $PG_ENV_POSTGRES_USER $PG_ENV_POSTGRES_DB -c "select * from planet_osm_replication_status;"; then
 #    echo "Updating."
 #    osm2pgsql-replication update \
@@ -28,7 +28,7 @@ HOST=download.geofabrik.de
         #wget -O "${PBF}" http://download.geofabrik.de/europe/monaco-latest.osm.pbf
         #http://${HOST}/${REGION}-latest.osm.pbf
         echo "Download done"
-#    fi
+    fi
 
     psql --no-password \
         -h $PG_PORT_5432_TCP_ADDR -p $PG_PORT_5432_TCP_PORT \
@@ -53,4 +53,4 @@ HOST=download.geofabrik.de
         --database $PG_ENV_POSTGRES_DB \
         --username $PG_ENV_POSTGRES_USER \
         --port $PG_PORT_5432_TCP_PORT --osm-file $PBF
-fi
+#fi
