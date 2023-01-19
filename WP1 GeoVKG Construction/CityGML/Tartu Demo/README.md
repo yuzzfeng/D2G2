@@ -16,13 +16,16 @@ git clone https://github.com/yuzzfeng/D2G2
 
 ### Start docker-compose
 ```
-docker-compose pull && docker-compose up
+docker-compose -f <docker compose file of choice> up
 ```
 This command starts and initializes the database. Once the database is ready, it launches the SPARQL endpoint from Ontop at http://localhost:8082 .
 
-For this tutorial, we assume that the ports 7778 (used for database) and 8082 (used by Ontop) are free.
+For this tutorial, we assume that the ports 7778, 7779 (used for databases) and 8082 (used by Ontop) are free.
 
 A set of queries are exposed on the endpoint.
+
+docker-compose.estonia-osm.yml will create a sample vkg over OSM data for Estonia.
+docker-compose.tartu.yml will create a sample vkg over cityGML data for Tartu, Estonia.
 
 
 ### (Optional) Start Protégé

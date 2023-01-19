@@ -1,0 +1,86 @@
+[PrefixDeclaration]
+geo:		http://www.opengis.net/ont/geosparql#
+lgd:		http://linkedgeodata.org/triplify/
+ogc:		http://www.opengis.net/ont/geosparql#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+wgs:		http://www.w3.org/2003/01/geo/wgs84_pos#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+lgdm:		http://linkedgeodata.org/meta/
+lgdo:		http://linkedgeodata.org/ontology/
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+dcterms:		http://purl.org/dc/terms/
+geom:                	http://geovocab.org/geometry#
+spatial:		http://geovocab.org/spatial#
+lgd-geom:	http://linkedgeodata.org/geometry/
+
+[MappingDeclaration] @collection [[
+mappingId	lgd_point
+target		lgd:node{osm_id} rdfs:label {name}^^xsd:string ; geo:asWKT {wkt}^^geo:wktLiteral ; lgdo:addr_housename {addr:housename}^^xsd:string .
+source		SELECT *, ST_ASTEXT(ST_TRANSFORM(way, 4326)) AS wkt FROM planet_osm_point
+
+mappingId	lgd_line
+target		lgd:way{osm_id} rdfs:label {name}^^xsd:string ; geo:asWKT {wkt}^^geo:wktLiteral ; lgdo:addr_housename {addr:housename}^^xsd:string .
+source		SELECT *, ST_ASTEXT(ST_TRANSFORM(way, 4326)) AS wkt FROM planet_osm_line
+
+mappingId	lgd_polygon
+target		lgd:relation{osm_id} rdfs:label {name}^^xsd:string ; geo:asWKT {wkt}^^geo:wktLiteral ; lgdo:addr_housename {addr:housename}^^xsd:string .
+source		SELECT *, ST_ASTEXT(ST_TRANSFORM(way, 4326)) AS wkt FROM planet_osm_polygon
+
+mappingId	lgd_point_cafe
+target		lgd:node{osm_id} a lgdo:Cafe .
+source		SELECT * FROM planet_osm_point
+            WHERE amenity='cafe'
+
+mappingId	lgd_point_bar
+target		lgd:node{osm_id} a lgdo:Bar .
+source		SELECT * FROM planet_osm_point
+            WHERE amenity='bar'
+
+mappingId	lgd_point_restaurant
+target		lgd:node{osm_id} a lgdo:Restaurant .
+source		SELECT * FROM planet_osm_point
+            WHERE amenity='restaurant'
+
+mappingId	lgd_point_university
+target		lgd:node{osm_id} a lgdo:University .
+source		SELECT * FROM planet_osm_point
+            WHERE amenity='university'
+
+mappingId	lgd_point_cafe
+target		lgd:relation{osm_id} a lgdo:Cafe .
+source		SELECT * FROM planet_osm_polygon
+            WHERE amenity='cafe'
+
+mappingId	lgd_point_bar
+target		lgd:relation{osm_id} a lgdo:Bar .
+source		SELECT * FROM planet_osm_polygon
+            WHERE amenity='bar'
+
+mappingId	lgd_point_restaurant
+target		lgd:relation{osm_id} a lgdo:Restaurant .
+source		SELECT * FROM planet_osm_polygon
+            WHERE amenity='restaurant'
+
+mappingId	lgd_point_university
+target		lgd:relation{osm_id} a lgdo:University .
+source		SELECT * FROM planet_osm_polygon
+            WHERE amenity='university'
+
+mappingId	lgd_line_highway
+target		lgd:way{osm_id} a lgdo:HighwayThing .
+source		SELECT * FROM planet_osm_line
+            WHERE highway IS NOT NULL
+
+mappingId	lgd_line_river
+target		lgd:way{osm_id} a lgdo:River .
+source		SELECT * FROM planet_osm_line
+            WHERE waterway='river' or water='river'
+
+mappingId	lgd_line_canal
+target		lgd:way{osm_id} a lgdo:Canal .
+source		SELECT * FROM planet_osm_line
+            WHERE waterway='river' or water='river'
+]]
