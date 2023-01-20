@@ -26,7 +26,7 @@ docker-compose -f docker-compose.estonia-osm.yml up ontop
 ```
 These command starts and initializes the database and run osm2pgsql. These 2 commands will populate a PostgreSQL database with OSM data corresponding to the file downloaded from Geofabrik estonia-latest.osm.pbf. Once the database and osm2pgsql are done, we separately launch the SPARQL endpoint from Ontop at http://localhost:8082 .
 
-For this tutorial, we assume that the ports 7778 (used for the database) and 8082 (used by Ontop) are free.
+For this tutorial, we assume that the ports 7779 (used for the database) and 8082 (used by Ontop) are free.
 
 osm2pgsql will map the OSM data to several tables where each object is uniquely identified by an OSM_ID. The tables include:
 * planet_osm_line - contains lines: roads, fences, power lines, railroads, and administrative boundaries
@@ -35,13 +35,32 @@ osm2pgsql will map the OSM data to several tables where each object is uniquely 
 
 The tables are mapped onto the virtual knowledge graph and a set of queries are exposed on the endpoint.
 
-#### CityGML (Tartu, Estonia) set-up
+#### CityGML (Tartu, Estonia) set-up with preloaded data
 
 ```
 docker-compose -f docker-compose.tartu.yml up
 ```
-For this tutorial, we assume that the ports 7779 (used for the database) and 8082 (used by Ontop) are free.
+For this tutorial, we assume that the ports 7778 (used for the database) and 8082 (used by Ontop) are free.
 Via [3dCityDB](https://www.3dcitydb.org/3dcitydb/3dimpexp/) we have mapped the Tartu CityGML file to the database, and further mapped the database to the vkg.
+
+#### (Optional) CityGML (Tartu, Estonia) without preloaded data
+
+Download [3dCityDBImporter](https://www.3dcitydb.org/3dcitydb/downloads/)
+```
+java -jar 3DCityDB-Importer-Exporter-4.3.0-Setup.jar
+```
+Run the 3DCityDB Docker Image
+```
+docker run --name 3dcitydb -p 7778:5432 -d -e POSTGRES_PASSWORD=3dcitydb -e SRID=3301 3dcitydb/3dcitydb-pg:14-3.2-4.1.0
+```
+Open 3DCityDBImporter and load Tartu file.
+
+For this tutorial, we assume that the ports 7778 (used for the database) and 8082 (used by Ontop) are free.
+Via [3dCityDB](https://www.3dcitydb.org/3dcitydb/3dimpexp/) we have mapped the Tartu CityGML file to the database, and further mapped the database to the vkg.
+
+```
+docker-compose -f docker-compose.tartu.yml up ontop
+```
 
 ### (Optional) Start Protégé
 * Run Protégé (run.bat on Windows, run.sh on Mac/Linux)
