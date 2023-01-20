@@ -49,22 +49,22 @@ target		lgd:node{osm_id} a lgdo:University .
 source		SELECT * FROM planet_osm_point
             WHERE amenity='university'
 
-mappingId	lgd_point_cafe
+mappingId	lgd_polygon_cafe
 target		lgd:relation{osm_id} a lgdo:Cafe .
 source		SELECT * FROM planet_osm_polygon
             WHERE amenity='cafe'
 
-mappingId	lgd_point_bar
+mappingId	lgd_polygon_bar
 target		lgd:relation{osm_id} a lgdo:Bar .
 source		SELECT * FROM planet_osm_polygon
             WHERE amenity='bar'
 
-mappingId	lgd_point_restaurant
+mappingId	lgd_polygon_restaurant
 target		lgd:relation{osm_id} a lgdo:Restaurant .
 source		SELECT * FROM planet_osm_polygon
             WHERE amenity='restaurant'
 
-mappingId	lgd_point_university
+mappingId	lgd_polygon_university
 target		lgd:relation{osm_id} a lgdo:University .
 source		SELECT * FROM planet_osm_polygon
             WHERE amenity='university'
