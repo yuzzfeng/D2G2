@@ -1,0 +1,88 @@
+# Query 1: Get building elevation
+# Query not possible in Ontop
+PREFIX : <http://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ifc: <http://ifcowl.openbimstandards.org/IFC2X3_Final#>
+PREFIX ifcowl: <http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#>
+PREFIX w3id: <https://w3id.org/list#>
+PREFIX express: <https://w3id.org/express#>
+
+SELECT ?elevation {
+  ?s a :IfcSite .
+  ?s :refElevation_IfcSite ?elevation_val .
+  ?elevation_val express:hasDouble ?elevation .
+}
+
+
+# Query 2: Get more site coordinates
+# Query not possible in Ontop
+PREFIX : <http://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ifc: <http://ifcowl.openbimstandards.org/IFC2X3_Final#>
+PREFIX ifcowl: <http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#>
+PREFIX list: <https://w3id.org/list#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX express: <https://w3id.org/express#>
+
+SELECT ?site ?coord ?elevation
+WHERE {
+
+  # Get site
+  ?site a :IfcSite .
+
+  # Get latitude
+  ?site :refLatitude_IfcSite ?latitude .
+  ?latitude list:hasContents ?lat_comp_1 .
+  ?lat_comp_1 express:hasInteger ?lat_deg .
+  ?latitude list:hasNext ?lat_next_1 .
+  ?lat_next_1 list:hasContents ?lat_comp_2_1 .
+  ?lat_comp_2_1 express:hasInteger ?lat_min .
+  ?lat_next_1 list:hasNext ?lat_next_2 .
+  ?lat_next_2 list:hasContents ?lat_comp_3_1 .
+  ?lat_comp_3_1 express:hasInteger ?lat_sec .
+
+  # Get longitude
+  ?site :refLongitude_IfcSite ?longitude .
+  ?longitude list:hasContents ?lng_comp_1 .
+  ?lng_comp_1 express:hasInteger ?lng_deg .
+  ?longitude list:hasNext ?lng_next_1 .
+  ?lng_next_1 list:hasContents ?lng_comp_2_1 .
+  ?lng_comp_2_1 express:hasInteger ?lng_min .
+  ?lng_next_1 list:hasNext ?lng_next_2 .
+  ?lng_next_2 list:hasContents ?lng_comp_3_1 .
+  ?lng_comp_3_1 express:hasInteger ?lng_sec .
+
+  # Get elevation
+  ?site :refElevation_IfcSite ?e .
+  ?e express:hasDouble ?elevation .
+
+  # Retrieve point (longitude latitude) with 7 decimal digits
+  BIND(STRDT(
+      CONCAT("POINT(", STR(ROUND((?lng_deg + ?lng_min/60 + ?lng_sec/3600)*10000000)/10000000), " ",
+        STR(ROUND((?lat_deg + ?lat_min/60 + ?lat_sec/3600)*10000000)/10000000), ")"),
+      geo:wktLiteral) AS ?coord ) .
+}
+
+
+# Query 3: SERVICE query over Ontop
+PREFIX : <http://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ifc: <http://ifcowl.openbimstandards.org/IFC2X3_Final#>
+PREFIX ifcowl: <http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#>
+PREFIX list: <https://w3id.org/list#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX express: <https://w3id.org/express#>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+
+SELECT *
+WHERE {
+  SERVICE <http://host.docker.internal:8082/sparql>
+  	{ 	?x a bldg:Building .
+		?x bldg:measuredHeight ?buildingHeight .
+    	# Get buildings over 40 meters
+		FILTER(?buildingHeight > 40) .
+  	}
+}
