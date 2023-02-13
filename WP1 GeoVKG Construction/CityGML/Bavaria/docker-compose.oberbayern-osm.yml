@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  db-osm:
+    image: postgis/postgis
+    command:
+      # See https://osm2pgsql.org/doc/manual.html#tuning-the-postgresql-server
+      - "postgres"
+      - "-c"
+      - "shared_buffers=1GB"
+      - "-c"
+      - "work_mem=50MB"
+      - "-c"
+      - "maintenance_work_mem=4GB"
+      - "-c"
+      - "autovacuum_work_mem=1GB"
+      - "-c"
+      - "wal_level=minimal"
+      - "-c"
+      - "checkpoint_timeout=60min"
+      - "-c"
+      - "max_wal_size=4GB"
+      - "-c"
+      - "checkpoint_completion_target=0.9"
+      - "-c"
+      - "max_wal_senders=0"
+      - "-c"
+      - "random_page_cost=1.0"
+    ports:
+      - "7779:5432"
+    environment:
+      ALLOW_IP_RANGE: "0.0.0.0/0"
+      POSTGRES_USER: osm
+      POSTGRES_PASSWORD: osm
+      PG_PORT: 7779
+
+  osm2pgsql:
+    build:
+      context: osm2pgsql/
+    command: bash -c "sleep 5; /usr/local/bin/osm-importer.sh"
+    depends_on:
+      - db-osm
+    links:
+      - db-osm
+    environment:
+      PG_PORT_5432_TCP_ADDR: db-osm
+      PG_PORT_5432_TCP_PORT: 5432
+      PG_ENV_POSTGRES_DB: osm
+      PG_ENV_POSTGRES_USER: osm
+      PG_ENV_POSTGRES_PASSWORD: osm
+      REGION: europe/germany/bayern/oberbayern
+
+volumes:
+  d2g2:
+
+#networks:
+#  citydb-net:
+#    name: citydb-net

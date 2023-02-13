@@ -1,0 +1,104 @@
+title="CityGML Tartu tutorial"
+
+[defaultTab]
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX grp: <http://www.opengis.net/citygml/cityobjectgroup/2.0/>
+PREFIX gml: <http://www.opengis.net/gml/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lod2: <http://lod2.eu/schema/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+
+# Q1: Get all hotels over 30m high
+SELECT *
+{
+?osmentity a lgdo:Hotel .
+?osmentity rdfs:label ?hotelname .
+?osmentity owl:sameAs ?citygmlentity .
+?citygmlentity bldg:measuredHeight ?buildingHeight .
+FILTER(?buildingHeight > 30) .
+?citygmlentity bldg:lod2Solid ?solid .
+?solid geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups]]
+
+name="Examples"
+
+[[tabGroups.tabs]]
+
+name="Hotels over 30m high"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX grp: <http://www.opengis.net/citygml/cityobjectgroup/2.0/>
+PREFIX gml: <http://www.opengis.net/gml/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lod2: <http://lod2.eu/schema/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+
+# Q1: Get all hotels over 30m high
+SELECT *
+{
+?osmentity a lgdo:Hotel .
+?osmentity rdfs:label ?hotelname .
+?osmentity owl:sameAs ?citygmlentity .
+?citygmlentity bldg:measuredHeight ?buildingHeight .
+FILTER(?buildingHeight > 30) .
+?citygmlentity bldg:lod2Solid ?solid .
+?solid geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Building address"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q2: Get building addresses
+SELECT *
+{
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+FILTER(CONTAINS(?address_label, "Landsberger Str")) .
+# EPSG:25832 used
+?x bldg:lod2Solid ?solid .
+?solid geo:asWKT ?geom .
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Buildings over 40m"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q3: Get buildings with height over 40m
+SELECT *
+{
+?x a bldg:Building .
+?x bldg:measuredHeight ?buildingHeight .
+# Get buildings over 40 meters
+FILTER(?buildingHeight > 40) .
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+# EPSG:25832 used
+?x bldg:lod2Solid ?solid .
+?solid geo:asWKT ?geom .
+}
+"""

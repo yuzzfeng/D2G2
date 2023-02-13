@@ -19,18 +19,21 @@ HOST=download.geofabrik.de
         echo "Download done"
     fi
 
+#-c "CREATE EXTENSION hstore"
     psql --no-password \
         -h $PG_PORT_5432_TCP_ADDR -p $PG_PORT_5432_TCP_PORT \
-        -U $PG_ENV_POSTGRES_USER $PG_ENV_POSTGRES_DB \
-        -c "CREATE EXTENSION hstore"
+        -U $PG_ENV_POSTGRES_USER $PG_ENV_POSTGRES_DB
 
+
+#--style /user/local/bin/custom.style \
     osm2pgsql -v \
         -k \
         --create \
         --slim \
         --cache 4000 \
         --extra-attributes \
-        --style /user/local/bin/custom.style \
+        --output=flex \
+        --style /user/local/bin/test.lua \
         --host $PG_PORT_5432_TCP_ADDR \
         --database $PG_ENV_POSTGRES_DB \
         --username $PG_ENV_POSTGRES_USER \
