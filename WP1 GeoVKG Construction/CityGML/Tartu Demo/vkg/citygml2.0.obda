@@ -33,7 +33,7 @@ terms:		http://purl.org/dc/terms/
 [MappingDeclaration] @collection [[
 mappingId	Address
 target		:address/{"id"} a core:Address ; rdfs:label {"street"}^^www:XMLSchema#string ; geo:asWKT {multi_point_wkt}^^geo:wktLiteral .
-source		SELECT v1."id" AS "id", v1."multi_point" AS "multi_point", ST_ASTEXT(v1."multi_point") AS "multi_point_wkt", v1."po_box" AS "po_box", v1."state" AS "state", v1."street" AS "street", v1."xal_source" AS "xal_source", v1."zip_code" AS "zip_code"
+source		SELECT v1."id" AS "id", v1."multi_point" AS "multi_point", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."multi_point", 'xy'), 4326)) AS "multi_point_wkt", v1."po_box" AS "po_box", v1."state" AS "state", v1."street" AS "street", v1."xal_source" AS "xal_source", v1."zip_code" AS "zip_code"
 			FROM "address" v1
 
 mappingId	Address to Building
@@ -43,7 +43,7 @@ source		SELECT v1."address_id" AS "address_id", v1."building_id" AS "building_id
 
 mappingId	Surface Geometry
 target		:geometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
-source		SELECT v1."cityobject_id" AS "cityobject_id", v1."geometry" AS "geometry", v1."gmlid" AS "gmlid", v1."gmlid_codespace" AS "gmlid_codespace", v1."id" AS "id", v1."implicit_geometry" AS "implicit_geometry", v1."is_composite" AS "is_composite", v1."is_reverse" AS "is_reverse", v1."is_solid" AS "is_solid", v1."is_triangulated" AS "is_triangulated", v1."is_xlink" AS "is_xlink", v1."parent_id" AS "parent_id", v1."root_id" AS "root_id", v1."solid_geometry" AS "solid_geometry", ST_ASTEXT(v1."geometry") AS "geometry_wkt"
+source		SELECT v1."cityobject_id" AS "cityobject_id", v1."geometry" AS "geometry", v1."gmlid" AS "gmlid", v1."gmlid_codespace" AS "gmlid_codespace", v1."id" AS "id", v1."implicit_geometry" AS "implicit_geometry", v1."is_composite" AS "is_composite", v1."is_reverse" AS "is_reverse", v1."is_solid" AS "is_solid", v1."is_triangulated" AS "is_triangulated", v1."is_xlink" AS "is_xlink", v1."parent_id" AS "parent_id", v1."root_id" AS "root_id", v1."solid_geometry" AS "solid_geometry", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."geometry", 'xy'), 4326)) AS "geometry_wkt"
 			FROM "surface_geometry" v1
 
 mappingId	Surface Geometry - Parent
@@ -334,12 +334,12 @@ source		SELECT v1."building_parent_id" AS "building_parent_id", v1."id" AS "id"
 
 mappingId	Texture Parametrization
 target		:textureparam/{"surface_geometry_id"} a app:_TextureParameterization ; app:worldToTexture {"world_to_texture"}^^www:XMLSchema#string ; app:surfaceDataMember :surface_data/{"surface_data_id"} ; tex:textureCoordinates {"texture_coordinates_wkt"}^^geo:wktLiteral .
-source		SELECT v1."is_texture_parametrization" AS "is_texture_parametrization", v1."surface_data_id" AS "surface_data_id", v1."surface_geometry_id" AS "surface_geometry_id", ST_ASTEXT(v1."texture_coordinates") AS "texture_coordinates_wkt", v1."world_to_texture" AS "world_to_texture"
+source		SELECT v1."is_texture_parametrization" AS "is_texture_parametrization", v1."surface_data_id" AS "surface_data_id", v1."surface_geometry_id" AS "surface_geometry_id", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."texture_coordinates", 'xy'), 4326)) AS "texture_coordinates_wkt", v1."world_to_texture" AS "world_to_texture"
 			FROM "textureparam" v1
 
 mappingId	Surface Data
 target		:surface_data/{"id"} a app:_SurfaceData ; app:specularColor {"x3d_specular_color"}^^www:XMLSchema#string ; app:preferWorldFile {"gt_prefer_worldfile"}^^www:XMLSchema#boolean ; app:isFront {"is_front"}^^www:XMLSchema#boolean ; app:ambientIntensity {"x3d_ambient_intensity"}^^www:XMLSchema#decimal ; app:shininess {"x3d_shininess"}^^www:XMLSchema#decimal ; app:borderColor {"tex_border_color"}^^www:XMLSchema#string ; app:isSmooth {"x3d_is_smooth"}^^www:XMLSchema#boolean ; app:orientation {"gt_orientation"}^^www:XMLSchema#string ; app:emissiveColor {"x3d_emissive_color"}^^www:XMLSchema#string ; rdfs:label {"name"}^^www:XMLSchema#string ; app:textureType {"tex_texture_type"}^^www:XMLSchema#string ; app:diffuseColor {"x3d_diffuse_color"}^^www:XMLSchema#string ; app:transparency {"x3d_transparency"}^^www:XMLSchema#decimal ; geo:asWKT {"gt_reference_point_wkt"}^^geo:wktLiteral .
-source		SELECT v1."description" AS "description", v1."gmlid" AS "gmlid", v1."gmlid_codespace" AS "gmlid_codespace", v1."gt_orientation" AS "gt_orientation", v1."gt_prefer_worldfile" AS "gt_prefer_worldfile", ST_ASTEXT(v1."gt_reference_point") AS "gt_reference_point_wkt", v1."id" AS "id", v1."is_front" AS "is_front", v1."name" AS "name", v1."name_codespace" AS "name_codespace", v1."objectclass_id" AS "objectclass_id", v1."tex_border_color" AS "tex_border_color", v1."tex_image_id" AS "tex_image_id", v1."tex_texture_type" AS "tex_texture_type", v1."tex_wrap_mode" AS "tex_wrap_mode", v1."x3d_ambient_intensity" AS "x3d_ambient_intensity", v1."x3d_diffuse_color" AS "x3d_diffuse_color", v1."x3d_emissive_color" AS "x3d_emissive_color", v1."x3d_is_smooth" AS "x3d_is_smooth", v1."x3d_shininess" AS "x3d_shininess", v1."x3d_specular_color" AS "x3d_specular_color", v1."x3d_transparency" AS "x3d_transparency"
+source		SELECT v1."description" AS "description", v1."gmlid" AS "gmlid", v1."gmlid_codespace" AS "gmlid_codespace", v1."gt_orientation" AS "gt_orientation", v1."gt_prefer_worldfile" AS "gt_prefer_worldfile", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."gt_reference_point", 'xy'), 4326)) AS "gt_reference_point_wkt", v1."id" AS "id", v1."is_front" AS "is_front", v1."name" AS "name", v1."name_codespace" AS "name_codespace", v1."objectclass_id" AS "objectclass_id", v1."tex_border_color" AS "tex_border_color", v1."tex_image_id" AS "tex_image_id", v1."tex_texture_type" AS "tex_texture_type", v1."tex_wrap_mode" AS "tex_wrap_mode", v1."x3d_ambient_intensity" AS "x3d_ambient_intensity", v1."x3d_diffuse_color" AS "x3d_diffuse_color", v1."x3d_emissive_color" AS "x3d_emissive_color", v1."x3d_is_smooth" AS "x3d_is_smooth", v1."x3d_shininess" AS "x3d_shininess", v1."x3d_specular_color" AS "x3d_specular_color", v1."x3d_transparency" AS "x3d_transparency"
 			FROM "surface_data" v1
 
 mappingId	Tunnel Installation
@@ -449,7 +449,7 @@ source		SELECT v1."id" AS "id", v1."tunnel_hollow_space_id" AS "tunnel_hollow_sp
 
 mappingId	City Model
 target		:citymodel/{"id"} a core:CityModel ; rdfs:label {"name"}^^www:XMLSchema#string ; core:creationDate {"creation_date"}^^www:XMLSchema#dateTime ; core:terminationDate {"termination_date"}^^www:XMLSchema#dateTime ; geo:asWKT {"envelope_wkt"}^^geo:wktLiteral .
-source		SELECT v1."creation_date" AS "creation_date", ST_ASTEXT(v1."envelope") AS "envelope_wkt", v1."id" AS "id", v1."name" AS "name", v1."termination_date" AS "termination_date"
+source		SELECT v1."creation_date" AS "creation_date", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."envelope", 'xy'), 4326)) AS "envelope_wkt", v1."id" AS "id", v1."name" AS "name", v1."termination_date" AS "termination_date"
 			FROM "citymodel" v1
 
 mappingId	Furniture
@@ -499,7 +499,7 @@ source		SELECT v1."building_id" AS "building_id", v1."id" AS "id"
 
 mappingId	City Object
 target		:cityobject/{"id"} a core:_CityObject ; rdfs:label {"name"}^^www:XMLSchema#string ; core:terminationDate {"termination_date"}^^www:XMLSchema#dateTime ; core:creationDate {"creation_date"}^^www:XMLSchema#dateTime ; geo:asWKT {"envelope_wkt"}^^geo:wktLiteral .
-source		SELECT v1."creation_date" AS "creation_date", ST_ASTEXT(v1."envelope") AS "envelope_wkt", v1."id" AS "id", v1."name" AS "name", v1."termination_date" AS "termination_date"
+source		SELECT v1."creation_date" AS "creation_date", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."envelope", 'xy'), 4326)) AS "envelope_wkt", v1."id" AS "id", v1."name" AS "name", v1."termination_date" AS "termination_date"
 			FROM "cityobject" v1
 
 mappingId	City Object - Relative to Terrain
@@ -514,7 +514,7 @@ source		SELECT v1."id" AS "id", v1."relative_to_water" AS "relative_to_water"
 
 mappingId	Generic City Object Attribute
 target		:genericcityobject/{"id"} a gen:GenericCityObject ; gen:value {"realval"}^^www:XMLSchema#double ; rdfs:label {"attrname"}^^www:XMLSchema#string ; geo:asWKT {"geomval_wkt"}^^geo:wktLiteral .
-source		SELECT ST_ASTEXT(v1."geomval") AS "geomval_wkt", v1."id" AS "id", v1."realval" AS "realval", v1."attrname" AS "attrname"
+source		SELECT ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."geomval", 'xy'), 4326)) AS "geomval_wkt", v1."id" AS "id", v1."realval" AS "realval", v1."attrname" AS "attrname"
 			FROM "cityobject_genericattrib" v1
 
 mappingId	Generic City Object Attribute - Parent
@@ -809,7 +809,7 @@ source		SELECT v1."cityobject_id" AS "cityobject_id", v1."cityobjectgroup_id" AS
 
 mappingId	Breakline relief
 target		:breakline_relief/{"id"} a dem:BreaklineRelief ; geo:asWKT {"break_lines_wkt"}^^geo:wktLiteral .
-source		SELECT v1."break_lines" AS "break_lines", ST_ASTEXT(v1."break_lines") AS "break_lines_wkt", v1."id" AS "id", v1."objectclass_id" AS "objectclass_id", v1."ridge_or_valley_lines" AS "ridge_or_valley_lines"
+source		SELECT v1."break_lines" AS "break_lines", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."break_lines", 'xy'), 4326)) AS "break_lines_wkt", v1."id" AS "id", v1."objectclass_id" AS "objectclass_id", v1."ridge_or_valley_lines" AS "ridge_or_valley_lines"
 			FROM "breakline_relief" v1
 
 mappingId	Raster Relief
