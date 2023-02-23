@@ -9284,9 +9284,9 @@
 
 
 
-    <!-- http://linkedgeodata.org/ontology/HighwaySecundaryLink -->
+    <!-- http://linkedgeodata.org/ontology/HighwaySecondaryLink -->
 
-    <owl:Class rdf:about="http://linkedgeodata.org/ontology/HighwaySecundaryLink">
+    <owl:Class rdf:about="http://linkedgeodata.org/ontology/HighwaySecondaryLink">
         <rdfs:subClassOf rdf:resource="http://linkedgeodata.org/ontology/HighwayThing"/>
     </owl:Class>
 
@@ -12677,9 +12677,9 @@
 
 
 
-    <!-- http://linkedgeodata.org/ontology/SecundaryHighway -->
+    <!-- http://linkedgeodata.org/ontology/SecondaryHighway -->
 
-    <owl:Class rdf:about="http://linkedgeodata.org/ontology/SecundaryHighway">
+    <owl:Class rdf:about="http://linkedgeodata.org/ontology/SecondaryHighway">
         <rdfs:subClassOf rdf:resource="http://linkedgeodata.org/ontology/HighwayThing"/>
     </owl:Class>
 
@@ -16093,7 +16093,7 @@
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwayCrossing"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwayFord"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwayPrimaryLink"/>
-            <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwaySecundaryLink"/>
+            <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwaySecondaryLink"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwayService"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/HighwayTertiaryLink"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/LivingStreet"/>
@@ -16111,7 +16111,7 @@
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/ResidentialHighway"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/RestArea"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/Road"/>
-            <rdf:Description rdf:about="http://linkedgeodata.org/ontology/SecundaryHighway"/>
+            <rdf:Description rdf:about="http://linkedgeodata.org/ontology/SecondaryHighway"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/ServiceStation"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/SpeedCamera"/>
             <rdf:Description rdf:about="http://linkedgeodata.org/ontology/Steps"/>

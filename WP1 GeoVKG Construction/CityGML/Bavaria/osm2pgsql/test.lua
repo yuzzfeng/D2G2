@@ -56,11 +56,60 @@ local function isempty(x)
   return x == nil or x == ''
 end
 
+local function starts_with(str, start)
+    return str:sub(1, #start) == start
+end
+
+-- Make string first letter uppercase
+function firstToUpper(str)
+    return (str:gsub("^%l", string.upper))
+end
+
+-- Handle quite common scenarios
+-- e.g. 1) building=yes 2) highway=primary
+local function refineclasses(x)
+    for k, v in pairs(x) do
+        if starts_with(v, "yes") then
+            return k..""
+        elseif starts_with(k, "highway") and (starts_with(v, "construction")
+                or starts_with(v, "crossing")
+                or starts_with(v, "ford")
+                or starts_with(v, "service"))
+            then return k .. firstToUpper(v)
+        elseif starts_with(k, "highway") and starts_with(v, "primary_link")
+            then return "highwayPrimaryLink"
+        elseif starts_with(k, "highway") and starts_with(v, "secondary_link")
+            then return "highwaySecondaryLink"
+        elseif starts_with(k, "highway") and starts_with(v, "tertiary_link")
+            then return "highwayTertiaryLink"
+        elseif starts_with(k, "highway") and (starts_with(v, "primary")
+                                                    or starts_with(v, "secondary")
+                                                    or starts_with(v, "tertiary")
+                                                    or starts_with(v, "unclassified")
+                                                    or starts_with(v, "unclassified")
+                                                    or starts_with(v, "residential")
+                                                    or starts_with(v, "proposed"))
+            then return v .. firstToUpper(k)
+        else
+            return nil
+        end
+    end
+end
+
 -- Helper function to fill up table
 local function filluptable(object, geometry, lookup)
+    local refinedval
+
     if not isempty(lookup) then
-    tables.classes:insert({
-        class = lookup,
+        local refinedvalcheck = refineclasses(object.tags)
+        if isempty(refinedvalcheck) then
+            refinedval = lookup
+        else
+            refinedval = refinedvalcheck
+        end
+
+        tables.classes:insert({
+        class = refinedval,
         geom = geometry,
         name = object.tags.name,
         name_en = object.tags['name:en'],
@@ -88,6 +137,9 @@ function process(object, geometry)
         return
     end
 
+    -- We cannot know whether the category is first in the list of tags or not
+    -- We need to do some checks
+    -- Set a list of superclasses/keys we care about
     filluptable(object, geometry, object.tags.amenity)
     filluptable(object, geometry, object.tags.natural)
     filluptable(object, geometry, object.tags.highway)
@@ -98,43 +150,8 @@ function process(object, geometry)
     filluptable(object, geometry, object.tags.leisure)
     filluptable(object, geometry, object.tags.aeroway)
     filluptable(object, geometry, object.tags.aerialway)
-    -- We cannot know whether the category is first in the list of tags or not
-    -- We need to do some checks
-    -- Set a list of superclasses/keys we care about
     --local superclasses_file = io.open("superclasses.txt", "r")
     --for line in superclasses_file:lines() do
-    superclasses = {'amenity', 'natural'}
---     local tag2 = object.tags
---     for _, key in ipairs(superclasses) do
---         local alpha = tag2[key]
---         print(alpha)
---         filluptable(object, geometry, alpha)
---     end
-
-
-
-    --i=1,#table
---     for index, value in ipairs(superclasses) do
---         print(value)
---         var1 = string.format('%s', value.tostring)
---         print(object.tags[value])
---         value = 'amenity'
---         var1 = string.format('object.tags.%s', value)
-        --print(var1)
-        -- variable expansion failing
---         if not isempty(object.tags[var1]) then
---             tables.classes:insert({
---                 tags = object.tags[value],
---                 geom = geometry,
---                             name = object.tags.name,
---                             name_en = object.tags['name:en'],
---                             name_de = object.tags['name:en'],
---                             name_fr = object.tags['name:en'],
---                             name_it = object.tags['name:en'],
---                             height = object.tags['height']
---             })
---         end
---     end
 
 end
 
