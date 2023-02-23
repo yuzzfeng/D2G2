@@ -31,6 +31,7 @@ tran:		http://www.opengis.net/citygml/transportation/2.0/
 terms:		http://purl.org/dc/terms/
 lgdo:		http://linkedgeodata.org/ontology/
 lgd:		http://linkedgeodata.org/resource/
+lgdg:       http://linkedgeodata.org/geometry/
 xal:        http://www.unibz.it/xal/2.0/
 
 [MappingDeclaration] @collection [[
@@ -46,7 +47,7 @@ source		SELECT v1."address_id" AS "address_id", v1."building_id" AS "building_id
 
 mappingId	Surface Geometry
 target		:geometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
-source		SELECT v1."cityobject_id" AS "cityobject_id", v1."geometry" AS "geometry", v1."id" AS "id", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(COALESCE(v1."geometry", v1."solid_geometry"), 'xy'), 4326)) AS "geometry_wkt"
+source		SELECT v1."cityobject_id" AS "cityobject_id", v1."geometry" AS "geometry", v1."id" AS "id", ST_ASTEXT(ST_TRANSFORM((COALESCE(v1."geometry", v1."solid_geometry")), 4326)) AS "geometry_wkt"
 			FROM "surface_geometry" v1
 
 mappingId	Surface Geometry to City Object
@@ -58,6 +59,44 @@ mappingId	Surface Geometry - Parent
 target		:geometry/{"id"} grp:parent :geometry/{"parent_id"} .
 source		SELECT v1."id" AS "id", v1."parent_id" AS "parent_id"
 			FROM "surface_geometry" v1
+
+mappingId	Surface Geometry - Bounded Surfaces
+target		:cityobject/{"parent_id"} geo:hasGeometry :geometry/{"id"} .
+source		SELECT v1."parent_id" AS "parent_id", v1."id" AS "id"
+			FROM "surface_geometry" v1
+
+mappingId	Thematic Surface - Link Building to BuildingSurface LoD2
+target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"parent_id"} .
+source		SELECT v1."building_id" AS "building_id", v2."parent_id" AS "parent_id"
+			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod2_multi_surface_id" = v2."root_id"
+
+mappingId	Thematic Surface - Link Building to BuildingSurface LoD3
+target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"parent_id"} .
+source		SELECT v1."building_id" AS "building_id", v2."parent_id" AS "parent_id"
+			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod3_multi_surface_id" = v2."root_id"
+
+mappingId	Thematic Surface - Link Building to BuildingSurface LoD4
+target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"parent_id"} .
+source		SELECT v1."building_id" AS "building_id", v2."parent_id" AS "parent_id"
+			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod4_multi_surface_id" = v2."root_id"
+
+mappingId	BuildingWallSurface
+target		:cityobject/{"id"} a bldg:WallSurface .
+source		SELECT v1."id" AS "id"
+			FROM "cityobject" v1 LEFT JOIN "objectclass" v2 ON v1."objectclass_id"=v2."id"
+			WHERE v2."classname"='BuildingWallSurface'
+
+mappingId	BuildingRoofSurface
+target		:cityobject/{"id"} a bldg:RoofSurface .
+source		SELECT v1."id" AS "id"
+			FROM "cityobject" v1 LEFT JOIN "objectclass" v2 ON v1."objectclass_id"=v2."id"
+			WHERE v2."classname"='BuildingRoofSurface'
+
+mappingId	BuildingGroundSurface
+target		:cityobject/{"id"} a bldg:GroundSurface .
+source		SELECT v1."id" AS "id"
+			FROM "cityobject" v1 LEFT JOIN "objectclass" v2 ON v1."objectclass_id"=v2."id"
+			WHERE v2."classname"='BuildingGroundSurface'
 
 mappingId	Appearance
 target		:appearance/{"id"} a app:Appearance ; rdfs:label {"name"}^^xsd:string ; app:theme {"theme"}^^xsd:string .
@@ -113,7 +152,6 @@ mappingId	Bridge Room - Interior
 target		:cityobject/{"bridge_id"} brid:interiorBridgeRoom :bridge_room/{"id"} .
 source		SELECT v1."bridge_id" AS "bridge_id", v1."id" AS "id"
 			FROM "bridge_room" v1
-
 
 mappingId	Bridge Room - LoD4Solid
 target		:bridge_room/{"id"} brid:lod4Solid :geometry/{"lod4_solid_id"} .
@@ -506,8 +544,8 @@ source		SELECT v1."building_id" AS "building_id", v1."id" AS "id"
 			FROM "room" v1
 
 mappingId	City Object
-target		:cityobject/{"id"} a core:_CityObject ; rdfs:label {"name"}^^xsd:string ; core:terminationDate {"termination_date"}^^xsd:dateTime ; core:creationDate {"creation_date"}^^xsd:dateTime ; geo:asWKT {"envelope_wkt"}^^geo:wktLiteral .
-source		SELECT v1."creation_date" AS "creation_date", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."envelope", 'xy'), 4326)) AS "envelope_wkt", v1."id" AS "id", v1."name" AS "name", v1."termination_date" AS "termination_date"
+target		:cityobject/{"id"} a core:_CityObject ; rdfs:label {"name"}^^xsd:string ; core:terminationDate {"termination_date"}^^xsd:dateTime ; core:creationDate {"creation_date"}^^xsd:dateTime .
+source		SELECT v1."creation_date" AS "creation_date", v1."id" AS "id", v1."name" AS "name", v1."termination_date" AS "termination_date"
 			FROM "cityobject" v1
 
 mappingId	City Object - Relative to Terrain
@@ -861,6 +899,42 @@ mappingId	lgd_relations
 target		lgd:way{osm_id} a lgdo:{formatted_class} ; rdfs:label {name}^^xsd:string ; rdfs:label {name_en}@en ; rdfs:label {name_de}@de ; rdfs:label {name_fr}@fr ; rdfs:label {name_it}@it ; lgdo:height {height} .
 source		SELECT *, INITCAP(class) AS formatted_class
             FROM public.classes
+            WHERE osm_type='R'
+
+mappingId	lgd_nodes_has_geom
+target		lgd:node{osm_id} geo:hasGeometry lgdg:node{osm_id} .
+source		SELECT osm_id
+            FROM public.classes
+            WHERE osm_type='N'
+
+mappingId	lgd_ways_has_geom
+target		lgd:way{osm_id} geo:hasGeometry lgdg:way{osm_id} .
+source		SELECT osm_id
+            FROM public.classes
+            WHERE osm_type='W'
+
+mappingId	lgd_relations_has_geom
+target		lgd:relation{osm_id} geo:hasGeometry lgdg:relation{osm_id} .
+source		SELECT osm_id
+            FROM public.classes
+            WHERE osm_type='R'
+
+mappingId	lgd_nodes_wkt
+target		lgdg:node{osm_id} a geo:Geometry ; geo:asWKT {wkt}^^geo:wktLiteral .
+source		SELECT osm_id, ST_ASTEXT(geom) AS wkt
+			FROM public.classes
+            WHERE osm_type='N'
+
+mappingId	lgd_ways_wkt
+target		lgdg:way{osm_id} a geo:Geometry ; geo:asWKT {wkt}^^geo:wktLiteral .
+source		SELECT osm_id, ST_ASTEXT(geom) AS wkt
+			FROM public.classes
+            WHERE osm_type='W'
+
+mappingId	lgd_relations_wkt
+target		lgdg:relation{osm_id} a geo:Geometry ; geo:asWKT {wkt}^^geo:wktLiteral .
+source		SELECT osm_id, ST_ASTEXT(geom) AS wkt
+			FROM public.classes
             WHERE osm_type='R'
 
 mappingId	equivalent_node_citydb_osm_buildings

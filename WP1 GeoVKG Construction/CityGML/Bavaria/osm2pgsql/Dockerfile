@@ -13,8 +13,6 @@ RUN apt-get clean \
 
 ADD ./osm-importer.sh /usr/local/bin/osm-importer.sh
 ADD ./custom.style /user/local/bin/custom.style
-#ADD ./addresses.lua /user/local/bin/addresses.lua
-#ADD ./unitable.lua /user/local/bin/unitable.lua
 ADD ./test.lua /user/local/bin/test.lua
 
 RUN chmod +x /usr/local/bin/osm-importer.sh

@@ -102,3 +102,47 @@ FILTER(?buildingHeight > 40) .
 ?solid geo:asWKT ?geom .
 }
 """
+
+
+[[tabGroups.tabs]]
+
+name="Buildings with roof most roof surfaces"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q4: Get buildings with most roof surfaces
+SELECT ?x (COUNT(?surface) AS ?totalsurface)
+{
+?x a bldg:Building .
+?x bldg:boundedby ?surface .
+?surface a bldg:RoofSurface .
+}
+GROUP BY ?x
+ORDER BY DESC(?totalsurface)
+"""
+
+[[tabGroups.tabs]]
+
+name="Mapped roofs"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q5: Map roof surfaces of buildings over 35m
+SELECT ?geom
+{
+?x a bldg:Building .
+?x bldg:measuredHeight ?buildingHeight .
+FILTER(?buildingHeight > 35) .
+?x bldg:boundedby ?surface .
+?surface a bldg:RoofSurface .
+?surface geo:hasGeometry/geo:asWKT ?geom .
+}
+"""

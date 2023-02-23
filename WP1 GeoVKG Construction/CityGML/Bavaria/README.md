@@ -1,6 +1,6 @@
 ### Instructions
 #### 3D City Importer Exporter
-Place all the gml files you want to use in the citygml-data folder. 
+Place all the gml files you want to use in the citygml-data folder. Navigate to the citygml-data folder and run: 
 ```
 bash get-munich-citygml.sh
 ```
