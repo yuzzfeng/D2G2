@@ -1,0 +1,43 @@
+title="IFC Sample Building Queries"
+
+[defaultTab]
+query="""
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ifc: <http://ifcowl.openbimstandards.org/IFC2X3_Final#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#>
+PREFIX ifcowl: <http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#>
+PREFIX express: <https://w3id.org/express#>
+
+# Q1: Get site elevation
+SELECT * {
+	?s a ifcowl:IfcSite .
+  	?s ifcowl:refElevation_IfcSite ?measure .
+    ?measure express:hasDouble ?elevation .
+}
+"""
+
+[[tabGroups]]
+
+name="Examples"
+
+[[tabGroups.tabs]]
+
+name="Site elevation"
+query="""
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ifc: <http://ifcowl.openbimstandards.org/IFC2X3_Final#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://standards.buildingsmart.org/IFC/DEV/IFC4/ADD1/OWL#>
+PREFIX ifcowl: <http://www.buildingsmart-tech.org/ifcOWL/IFC4_ADD2#>
+PREFIX express: <https://w3id.org/express#>
+
+# Q1: Get site elevation
+SELECT * {
+	?s a ifcowl:IfcSite .
+  	?s ifcowl:refElevation_IfcSite ?measure .
+    ?measure express:hasDouble ?elevation .
+}
+"""

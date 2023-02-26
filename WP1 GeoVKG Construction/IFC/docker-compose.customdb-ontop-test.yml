@@ -2,19 +2,33 @@ version: "3.8"
 
 services:
   db:
-    # sample image with Tartu data
-    image: albulenpano/3dcitydb:v0
+    # PostGIS database
+    image: postgres
     ports:
       - "${MAPPED_POSTGRES_PORT}:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=3dcitydb
+      - POSTGRES_DB=ifcsql
+      - POSTGRES_USER=ifcsql
+      - POSTGRES_PASSWORD=ifcsql
       - PGDATA=postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ifcsql" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: ./app/
+    depends_on:
+      db:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   ontop:
-    image: ontop/ontop:5.0.0
+    image: ontop/ontop:5.0.1
     environment:
-      ONTOP_ONTOLOGY_FILE: /opt/ontop/input/ifcexample.ttl
+      ONTOP_ONTOLOGY_FILE: /opt/ontop/input/IFC4.owl
       ONTOP_XML_CATALOG_FILE: /opt/ontop/input/catalog-v001.xml
       ONTOP_MAPPING_FILE: /opt/ontop/input/ifcexample.obda
       ONTOP_PROPERTIES_FILE: /opt/ontop/input/ifcexample.properties
@@ -23,9 +37,12 @@ services:
       ONTOP_DEV_MODE: "true"
       ONTOP_DEBUG: "true"
     volumes:
-      - ./vkg-ifc-facts:/opt/ontop/input
+      - ./vkg-ifc-mappings:/opt/ontop/input
       - ./jdbc:/opt/ontop/jdbc
       - ./wait-for-it:/opt/wait-for-it
+    depends_on:
+      app:
+        condition: service_completed_successfully
     entrypoint:
       [
         "/opt/wait-for-it/wait-for-it.sh",
