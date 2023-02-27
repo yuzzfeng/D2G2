@@ -17,5 +17,5 @@ Sample queries available in [sample-queries.txt](WP1%20GeoVKG%20Construction/IFC
 ```
 sudo docker-compose -f docker-compose.customdb-ontop-test.yml up
 ```
-Only IfcSite currently available for small experiment.
+Only IfcSite currently available for small experiment retrieving site elevation and coordinates.
 Scalability of solution needs to be reviewed.
