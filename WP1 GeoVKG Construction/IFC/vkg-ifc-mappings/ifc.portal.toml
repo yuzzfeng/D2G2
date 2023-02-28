@@ -92,3 +92,34 @@ SELECT ?coord {
         STR(ROUND((?lat_deg + ?lat_min/60 + ?lat_sec/3600)*10000000)/10000000), ")") AS ?coord ) .
 }
 """
+
+
+
+[[tabGroups.tabs]]
+
+name="Total building volume"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX ifc: <http://ifcowl.openbimstandards.org/IFC4#>
+PREFIX express: <https://w3id.org/express#>
+PREFIX expr: <https://w3id.org/express#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX list:  <https://w3id.org/list#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+# Q3: Get total building volume
+SELECT (SUM(?value) AS ?total_volume)
+WHERE {
+  # Retrieve element quantities
+  ?prop_def a ifc:IfcElementQuantity .
+  ?prop_def ifc:quantities_IfcElementQuantity ?ele_q .
+
+  # Filter only gross volume
+  ?ele_q  ifc:name_IfcPhysicalQuantity ?label .
+  ?label express:hasString ?label_name .
+  FILTER(?label_name = 'GrossVolume') .
+
+  # Retrieve the volume values
+  ?ele_q ifc:volumeValue_IfcQuantityVolume ?volume .
+  ?volume expr:hasDouble ?value .
+"""

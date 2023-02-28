@@ -125,4 +125,54 @@ mappingId	Longitude_Millionthseconds_Measure
 target		ifc:lngmilsecmeasure/{lng_millionthseconds} a ifc:IfcLengthMeasure ; list:hasContents expr:integer/{lng_millionthseconds} .
 source		SELECT *
 			FROM public."IfcSite"
+
+mappingId	IfcElementQuantity
+target		ifc:eq/{id} a ifc:IfcElementQuantity .
+source		SELECT *
+			FROM public."IfcElementQuantity"
+
+mappingId	QuantityVolumes
+target		ifc:eq/{ElementQuantity_id} ifc:quantities_IfcElementQuantity ifc:q/{id} .
+source		SELECT *
+			FROM public."IfcQuantity"
+
+mappingId	QuantityArea
+target		ifc:q/{id} a ifc:IfcQuantityArea ; ifc:name_IfcPhysicalQuantity ifc:label/{id} .
+source		SELECT id, "Name"
+			FROM public."IfcQuantity"
+			WHERE type='IfcQuantityArea'
+
+mappingId	QuantityVolume
+target		ifc:q/{id} a ifc:IfcQuantityVolume ; ifc:name_IfcPhysicalQuantity ifc:label/{id} .
+source		SELECT id, "Name"
+			FROM public."IfcQuantity"
+			WHERE type='IfcQuantityVolume'
+
+mappingId	QuantityLength
+target		ifc:q/{id} a ifc:IfcQuantityLength ; ifc:name_IfcPhysicalQuantity ifc:label/{id} .
+source		SELECT id, "Name"
+			FROM public."IfcQuantity"
+			WHERE type='IfcQuantityLength'
+
+mappingId	QuantityCount
+target		ifc:q/{id} a ifc:IfcQuantityCount ; ifc:name_IfcPhysicalQuantity ifc:label/{id} .
+source		SELECT id, "Name"
+			FROM public."IfcQuantity"
+			WHERE type='IfcQuantityCount'
+
+mappingId	QuantityLabel
+target		ifc:label/{id} expr:hasString {Name}^^www:XMLSchema#string .
+source		SELECT id, "Name"
+			FROM public."IfcQuantity"
+
+mappingId	VolumeId
+target		ifc:q/{id} ifc:volumeValue_IfcQuantityVolume ifc:real/{id} .
+source		SELECT *
+			FROM public."IfcQuantity"
+			WHERE "type" = 'IfcQuantityVolume'
+
+mappingId	VolumeValue
+target		ifc:real/{id} expr:hasDouble {Value}^^www:XMLSchema#double .
+source		SELECT *
+			FROM public."IfcQuantity"
 ]]
