@@ -106,7 +106,7 @@ FILTER(?buildingHeight > 40) .
 
 [[tabGroups.tabs]]
 
-name="Buildings with roof most roof surfaces"
+name="Buildings with most roof surfaces"
 query="""
 PREFIX : <http://cui.unige.ch/citygml/2.0/>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
