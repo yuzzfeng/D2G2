@@ -122,4 +122,5 @@ WHERE {
   # Retrieve the volume values
   ?ele_q ifc:volumeValue_IfcQuantityVolume ?volume .
   ?volume expr:hasDouble ?value .
+}
 """

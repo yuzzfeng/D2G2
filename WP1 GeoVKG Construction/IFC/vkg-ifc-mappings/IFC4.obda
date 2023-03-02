@@ -175,4 +175,29 @@ mappingId	VolumeValue
 target		ifc:real/{id} expr:hasDouble {Value}^^www:XMLSchema#double .
 source		SELECT *
 			FROM public."IfcQuantity"
+
+mappingId	IfcBuilding
+target		ifc:building/{id} a ifc:IfcBuilding ; ifc:globalId_IfcRoot :globalid/{id} ; ifc:ownerHistory_IfcRoot ifc:ownerhistory/{OwnerHistory_id} ; ifc:name_IfcRoot :name/{id} ; ifc:description_IfcRoot :description/{id} ; ifc:objectType_IfcObject :objecttype/{id} ; ifc:objectPlacement_IfcProduct :objectplacement/{ObjectPlacement_id} ; ifc:compositionType_IfcSpatialStructureElement :element/{CompositionType} .
+source		SELECT *
+			FROM public."IfcBuilding"
+
+mappingId	IfcGloballyUniqueId
+target		:globalid/{id} a ifc:IfcGloballyUniqueId ; expr:hasString {GlobalId}^^www:XMLSchema#string .
+source		SELECT "id", "GlobalId"
+			FROM public."IfcBuilding"
+
+mappingId	IfcBuildingName
+target		:name/{id} a ifc:IfcLabel ; expr:hasString {Name}^^www:XMLSchema#string .
+source		SELECT "id", "Name"
+			FROM public."IfcBuilding"
+
+mappingId	IfcBuildingDescription
+target		:description/{id} a ifc:IfcText ; expr:hasString {Description}^^www:XMLSchema#string .
+source		SELECT "id", "Description"
+			FROM public."IfcBuilding"
+
+mappingId	IfcBuildingObjectType
+target		:objecttype/{id} a ifc:IfcLabel ; expr:hasString {ObjectType}^^www:XMLSchema#string .
+source		SELECT "id", "ObjectType"
+			FROM public."IfcBuilding"
 ]]
