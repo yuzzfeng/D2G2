@@ -32,13 +32,22 @@ terms:		http://purl.org/dc/terms/
 lgdo:		http://linkedgeodata.org/ontology/
 lgd:		http://linkedgeodata.org/resource/
 lgdg:       http://linkedgeodata.org/geometry/
-xal:        http://www.unibz.it/xal/2.0/
 
 [MappingDeclaration] @collection [[
 mappingId	Address
 target		:address/{"id"} a core:Address ; rdfs:label {"streetaddress"}^^xsd:string ; geo:asWKT {multi_point_wkt}^^geo:wktLiteral .
 source		SELECT v1."id" AS "id", v1."multi_point" AS "multi_point", ST_ASTEXT(ST_TRANSFORM(ST_SWAPORDINATES(v1."multi_point", 'xy'), 4326)) AS "multi_point_wkt", v1."po_box" AS "po_box", v1."state" AS "state", v1."street" AS "street", v1."zip_code" AS "zip_code", CONCAT(v1."street", ' ', v1."house_number") AS "streetaddress"
 			FROM "address" v1
+
+mappingId	Address to xALAddress
+target		:address/{"id"} core:hasxalAddress :xaladdress/{"id"} .
+source		SELECT "id"
+			FROM "address" v1
+
+mappingId	xALAddress
+target		:xaladdress/{"id"} a core:xalAddress ; :xalLocalityName {"xal_locality_name"}^^xsd:string ; :xalLocalityType {"xal_locality_type"}^^xsd:string ; :xalThoroughfareName {"xal_thoroughfare_name"}^^xsd:string ; :xalThoroughfareType {"xal_thoroughfare_type"}^^xsd:string .
+source		SELECT "id", "xal_locality_name", "xal_locality_type", "xal_thoroughfare_name", "xal_thoroughfare_type"
+			FROM "address"
 
 mappingId	Address to Building
 target		:cityobject/{"building_id"} bldg:address :address/{"address_id"} .

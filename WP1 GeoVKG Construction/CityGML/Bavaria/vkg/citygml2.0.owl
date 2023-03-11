@@ -90,9 +90,9 @@
     
 
 
-    <!-- http://www.opengis.net/citygml/2.0/xalAddress -->
+    <!-- http://www.opengis.net/citygml/2.0/hasxalAddress -->
 
-    <owl:ObjectProperty rdf:about="http://www.opengis.net/citygml/2.0/xalAddress"/>
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/citygml/2.0/hasxalAddress"/>
     
 
 
@@ -1771,7 +1771,49 @@
     <!-- http://www.opengis.net/citygml/waterbody/2.0/waterLevel -->
 
     <owl:DatatypeProperty rdf:about="http://www.opengis.net/citygml/waterbody/2.0/waterLevel"/>
-    
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalAdministrativeAreaName -->
+
+    <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalAdministrativeAreaName"/>
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalLocalityName -->
+
+        <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalLocalityName"/>
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalLocalityType -->
+
+        <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalLocalityType"/>
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalDependentLocalityName -->
+
+        <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalDependentLocalityName"/>
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalThoroughfareName -->
+
+        <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalThoroughfareName"/>
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalThoroughfareNumber -->
+
+        <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalThoroughfareNumber"/>
+
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/xalThoroughfareType -->
+
+        <owl:DatatypeProperty rdf:about="http://cui.unige.ch/citygml/2.0/xalThoroughfareType"/>
+
 
 
     <!-- 

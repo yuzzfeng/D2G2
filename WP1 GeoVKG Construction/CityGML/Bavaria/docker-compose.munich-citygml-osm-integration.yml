@@ -58,6 +58,17 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  db-edit:
+    build:
+      context: db-edit/
+    depends_on:
+      impexp-citydb:
+        condition: service_completed_successfully
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   osm2pgsql:
     build:
       context: osm2pgsql/
@@ -78,7 +89,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   ontop:
-    image: ontop/ontop:5.0.1
+    image: ontop/ontop:5.0.2
     environment:
       ONTOP_ONTOLOGY_FILE: /opt/ontop/input/citygml2.0.owl
       ONTOP_XML_CATALOG_FILE: /opt/ontop/input/catalog-v001.xml

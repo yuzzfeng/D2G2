@@ -13,7 +13,7 @@ Modify the parameter REGION depending on the desired OSM region as per [geofabri
 Keep the ports 7778, 8082 free.
 Run the following:
 ```
-sudo docker-compose -f docker-compose.munich-citygml.yml up
+sudo docker-compose -f docker-compose.munich-citygml-osm-integration.yml up
 ```
 It should take 10 minutes to set up.
 Open [localhost:8082](http://localhost:8082/) to see sample queries.

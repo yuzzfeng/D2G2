@@ -3,7 +3,6 @@
     <uri id="Imports Wizard Entry" name="http://www.opengis.net/ont/geosparql" uri="geosparql.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="duplicate:http://cui.unige.ch/citygml/2.0/" uri="citygml2.0.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1669053082831" name="duplicate:http://cui.unige.ch/citygml/2.0/" uri="citygml2.0-original.owl"/>
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://schema.org/" uri="schemaorg.owl"/>
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.opengis.net/ont/geosparql" uri="geosparql.owl"/>
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.opengis.net/ont/gml" uri="gml.owl"/>
@@ -12,6 +11,5 @@
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.w3.org/ns/sosa/" uri="sosa.owl"/>
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.w3.org/ns/ssn/" uri="ssn.owl"/>
         <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://linkedgeodata.org/ontology" uri="lgd.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1669053082831" name="http://www.unibz.it/xal/2.0" uri="xal.owl"/>
     </group>
 </catalog>
