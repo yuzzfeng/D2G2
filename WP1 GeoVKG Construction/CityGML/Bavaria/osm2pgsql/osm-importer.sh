@@ -19,13 +19,20 @@ HOST=download.geofabrik.de
         echo "Download done"
     fi
 
-#-c "CREATE EXTENSION hstore"
+    osmium fileinfo $PBF
+
+  # Bounding box seems to have EPSG:4326 data
+  # Convert the upper corner of the top north-western file and lower corner of the bottom south-eastern file
+  # (687975.901 5338092.305) to (694025.61 5331978.51) for central Munich
+  # which becomes (11°31'41.726"  48°10'5.711") to (11°36'24.314"  48°6'41.353")
+    osmium extract -b 11.528257,48.168253,11.606754,48.111487 $PBF -o /osm/data/extract.osm.pbf
+    PBFX=/osm/data/extract.osm.pbf
+
     psql --no-password \
         -h $PG_PORT_5432_TCP_ADDR -p $PG_PORT_5432_TCP_PORT \
         -U $PG_ENV_POSTGRES_USER $PG_ENV_POSTGRES_DB
 
 
-#--style /user/local/bin/custom.style \
     osm2pgsql -v \
         -k \
         --create \
@@ -38,11 +45,11 @@ HOST=download.geofabrik.de
         --database $PG_ENV_POSTGRES_DB \
         --username $PG_ENV_POSTGRES_USER \
         --port $PG_PORT_5432_TCP_PORT \
-        $PBF
+        $PBFX
 
-    osm2pgsql-replication init \
-        --host $PG_PORT_5432_TCP_ADDR \
-        --database $PG_ENV_POSTGRES_DB \
-        --username $PG_ENV_POSTGRES_USER \
-        --port $PG_PORT_5432_TCP_PORT --osm-file $PBF
+#    osm2pgsql-replication init \
+#        --host $PG_PORT_5432_TCP_ADDR \
+#        --database $PG_ENV_POSTGRES_DB \
+#        --username $PG_ENV_POSTGRES_USER \
+#        --port $PG_PORT_5432_TCP_PORT --osm-file $PBFX
 #fi
