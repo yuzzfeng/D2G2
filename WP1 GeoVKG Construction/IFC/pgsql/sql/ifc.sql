@@ -179,3 +179,110 @@ CREATE TABLE public."IfcFacetedBrep"
 
 ALTER TABLE ONLY public."IfcFacetedBrep"
     ADD CONSTRAINT fk_representation FOREIGN KEY ("Representation_id") REFERENCES public."IfcRepresentation"(id);
+
+
+CREATE TABLE public."IfcApplication"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "Version" TEXT,
+    "ApplicationFullName" TEXT,
+    "ApplicationIdentifier" TEXT,
+    "ApplicationDeveloper_id" BIGINT
+);
+
+CREATE TABLE public."IfcPersonAndOrganization"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "Roles" TEXT,
+    "ThePerson_id" BIGINT,
+    "TheOrganization_id" BIGINT
+);
+
+CREATE TABLE public."IfcOrganization"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "Identification" TEXT,
+    "Name" TEXT,
+    "Description" TEXT,
+    "Roles" TEXT,
+    "Addresses" TEXT
+);
+
+CREATE TABLE public."IfcPerson"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "Identification" TEXT,
+    "FamilyName" TEXT,
+    "GivenName" TEXT,
+    "MiddleNames" TEXT,
+    "PrefixTitles" TEXT,
+    "SuffixTitles" TEXT,
+    "Roles" TEXT,
+    "Addresses" TEXT
+);
+
+
+CREATE TABLE public."IfcRepresentationContext"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "ContextIdentifier" TEXT,
+    "ContextType" TEXT,
+    "CoordinateSpaceDimension" DOUBLE PRECISION,
+    "Precision" DOUBLE PRECISION,
+    "TargetScale" DOUBLE PRECISION,
+    "TargetView" TEXT,
+    "UserDefinedTargetView" TEXT,
+    "WorldCoordinateSystem_id" BIGINT,
+    "TrueNorth_id" BIGINT,
+    "ParentContext_id" BIGINT
+);
+
+CREATE TABLE public."IfcSweptAreaSolid"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "Depth" DOUBLE PRECISION,
+    "SweptArea_id" BIGINT,
+    "Position_id" BIGINT,
+    "ExtrudedDirection_id" BIGINT
+);
+
+CREATE TABLE public."IfcRectangleProfileDef"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "ProfileType" TEXT,
+    "ProfileName" TEXT,
+    "XDim" DOUBLE PRECISION,
+    "YDim" DOUBLE PRECISION,
+    "Position_id" BIGINT
+);
+
+CREATE TABLE public."IfcArbitraryClosedProfileDef"
+(
+    id BIGINT NOT NULL PRIMARY KEY,
+    "type" TEXT,
+    "ProfileType" TEXT,
+    "ProfileName" TEXT,
+    "OuterCurve_id" BIGINT
+);
+
+ALTER TABLE ONLY public."IfcOwnerHistory"
+    ADD CONSTRAINT fk_owninguser FOREIGN KEY ("OwningUser_id") REFERENCES public."IfcPersonAndOrganization"(id);
+
+ALTER TABLE ONLY public."IfcOwnerHistory"
+    ADD CONSTRAINT fk_owningapplication FOREIGN KEY ("OwningApplication_id") REFERENCES public."IfcApplication"(id);
+
+ALTER TABLE ONLY public."IfcPersonAndOrganization"
+    ADD CONSTRAINT fk_organization FOREIGN KEY ("TheOrganization_id") REFERENCES public."IfcOrganization"(id);
+
+ALTER TABLE ONLY public."IfcApplication"
+    ADD CONSTRAINT fk_organization FOREIGN KEY ("ApplicationDeveloper_id") REFERENCES public."IfcOrganization"(id);
+
+ALTER TABLE ONLY public."IfcPersonAndOrganization"
+    ADD CONSTRAINT fk_person FOREIGN KEY ("ThePerson_id") REFERENCES public."IfcPerson"(id);

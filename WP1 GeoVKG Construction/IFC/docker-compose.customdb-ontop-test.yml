@@ -29,6 +29,8 @@ services:
     image: ontop/ontop:5.0.1
     environment:
       ONTOP_ONTOLOGY_FILE: /opt/ontop/input/IFC4.owl
+      #Ontology with an additional data property to get coordinates directly
+      #ONTOP_ONTOLOGY_FILE: /opt/ontop/input/IFC4-with-rules.owl
       ONTOP_XML_CATALOG_FILE: /opt/ontop/input/catalog-v001.xml
       ONTOP_MAPPING_FILE: /opt/ontop/input/IFC4.obda
       ONTOP_PROPERTIES_FILE: /opt/ontop/input/IFC4.properties
@@ -36,6 +38,8 @@ services:
       ONTOP_CORS_ALLOWED_ORIGINS: "*"
       ONTOP_DEV_MODE: "true"
       ONTOP_DEBUG: "true"
+      #Optional rules file allows for ?site ifc:fullCoordinates ?coord .
+      #ONTOP_SPARQL_RULES_FILE: /opt/ontop/input/ifc-rules.toml
     volumes:
       - ./vkg-ifc-mappings:/opt/ontop/input
       - ./jdbc:/opt/ontop/jdbc

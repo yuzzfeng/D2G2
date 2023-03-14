@@ -36,6 +36,44 @@ def extractDirection(xval):
 model = open_ifc(r'AC20-FZK-Haus.ifc')
 engine = sqlalchemy.create_engine(f'postgresql://ifcsql:ifcsql@host.docker.internal:7778/ifcsql')
 
+### 16. IfcOrganization
+organization = model.by_type("IfcOrganization")
+OrganizationList = []
+for element in organization:
+    OrganizationList.append(element.get_info())
+df_organization = pd.DataFrame.from_dict(OrganizationList)
+df_organization.to_sql("IfcOrganization", engine, if_exists='append', index=False)
+
+
+### 17. IfcPerson
+person = model.by_type("IfcPerson")
+PersonList = []
+for element in person:
+    PersonList.append(element.get_info())
+df_person = pd.DataFrame.from_dict(PersonList)
+df_person.to_sql("IfcPerson", engine, if_exists='append', index=False)
+
+### 14. IfcPersonAndOrganization
+personandorganization = model.by_type("IfcPersonAndOrganization")
+PersonAndOrganizationList = []
+for element in personandorganization:
+    PersonAndOrganizationList.append(element.get_info())
+df_pointandorganization = pd.DataFrame.from_dict(PersonAndOrganizationList)
+df_pointandorganization['ThePerson_id'] = df_pointandorganization['ThePerson'].astype('string').apply(createReference)
+df_pointandorganization['TheOrganization_id'] = df_pointandorganization['TheOrganization'].astype('string').apply(createReference)
+df_pointandorganization.drop(columns=['ThePerson', 'TheOrganization'], inplace=True)
+df_pointandorganization.to_sql("IfcPersonAndOrganization", engine, if_exists='append', index=False)
+
+### 15. IfcApplication
+application = model.by_type("IfcApplication")
+ApplicationList = []
+for element in application:
+    ApplicationList.append(element.get_info())
+df_application = pd.DataFrame.from_dict(ApplicationList)
+df_application['ApplicationDeveloper_id'] = df_application['ApplicationDeveloper'].astype('string').apply(createReference)
+df_application.drop(columns=['ApplicationDeveloper'], inplace=True)
+df_application.to_sql("IfcApplication", engine, if_exists='append', index=False)
+
 ### 6. IfcOwnerHistory
 df_ownerhistory = loadIfcElement(model, "IfcOwnerHistory")
 df_ownerhistory['OwningUser_id'] = df_ownerhistory['OwningUser'].astype('string').apply(createReference)
@@ -236,3 +274,49 @@ df_facetedbrep["Representation_id"] = df_facetedbrep['tempFK'].astype('string').
 df_facetedbrep['Outer_id'] = df_facetedbrep['Outer'].astype('string').apply(createReference)
 df_facetedbrep.drop(columns=['Outer', 'tempFK'], inplace=True)
 df_facetedbrep.to_sql("IfcFacetedBrep", engine, if_exists='append', index=False)
+
+### 18. IfcRepresentationContext
+context = model.by_type("IfcRepresentationContext")
+ContextList = []
+for element in context:
+    ContextList.append(element.get_info())
+df_context = pd.DataFrame.from_dict(ContextList)
+df_context['WorldCoordinateSystem_id'] = df_context['WorldCoordinateSystem'].astype('string').apply(createReference)
+df_context['TrueNorth_id'] = df_context['TrueNorth'].astype('string').apply(createReference)
+df_context['ParentContext_id'] = df_context['ParentContext'].astype('string').apply(createReference)
+df_context.drop(columns=['WorldCoordinateSystem', 'TrueNorth', 'ParentContext'], inplace=True)
+df_context.to_sql("IfcRepresentationContext", engine, if_exists='append', index=False)
+
+
+### 19. IfcSweptAreaSolid
+solid = model.by_type("IfcSweptAreaSolid")
+SolidList = []
+for element in solid:
+    SolidList.append(element.get_info())
+df_solid = pd.DataFrame.from_dict(SolidList)
+df_solid['SweptArea_id'] = df_solid['SweptArea'].astype('string').apply(createReference)
+df_solid['Position_id'] = df_solid['Position'].astype('string').apply(createReference)
+df_solid['ExtrudedDirection_id'] = df_solid['ExtrudedDirection'].astype('string').apply(createReference)
+df_solid.drop(columns=['SweptArea', 'Position', 'ExtrudedDirection'], inplace=True)
+df_solid.to_sql("IfcSweptAreaSolid", engine, if_exists='append', index=False)
+
+
+### 20. IfcRectangleProfileDef
+paramprofile = model.by_type("IfcRectangleProfileDef")
+ParamProfileList = []
+for element in paramprofile:
+    ParamProfileList.append(element.get_info())
+df_paramprofile = pd.DataFrame.from_dict(ParamProfileList)
+df_paramprofile['Position_id'] = df_paramprofile['Position'].astype('string').apply(createReference)
+df_paramprofile.drop(columns=['Position'], inplace=True)
+df_paramprofile.to_sql("IfcRectangleProfileDef", engine, if_exists='append', index=False)
+
+
+### 21. IfcArbitraryClosedProfileDef
+closedprofile = model.by_type("IfcArbitraryClosedProfileDef")
+ClosedProfileList = []
+for element in closedprofile:
+    ClosedProfileList.append(element.get_info())
+df_closedprofile = pd.DataFrame.from_dict(ClosedProfileList)
+df_closedprofile['OuterCurve_id'] = df_closedprofile['OuterCurve'].astype('string').apply(createReference)
+df_closedprofile.drop(columns=['OuterCurve'], inplace=True)
