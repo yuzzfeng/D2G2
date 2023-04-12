@@ -104,12 +104,12 @@ def spatial_join(osm_file_path,gml_file_path,uni_crs,tolerance,output_path):
     for key in dict_osm_neigh:
         dict_osm_neigh[key] = list(dict.fromkeys(dict_osm_neigh[key]))
         for osm in dict_osm_neigh[key].copy():
-            if dict_gml_con[key].count(osm)>0:
+            if osm in count_osm_con:
                 dict_osm_neigh[key].remove(osm)
     for key in dict_gml_neigh:
         dict_gml_neigh[key] = list(dict.fromkeys(dict_gml_neigh[key]))
         for gml in dict_gml_neigh[key].copy():
-            if dict_osm_con[key].count(gml)>0:
+            if gml in count_gml_con:
                 dict_gml_neigh[key].remove(gml)        
     
     # statistic the matching relationship
@@ -147,18 +147,24 @@ def spatial_join(osm_file_path,gml_file_path,uni_crs,tolerance,output_path):
     
     # saving index tables
     index_gml = pd.DataFrame.from_dict(dict_gml_con,orient='index')
+    index_gml.rename(columns=lambda x: 'matched_' + str(x), inplace=True)
     index_gml2 = pd.DataFrame.from_dict(count_gml_con,orient='index')
-    index_gml2.columns=['count']
-    indel_gml3 = pd.DataFrame.from_dict(dict_osm_neigh,orient='index')
-    index_gml = pd.concat([index_gml2,index_gml,indel_gml3],sort = False, axis = 1)
-    index_gml.to_csv(output_path+'/'+'index_gml.csv')
+    index_gml2.columns=['count_matched']
+    index_gml3 = pd.DataFrame.from_dict(dict_osm_neigh,orient='index')
+    index_gml3.rename(columns=lambda x: 'adjacent_' + str(x), inplace=True)
+    index_gml = pd.concat([index_gml2,index_gml,index_gml3],sort = False, axis = 1)
+    index_gml = index_gml.reset_index()
+    index_gml.to_csv(output_path+'/'+'index_gml.csv',index=False)
     #print(index_gml.loc['DEBY_LOD2_30439259_a138d5e0-4c0e-49f7-a488-3aa77a14d698_2'])
     index_osm = pd.DataFrame.from_dict(dict_osm_con,orient='index')
+    index_osm.rename(columns=lambda x: 'matched_' + str(x), inplace=True)
     index_osm2 = pd.DataFrame.from_dict(count_osm_con,orient='index')
-    index_osm2.columns=['count']
-    indel_osm3 = pd.DataFrame.from_dict(dict_gml_neigh,orient='index')
-    index_osm = pd.concat([index_osm2,index_osm,indel_osm3],sort = False, axis = 1)
-    index_osm.to_csv(output_path+'/'+'index_osm.csv')
+    index_osm2.columns=['count_matched']
+    index_osm3 = pd.DataFrame.from_dict(dict_gml_neigh,orient='index')
+    index_osm3.rename(columns=lambda x: 'adjacent_' + str(x), inplace=True)
+    index_osm = pd.concat([index_osm2,index_osm,index_osm3],sort = False, axis = 1)
+    index_osm = index_osm.reset_index()
+    index_osm.to_csv(output_path+'/'+'index_osm.csv',index=False)
     
 if __name__ == '__main__':
     gml_file_path = './data/690_5334.gml'
