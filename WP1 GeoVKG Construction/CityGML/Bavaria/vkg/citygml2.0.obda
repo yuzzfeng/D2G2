@@ -964,7 +964,7 @@ source		SELECT osm_id, building_id
             INNER JOIN public.classes ON q1.street = concat(public.classes.street, ' ', public.classes.housenumber)
             WHERE public.classes.osm_type='W'
 
-mappingId	equivalent_way_citydb_osm_buildings
+mappingId	equivalent_relation_citydb_osm_buildings
 target		lgd:relation{osm_id} owl:sameAs :cityobject/{"building_id"} .
 source		SELECT osm_id, building_id
             FROM
