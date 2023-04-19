@@ -52,79 +52,89 @@ function clean_tags(tags)
 end
 
 -- Helper function to check value is not empty
-local function isempty(x)
-  return x == nil or x == ''
-end
 
-local function starts_with(str, start)
-    return str:sub(1, #start) == start
+-- Check whether string starts with substring
+local function starts_with(str, sta)
+    return str:sub(1, #sta) == sta
 end
 
 -- Make string first letter uppercase
-function firstToUpper(str)
+local function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
 
+-- check whether string contains substring
+local function contains(list, x)
+    for _, v in pairs(list) do
+        if v == x then return true end
+    end
+    return false
+end
+
+
 -- Handle quite common scenarios
 -- e.g. 1) building=yes 2) highway=primary
-local function refineclasses(x)
-    for k, v in pairs(x) do
-        if starts_with(v, "yes") then
-            return k..""
-        elseif starts_with(k, "highway") and (starts_with(v, "construction")
-                or starts_with(v, "crossing")
-                or starts_with(v, "ford")
-                or starts_with(v, "service"))
-            then return k .. firstToUpper(v)
-        elseif starts_with(k, "highway") and starts_with(v, "primary_link")
-            then return "highwayPrimaryLink"
-        elseif starts_with(k, "highway") and starts_with(v, "secondary_link")
-            then return "highwaySecondaryLink"
-        elseif starts_with(k, "highway") and starts_with(v, "tertiary_link")
-            then return "highwayTertiaryLink"
-        elseif starts_with(k, "highway") and (starts_with(v, "primary")
-                                                    or starts_with(v, "secondary")
-                                                    or starts_with(v, "tertiary")
-                                                    or starts_with(v, "unclassified")
-                                                    or starts_with(v, "unclassified")
-                                                    or starts_with(v, "residential")
-                                                    or starts_with(v, "proposed"))
-            then return v .. firstToUpper(k)
-        else
-            return nil
-        end
+local function refineclasses(list1, k ,v)
+    if not contains(list1, k) then
+        return "do_nothing"
+    elseif starts_with(v, "yes") then
+        return k
+    elseif starts_with(k, "highway") and (starts_with(v, "construction")
+            or starts_with(v, "crossing")
+            or starts_with(v, "ford")
+            or starts_with(v, "service"))
+    then return k .. firstToUpper(v)
+    elseif starts_with(k, "highway") and starts_with(v, "primary_link")
+    then return "highwayPrimaryLink"
+    elseif starts_with(k, "highway") and starts_with(v, "secondary_link")
+    then return "highwaySecondaryLink"
+    elseif starts_with(k, "highway") and starts_with(v, "tertiary_link")
+    then return "highwayTertiaryLink"
+    elseif starts_with(k, "highway") and (starts_with(v, "primary")
+            or starts_with(v, "secondary")
+            or starts_with(v, "tertiary")
+            or starts_with(v, "unclassified")
+            or starts_with(v, "unclassified")
+            or starts_with(v, "residential")
+            or starts_with(v, "proposed"))
+    then return v .. firstToUpper(k)
+    else
+        return v
     end
 end
 
+-- Set variable which lists objects we are interested in
+local filteredlist = { "amenity", "natural", "highway", "shop", "place", "landuse", "tourism", "leisure", "aeroway",
+                       "aerialway", "building"}
+
 -- Helper function to fill up table
-local function filluptable(object, geometry, lookup)
+local function filluptable(object, geometry)
+
     local refinedval
-
-    if not isempty(lookup) then
-        local refinedvalcheck = refineclasses(object.tags)
-        if isempty(refinedvalcheck) then
-            refinedval = lookup
+    for k, v in pairs(object.tags) do
+        local refinedvalcheck = refineclasses(filteredlist, k ,v)
+        refinedval = refinedvalcheck
+        if (refinedval == "do_nothing") then
+            --pass if not in list of classes of interest
         else
-            refinedval = refinedvalcheck
+            tables.classes:insert({
+                class = refinedval,
+                geom = geometry,
+                name = object.tags.name,
+                name_en = object.tags['name:en'],
+                name_de = object.tags['name:de'],
+                name_fr = object.tags['name:fr'],
+                name_it = object.tags['name:it'],
+                height = object.tags['height'],
+                country = object.tags["addr:country"],
+                state = object.tags["addr:state"],
+                postcode = object.tags["addr:postcode"],
+                city = object.tags["addr:city"],
+                place = object.tags["addr:place"],
+                street = object.tags["addr:street"],
+                housenumber = object.tags["addr:housenumber"],
+            })
         end
-
-        tables.classes:insert({
-        class = refinedval,
-        geom = geometry,
-        name = object.tags.name,
-        name_en = object.tags['name:en'],
-        name_de = object.tags['name:de'],
-        name_fr = object.tags['name:fr'],
-        name_it = object.tags['name:it'],
-        height = object.tags['height'],
-        country = object.tags["addr:country"],
-        state = object.tags["addr:state"],
-        postcode = object.tags["addr:postcode"],
-        city = object.tags["addr:city"],
-        place = object.tags["addr:place"],
-        street = object.tags["addr:street"],
-        housenumber = object.tags["addr:housenumber"],
-    })
     end
 end
 
@@ -137,21 +147,8 @@ function process(object, geometry)
         return
     end
 
-    -- We cannot know whether the category is first in the list of tags or not
-    -- We need to do some checks
-    -- Set a list of superclasses/keys we care about
-    filluptable(object, geometry, object.tags.amenity)
-    filluptable(object, geometry, object.tags.natural)
-    filluptable(object, geometry, object.tags.highway)
-    filluptable(object, geometry, object.tags.shop)
-    filluptable(object, geometry, object.tags.place)
-    filluptable(object, geometry, object.tags.landuse)
-    filluptable(object, geometry, object.tags.tourism)
-    filluptable(object, geometry, object.tags.leisure)
-    filluptable(object, geometry, object.tags.aeroway)
-    filluptable(object, geometry, object.tags.aerialway)
-    --local superclasses_file = io.open("superclasses.txt", "r")
-    --for line in superclasses_file:lines() do
+    -- Set a list of superclasses/keys we care about and fill-up OSM table
+    filluptable(object, geometry)
 
 end
 

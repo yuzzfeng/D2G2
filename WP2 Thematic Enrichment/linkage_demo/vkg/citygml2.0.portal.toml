@@ -1,0 +1,142 @@
+title="CityGML-OSM Munich example queries"
+
+[defaultTab]
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+
+# Q1: Get all hotels over 30m high
+SELECT *
+{
+?linkage a :Association_CityGML_OSM .
+?linkage :matchesOSM ?osmentity .
+?linkage :matchesCityGML ?citygmlentity .
+?osmentity a lgdo:Hotel .
+?osmentity rdfs:label ?hotelname .
+?citygmlentity bldg:measuredHeight ?buildingHeight .
+FILTER(?buildingHeight > 30) .
+?citygmlentity bldg:lod2Solid ?solid .
+?solid geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups]]
+
+name="Examples"
+
+[[tabGroups.tabs]]
+
+name="Hotels over 30m high"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+
+# Q1: Get all hotels over 30m high
+SELECT *
+{
+?linkage a :Association_CityGML_OSM .
+?linkage :matchesOSM ?osmentity .
+?linkage :matchesCityGML ?citygmlentity .
+?osmentity a lgdo:Hotel .
+?osmentity rdfs:label ?hotelname .
+?citygmlentity bldg:measuredHeight ?buildingHeight .
+FILTER(?buildingHeight > 30) .
+?citygmlentity bldg:lod2Solid ?solid .
+?solid geo:asWKT ?address_geom .
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Building address"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q2: Get building addresses
+SELECT *
+{
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+FILTER(CONTAINS(?address_label, "Landsberger Str")) .
+# EPSG:25832 used
+?x bldg:lod2Solid ?solid .
+?solid geo:asWKT ?geom .
+}
+"""
+
+[[tabGroups.tabs]]
+
+name="Buildings over 40m"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q3: Get buildings with height over 40m
+SELECT *
+{
+?x a bldg:Building .
+?x bldg:measuredHeight ?buildingHeight .
+# Get buildings over 40 meters
+FILTER(?buildingHeight > 40) .
+?x bldg:address ?address_id .
+?address_id rdfs:label ?address_label .
+# EPSG:25832 used
+?x bldg:lod2Solid ?solid .
+?solid geo:asWKT ?geom .
+}
+"""
+
+
+[[tabGroups.tabs]]
+
+name="Buildings with most roof surfaces"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q4: Get buildings with most roof surfaces
+SELECT ?x (COUNT(?surface) AS ?totalsurface)
+{
+?x a bldg:Building .
+?x bldg:boundedby ?surface .
+?surface a bldg:RoofSurface .
+}
+GROUP BY ?x
+ORDER BY DESC(?totalsurface)
+"""
+
+[[tabGroups.tabs]]
+
+name="Mapped roofs"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Q5: Map roof surfaces of buildings over 35m
+SELECT ?geom
+{
+?x a bldg:Building .
+?x bldg:measuredHeight ?buildingHeight .
+FILTER(?buildingHeight > 35) .
+?x bldg:boundedby ?surface .
+?surface a bldg:RoofSurface .
+?surface geo:hasGeometry/geo:asWKT ?geom .
+}
+"""
