@@ -3,14 +3,17 @@
 Keep the ports 7778, 8082 free.
 
 1. Extract the citygml file and place it in the [citygml-data](citygml-data) folder.
+
+If you are using a Linux OS, simply run:
 ```
 bash get-munich-citygml.sh
 ```
+Alternatively, for Windows simply unzip [690_5334.zip](citygml-data/690_5334.zip). Make sure the file is in the 'citygml-data' folder.
 2. Unzip the [data folder](linkage_citygml_osm/data.zip) into a subfolder named 'data' inside linkage_citygml_osm
 
 3. Execute:
 ```
-sudo docker-compose -f docker-compose.linkage.yml up
+docker-compose -f docker-compose.linkage.yml up
 ```
 It should take 5 minutes to set up.  
 Open [localhost:8082](http://localhost:8082/) to see sample queries.
