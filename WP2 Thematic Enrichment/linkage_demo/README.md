@@ -2,16 +2,13 @@
 #### Execution
 Keep the ports 7778, 8082 free.
 
-1. Extract the citygml file and place it in the [citygml-data](citygml-data) folder.
-
-If you are using a Linux OS, simply run:
+Clean up any existing containers or images as needed:
 ```
-bash get-munich-citygml.sh
+docker system prune --volumes
+docker image prune -a
 ```
-Alternatively, for Windows simply unzip [690_5334.zip](citygml-data/690_5334.zip). Make sure the file is in the 'citygml-data' folder.
-2. Unzip the [data folder](linkage_citygml_osm/data.zip) into a subfolder named 'data' inside linkage_citygml_osm
 
-3. Execute:
+Execute:
 ```
 docker-compose -f docker-compose.linkage.yml up
 ```
