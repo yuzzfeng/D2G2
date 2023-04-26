@@ -140,3 +140,33 @@ FILTER(?buildingHeight > 35) .
 ?surface geo:hasGeometry/geo:asWKT ?geom .
 }
 """
+
+
+[[tabGroups.tabs]]
+
+name="CityGML and OSM geometries"
+query="""
+PREFIX lgd: <http://linkedgeodata.org/triplify/>
+PREFIX lg: <https://purl.org/lg/>
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+
+# Q6: Get citygml and osm building geometries
+SELECT *
+{
+?linkage a :Association_CityGML_OSM .
+?linkage :matchesOSM ?osmentity .
+?linkage :matchesCityGML ?citygmlentity .
+?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
+FILTER(?citygmlBuildingHeight > 10) .
+OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
+#FILTER(?osmBuildingHeight > 10) .
+?citygmlentity geo:hasGeometry/geo:asWKT ?citygmlGeom .
+BIND("chlorophyll,0.5" AS ?citygmlColor) # Green
+?osmentity geo:hasGeometry/geo:asWKT ?osmGeom .
+BIND("jet,0.8" AS ?osmGeomColor) # Red
+}
+"""

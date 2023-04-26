@@ -75,18 +75,18 @@ source		SELECT v1."parent_id" AS "parent_id", v1."id" AS "id"
 			FROM "surface_geometry" v1
 
 mappingId	Thematic Surface - Link Building to BuildingSurface LoD2
-target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"parent_id"} . 
-source		SELECT v1."building_id" AS "building_id", v2."parent_id" AS "parent_id"
+target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"cityobject_id"} .
+source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
 			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod2_multi_surface_id" = v2."root_id"
 
 mappingId	Thematic Surface - Link Building to BuildingSurface LoD3
-target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"parent_id"} . 
-source		SELECT v1."building_id" AS "building_id", v2."parent_id" AS "parent_id"
+target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"cityobject_id"} .
+source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
 			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod3_multi_surface_id" = v2."root_id"
 
 mappingId	Thematic Surface - Link Building to BuildingSurface LoD4
-target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"parent_id"} . 
-source		SELECT v1."building_id" AS "building_id", v2."parent_id" AS "parent_id"
+target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"cityobject_id"} .
+source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
 			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod4_multi_surface_id" = v2."root_id"
 
 mappingId	BuildingWallSurface
