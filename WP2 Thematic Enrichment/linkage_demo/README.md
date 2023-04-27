@@ -21,8 +21,8 @@ Reification is used to express linkages OSM and CityGML instances. An example is
 ```
  :Association_CityGML_OSM       rdf:type            owl:Class .
  :association_CityGML_OSM1      rdf:type            :Association_CityGML_OSM .
- :membership12345               :matchesCityGML     :cityobject1 .
- :membership12345               :matchesOSM         lgdo:osm_id1 .
+ :association_CityGML_OSM1      :matchesCityGML     :cityobject1 .
+ :association_CityGML_OSM1      :matchesOSM         lgdo:osm_id1 .
 ```
 
 ### Mofidying the demo with different data
