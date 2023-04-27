@@ -60,30 +60,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  # Add info on xAL addresses
-  db-edit:
-    build:
-      context: db-edit/
-    depends_on:
-      impexp-citydb:
-        condition: service_completed_successfully
-    networks:
-      - citydb-net
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
-  # Add table with CityGML to OSM linkages
-  osmlinkage2pgsql:
-    build:
-      context: linkage_citygml_osm/
-    depends_on:
-      db-edit:
-        condition: service_completed_successfully
-    networks:
-      - citydb-net
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
   # Add table with all OSM points of interest
   osm2pgsql:
     build:
@@ -97,7 +73,31 @@ services:
       PG_ENV_POSTGRES_PASSWORD: citydb
       REGION: europe/germany/bayern/oberbayern
     depends_on:
-      osmlinkage2pgsql:
+      impexp-citydb:
+        condition: service_completed_successfully
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # Add info on xAL addresses and citygml-osm matches table
+  db-edit:
+    build:
+      context: db-edit/
+    depends_on:
+      impexp-citydb:
+        condition: service_completed_successfully
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # Add table with CityGML to OSM linkages
+  citygml2osmlinkage:
+    build:
+      context: linkage_citygml_osm/
+    depends_on:
+      db-edit:
         condition: service_completed_successfully
     networks:
       - citydb-net
@@ -120,7 +120,7 @@ services:
       - ./vkg:/opt/ontop/input
       - ./jdbc:/opt/ontop/jdbc
     depends_on:
-      osm2pgsql:
+      citygml2osmlinkage:
         condition: service_completed_successfully
     ports:
       - "8082:8080"

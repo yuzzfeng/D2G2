@@ -177,10 +177,19 @@ def push_linkage_table(list):
     result = pd.concat([df1, df2_reordered])
     result.drop_duplicates(inplace=True)
 
+    # Add id as PK
+    result.insert(0, 'id', range(1, 1 + len(result)))
+
+    # Reformat osm to add FK as needed
+    result['osm_type'] = result['associated_osmid'].str[0]
+    result['associated_osmid'] = result['associated_osmid'].str[1:]
+
     # Set slqalchemy engine for connection to PostgreSQL
-    engine = sqlalchemy.create_engine(f'postgresql://citydb:citydb@host.docker.internal:7778/citydb')
+    db_iri = f'postgresql://citydb:citydb@host.docker.internal:7778/citydb'
+    engine = sqlalchemy.create_engine(db_iri)
+
     # Push to database; keep index as id for new class
-    result.to_sql("citygml_osm_association", engine, if_exists='replace')
+    result.to_sql("citygml_osm_association", engine, if_exists='append', index=False)
 
 if __name__ == '__main__':
     gml_file_path = './data/690_5334.gml'

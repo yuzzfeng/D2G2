@@ -27,3 +27,19 @@ SET xal_thoroughfare_name = (xpath('/xAL:AddressDetails/xAL:Country/xAL:Locality
 UPDATE citydb.address
 SET xal_thoroughfare_type = (xpath('/xAL:AddressDetails/xAL:Country/xAL:Locality/xAL:Thoroughfare/@Type', xal_source::xml,
                                    ARRAY[ARRAY['xAL', 'urn:oasis:names:tc:ciq:xsdschema:xAL:2.0']]))[1] ;
+
+--Due to sqlalchemy limitations, adding foreign keys is not possible, hence we do it here
+CREATE TABLE citydb."citygml_osm_association" (
+                                                "id" BIGINT NOT NULL PRIMARY KEY,
+                                                "associated_citygmlid" TEXT NOT NULL,
+                                                "associated_osmid" BIGINT NOT NULL,
+                                                "association_type" TEXT NOT NULL,
+                                                "osm_type" TEXT NOT NULL
+);
+
+-- TODO: PostgreSQL complains cityobject.gmlid is not declared as UNIQUE. Modify schema in db-edit?
+-- ALTER TABLE ONLY citydb."citygml_osm_association"
+--     ADD CONSTRAINT fk_association_gmlid FOREIGN KEY ("associated_citygmlid") REFERENCES citydb."cityobject" ("gmlid");
+-- TODO: osm_id is NOT UNIQUE.
+-- ALTER TABLE ONLY citydb."citygml_osm_association"
+--     ADD CONSTRAINT fk_association_osmid FOREIGN KEY ("associated_osmid") REFERENCES public."classes" ("osm_id");

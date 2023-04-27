@@ -174,7 +174,7 @@ OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
 #?citygmlsurface a bldg:GroundSurface .
 #NOTE: Not all building surfaces seem to fall under the above categories following an inspection
 ?citygmlsurface geo:hasGeometry/geo:asWKT ?citygmlGeom .
-BIND("chlorophyll,0.5" AS ?citygmlColor) # Green
+BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 ?osmentity geo:hasGeometry/geo:asWKT ?osmGeom .
 BIND("jet,0.8" AS ?osmGeomColor) # Red
 }
@@ -206,7 +206,7 @@ OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
 #FILTER(?osmBuildingHeight > 10) .
 ?citygmlentity bldg:lod2Solid ?solid .
 ?solid geo:asWKT ?citygmlGeom .
-BIND("chlorophyll,0.5" AS ?citygmlColor) # Green
+BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 ?osmentity geo:hasGeometry/geo:asWKT ?osmGeom .
 BIND("jet,0.8" AS ?osmGeomColor) # Red
 }
