@@ -32,7 +32,7 @@ SET xal_thoroughfare_type = (xpath('/xAL:AddressDetails/xAL:Country/xAL:Locality
 CREATE TABLE citydb."citygml_osm_association" (
                                                 "id" BIGINT NOT NULL PRIMARY KEY,
                                                 "associated_citygmlid" TEXT NOT NULL,
-                                                "associated_osmid" BIGINT NOT NULL,
+                                                "associated_osmid" TEXT NOT NULL,
                                                 "association_type" TEXT NOT NULL,
                                                 "osm_type" TEXT NOT NULL
 );

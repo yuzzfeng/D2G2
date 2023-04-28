@@ -69,11 +69,6 @@ target		:geometry/{"id"} grp:parent :geometry/{"parent_id"} .
 source		SELECT v1."id" AS "id", v1."parent_id" AS "parent_id"
 			FROM "surface_geometry" v1
 
-mappingId	Surface Geometry - Bounded Surfaces
-target		:cityobject/{"parent_id"} geo:hasGeometry :geometry/{"id"} . 
-source		SELECT v1."parent_id" AS "parent_id", v1."id" AS "id"
-			FROM "surface_geometry" v1
-
 mappingId	Thematic Surface - Link Building to BuildingSurface LoD2
 target		:cityobject/{"building_id"} bldg:boundedby :cityobject/{"cityobject_id"} .
 source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
