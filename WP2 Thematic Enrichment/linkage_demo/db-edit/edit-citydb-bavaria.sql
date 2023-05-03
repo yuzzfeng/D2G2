@@ -37,9 +37,14 @@ CREATE TABLE citydb."citygml_osm_association" (
                                                 "osm_type" TEXT NOT NULL
 );
 
--- TODO: PostgreSQL complains cityobject.gmlid is not declared as UNIQUE. Modify schema in db-edit?
--- ALTER TABLE ONLY citydb."citygml_osm_association"
---     ADD CONSTRAINT fk_association_gmlid FOREIGN KEY ("associated_citygmlid") REFERENCES citydb."cityobject" ("gmlid");
+-- Based on their discussion https://github.com/3dcitydb/3dcitydb/issues/100 the UNIQUE constraint on the gmlid
+-- column has been dropped. However, since for our use cases we will not perform any intertemporal analysis of CityGML
+-- data, we can add this constraint aiming to improve Ontop's performance.
+ALTER TABLE citydb.cityobject ADD CONSTRAINT unique_gmlid UNIQUE (gmlid);
+
+-- PostgreSQL requires "cityobject"."gmlid" to be declared as UNIQUE before adding foreign key.
+ALTER TABLE ONLY citydb."citygml_osm_association"
+    ADD CONSTRAINT fk_association_gmlid FOREIGN KEY ("associated_citygmlid") REFERENCES citydb."cityobject" ("gmlid");
 -- TODO: osm_id is NOT UNIQUE.
 -- ALTER TABLE ONLY citydb."citygml_osm_association"
 --     ADD CONSTRAINT fk_association_osmid FOREIGN KEY ("associated_osmid") REFERENCES public."classes" ("osm_id");
