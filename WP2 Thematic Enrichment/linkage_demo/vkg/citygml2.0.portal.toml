@@ -112,7 +112,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?x (COUNT(?surface) AS ?totalsurface)
 {
 ?x a bldg:Building .
-?x bldg:boundedby ?surface .
+?x bldg:boundedBy ?surface .
 ?surface a bldg:RoofSurface .
 }
 GROUP BY ?x
@@ -135,7 +135,7 @@ SELECT ?geom
 ?x a bldg:Building .
 ?x bldg:measuredHeight ?buildingHeight .
 FILTER(?buildingHeight > 35) .
-?x bldg:boundedby ?surface .
+?x bldg:boundedBy ?surface .
 ?surface a bldg:RoofSurface .
 ?surface geo:hasGeometry/geo:asWKT ?geom .
 }
@@ -169,7 +169,7 @@ OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
 
 # For this query, we look at all building surfaces, rather than solids
 # Yasgui cannot visualize polyhedral surfaces
-?citygmlentity bldg:boundedby ?citygmlsurface .
+?citygmlentity bldg:boundedBy ?citygmlsurface .
 #NOTE: We can optionally select only Ground, Roof, Wall etc. surfaces via the following line:
 #?citygmlsurface a bldg:GroundSurface .
 #NOTE: Not all building surfaces seem to fall under the above categories following an inspection
