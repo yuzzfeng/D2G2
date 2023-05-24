@@ -323,9 +323,14 @@ source		SELECT "bridge_room_id", "class", "function", "id", "lod4_brep_id", "lod
 			FROM "bridge_furniture"
 
 mappingId	Building
-target		:cityobject/{"id"} a bldg:Building ; bldg:roofType {"roof_type"}^^www:XMLSchema#string ; bldg:storeysBelowGround {"storeys_below_ground"}^^www:XMLSchema#decimal ; bldg:storeysAboveGround {"storeys_above_ground"}^^www:XMLSchema#decimal ; bldg:function {"function"}^^www:XMLSchema#string ; bldg:usage {"usage"}^^www:XMLSchema#string ; bldg:storeyHeightsAboveGround {"storey_heights_above_ground"}^^www:XMLSchema#decimal ; bldg:yearOfConstruction {"year_of_construction"}^^www:XMLSchema#date ; bldg:yearOfDemolition {"year_of_demolition"}^^www:XMLSchema#date ; bldg:measuredHeight {"measured_height"}^^www:XMLSchema#double ; bldg:storeyHeightsBelowGround {"storey_heights_below_ground"}^^www:XMLSchema#decimal ; bldg:class {"class"}^^www:XMLSchema#string . 
-source		SELECT "building_parent_id", "building_root_id", "class", "function", "id", "lod0_footprint_id", "lod0_roofprint_id", "lod1_multi_surface_id", "lod1_solid_id", "lod1_terrain_intersection", "lod2_multi_curve", "lod2_multi_surface_id", "lod2_solid_id", "lod2_terrain_intersection", "lod3_multi_curve", "lod3_multi_surface_id", "lod3_solid_id", "lod3_terrain_intersection", "lod4_multi_curve", "lod4_multi_surface_id", "lod4_solid_id", "lod4_terrain_intersection", "measured_height", "measured_height_unit", "objectclass_id", "roof_type", "storey_heights_above_ground", "storey_heights_ag_unit", "storey_heights_below_ground", "storey_heights_bg_unit", "storeys_above_ground", "storeys_below_ground", "usage", "year_of_construction", "year_of_demolition"
+target		:cityobject/{"id"} a bldg:Building ; bldg:storeysBelowGround {"storeys_below_ground"}^^www:XMLSchema#decimal ; bldg:storeysAboveGround {"storeys_above_ground"}^^www:XMLSchema#decimal ; bldg:function {"function"}^^www:XMLSchema#string ; bldg:usage {"usage"}^^www:XMLSchema#string ; bldg:storeyHeightsAboveGround {"storey_heights_above_ground"}^^www:XMLSchema#decimal ; bldg:yearOfConstruction {"year_of_construction"}^^www:XMLSchema#date ; bldg:yearOfDemolition {"year_of_demolition"}^^www:XMLSchema#date ; bldg:measuredHeight {"measured_height"}^^www:XMLSchema#double ; bldg:storeyHeightsBelowGround {"storey_heights_below_ground"}^^www:XMLSchema#decimal ; bldg:class {"class"}^^www:XMLSchema#string .
+source		SELECT "building_parent_id", "building_root_id", "class", "function", "id", "measured_height", "measured_height_unit", "storey_heights_above_ground", "storey_heights_ag_unit", "storey_heights_below_ground", "storey_heights_bg_unit", "storeys_above_ground", "storeys_below_ground", "usage", "year_of_construction", "year_of_demolition"
 			FROM "building"
+
+mappingId	Building_Roof_Type
+target		:cityobject/{"id"} a bldg:Building ; bldg:roofType {"description_en"}^^www:XMLSchema#string .
+source		SELECT v1."id", v2."description_en"
+			FROM "building" v1 LEFT JOIN "roof_codelist" v2 ON v1."roof_type"=v2."name"
 
 mappingId	Building - LoD1MultiSurface
 target		:cityobject/{"id"} bldg:lod1MultiSurface :geometry/{"lod1_multi_surface_id"} . 
@@ -888,20 +893,20 @@ source		SELECT "id", "room_id"
 			FROM "building_furniture"
 
 mappingId	lgd_nodes
-target		lgd:node{osm_id} a lgdo:{formatted_class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} . 
-source		SELECT *, INITCAP(class) AS formatted_class
+target		lgd:node{osm_id} a lgdo:{class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} .
+source		SELECT *
 			FROM public.classes
 			WHERE osm_type='N'
 
 mappingId	lgd_ways
-target		lgd:way{osm_id} a lgdo:{formatted_class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} . 
-source		SELECT *, INITCAP(class) AS formatted_class
+target		lgd:way{osm_id} a lgdo:{class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} .
+source		SELECT *
 			FROM public.classes
 			WHERE osm_type='W'
 
 mappingId	lgd_relations
-target		lgd:way{osm_id} a lgdo:{formatted_class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} . 
-source		SELECT *, INITCAP(class) AS formatted_class
+target		lgd:relation{osm_id} a lgdo:{class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} .
+source		SELECT *
 			FROM public.classes
 			WHERE osm_type='R'
 

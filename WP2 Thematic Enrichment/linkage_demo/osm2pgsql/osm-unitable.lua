@@ -51,14 +51,12 @@ function clean_tags(tags)
     return next(tags) == nil
 end
 
--- Helper function to check value is not empty
-
--- Check whether string starts with substring
+-- Helper function to check whether string starts with substring
 local function starts_with(str, sta)
     return str:sub(1, #sta) == sta
 end
 
--- Make string first letter uppercase
+-- Helper function to make string first letter uppercase
 local function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
@@ -75,31 +73,29 @@ end
 -- Handle quite common scenarios
 -- e.g. 1) building=yes 2) highway=primary
 local function refineclasses(list1, k ,v)
-        if not contains(list1, k) then
-            return "do_nothing"
-        elseif starts_with(v, "yes") then
-            return k
-        elseif starts_with(k, "highway") and (starts_with(v, "construction")
-                or starts_with(v, "crossing")
-                or starts_with(v, "ford")
-                or starts_with(v, "service"))
-        then return k .. firstToUpper(v)
-        elseif starts_with(k, "highway") and starts_with(v, "primary_link")
-        then return "highwayPrimaryLink"
-        elseif starts_with(k, "highway") and starts_with(v, "secondary_link")
-        then return "highwaySecondaryLink"
-        elseif starts_with(k, "highway") and starts_with(v, "tertiary_link")
-        then return "highwayTertiaryLink"
-        elseif starts_with(k, "highway") and (starts_with(v, "primary")
-                or starts_with(v, "secondary")
-                or starts_with(v, "tertiary")
-                or starts_with(v, "unclassified")
-                or starts_with(v, "unclassified")
-                or starts_with(v, "residential")
-                or starts_with(v, "proposed"))
-        then return v .. firstToUpper(k)
+    k_upper = firstToUpper(k)
+    v_upper = firstToUpper(v)
+    if not contains(list1, k) then
+        return "do_nothing"
+    elseif starts_with(v, "yes") then
+        return k_upper
+    elseif starts_with(k, "highway") and (starts_with(v, "construction")
+           or starts_with(v, "crossing")
+           or starts_with(v, "ford")
+           or starts_with(v, "service"))
+        then return k_upper .. v_upper
+    elseif starts_with(k, "highway") and starts_with(v, "primary_link")
+        then return "HighwayPrimaryLink"
+    elseif starts_with(k, "highway") and starts_with(v, "secondary_link")
+        then return "HighwaySecondaryLink"
+    elseif starts_with(k, "highway") and starts_with(v, "tertiary_link")
+        then return "HighwayTertiaryLink"
+    elseif starts_with(k, "highway") and (starts_with(v, "primary")
+        or starts_with(v, "secondary") or starts_with(v, "tertiary") or starts_with(v, "unclassified")
+            or starts_with(v, "unclassified") or starts_with(v, "residential") or starts_with(v, "proposed"))
+        then return v_upper .. k_upper
         else
-            return v
+            return v_upper
         end
 end
 
