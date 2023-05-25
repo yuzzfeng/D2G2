@@ -54,9 +54,14 @@ target		:cityobject/{"building_id"} bldg:address :address/{"address_id"} .
 source		SELECT "address_id", "building_id"
 			FROM "address_to_building"
 
-mappingId	Surface Geometry
-target		:geometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral . 
-source		SELECT "cityobject_id", "geometry", "id", ST_ASTEXT(ST_TRANSFORM((COALESCE("geometry", "solid_geometry")), 4326)) AS "geometry_wkt"
+mappingId	Solid Geometry
+target		:solidgeometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
+source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometry_wkt"
+			FROM "surface_geometry"
+
+mappingId	Non-Solid Geometry
+target		:geometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
+source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("geometry", 4326)) AS "geometry_wkt"
 			FROM "surface_geometry"
 
 mappingId	Surface Geometry to City Object
@@ -144,7 +149,7 @@ source		SELECT "id", "lod4_implicit_rep_id"
 
 mappingId	Bridge Room
 target		:bridge_room/{"id"} a brid:BridgeRoom ; brid:class {"class"}^^www:XMLSchema#string ; brid:usage {"usage"}^^www:XMLSchema#string ; brid:function {"function"}^^www:XMLSchema#string . 
-source		SELECT "bridge_id", "class", "function", "id", "lod4_multi_surface_id", "lod4_solid_id", "objectclass_id", "usage"
+source		SELECT "bridge_id", "class", "function", "id", "usage"
 			FROM "bridge_room"
 
 mappingId	Bridge Room - LoD4MultiSurface
@@ -158,7 +163,7 @@ source		SELECT "bridge_id", "id"
 			FROM "bridge_room"
 
 mappingId	Bridge Room - LoD4Solid
-target		:bridge_room/{"id"} brid:lod4Solid :geometry/{"lod4_solid_id"} . 
+target		:bridge_room/{"id"} brid:lod4Solid :solidgeometry/{"lod4_solid_id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "bridge_room"
 
@@ -213,22 +218,22 @@ source		SELECT "id", "lod4_multi_surface_id"
 			FROM "plant_cover"
 
 mappingId	Plant Cover - LoD1MultiSolid
-target		:cityobject/{"id"} veg:lod1MultiSolid :geometry/{"lod1_multi_solid_id"} . 
+target		:cityobject/{"id"} veg:lod1MultiSolid :solidgeometry/{"lod1_multi_solid_id"} .
 source		SELECT "id", "lod1_multi_solid_id"
 			FROM "plant_cover"
 
 mappingId	Plant Cover - LoD2MultiSolid
-target		:cityobject/{"id"} veg:lod2MultiSolid :geometry/{"lod2_multi_solid_id"} . 
+target		:cityobject/{"id"} veg:lod2MultiSolid :solidgeometry/{"lod2_multi_solid_id"} .
 source		SELECT "id", "lod2_multi_solid_id"
 			FROM "plant_cover"
 
 mappingId	Plant Cover - LoD3MultiSolid
-target		:cityobject/{"id"} veg:lod3MultiSolid :geometry/{"lod3_multi_solid_id"} . 
+target		:cityobject/{"id"} veg:lod3MultiSolid :solidgeometry/{"lod3_multi_solid_id"} .
 source		SELECT "id", "lod3_multi_solid_id"
 			FROM "plant_cover"
 
 mappingId	Plant Cover - LoD4MultiSolid
-target		:cityobject/{"id"} veg:lod4MultiSolid :geometry/{"lod4_multi_solid_id"} . 
+target		:cityobject/{"id"} veg:lod4MultiSolid :solidgeometry/{"lod4_multi_solid_id"} .
 source		SELECT "id", "lod4_multi_solid_id"
 			FROM "plant_cover"
 
@@ -328,7 +333,7 @@ source		SELECT "building_parent_id", "building_root_id", "class", "function", "i
 			FROM "building"
 
 mappingId	Building_Roof_Type
-target		:cityobject/{"id"} a bldg:Building ; bldg:roofType {"description_en"}^^www:XMLSchema#string .
+target		:cityobject/{"id"} bldg:roofType {"description_en"}^^www:XMLSchema#string .
 source		SELECT v1."id", v2."description_en"
 			FROM "building" v1 LEFT JOIN "roof_codelist" v2 ON v1."roof_type"=v2."name"
 
@@ -353,22 +358,22 @@ source		SELECT "id", "lod4_multi_surface_id"
 			FROM "building"
 
 mappingId	Building - LoD1Solid
-target		:cityobject/{"id"} bldg:lod1Solid :geometry/{"lod1_solid_id"} . 
+target		:cityobject/{"id"} bldg:lod1Solid :solidgeometry/{"lod1_solid_id"} .
 source		SELECT "id", "lod1_solid_id"
 			FROM "building"
 
 mappingId	Building - LoD2Solid
-target		:cityobject/{"id"} bldg:lod2Solid :geometry/{"lod2_solid_id"} . 
+target		:cityobject/{"id"} bldg:lod2Solid :solidgeometry/{"lod2_solid_id"} .
 source		SELECT "id", "lod2_solid_id"
 			FROM "building"
 
 mappingId	Building - LoD3Solid
-target		:cityobject/{"id"} bldg:lod3Solid :geometry/{"lod3_solid_id"} . 
+target		:cityobject/{"id"} bldg:lod3Solid :solidgeometry/{"lod3_solid_id"} .
 source		SELECT "id", "lod3_solid_id"
 			FROM "building"
 
 mappingId	Building - LoD4Solid
-target		:cityobject/{"id"} bldg:lod4Solid :geometry/{"lod4_solid_id"} . 
+target		:cityobject/{"id"} bldg:lod4Solid :solidgeometry/{"lod4_solid_id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "building"
 
@@ -453,22 +458,22 @@ source		SELECT "id", "lod4_multi_surface_id"
 			FROM "bridge"
 
 mappingId	Bridge - LoD1Solid
-target		:cityobject/{"id"} brid:lod1Solid :geometry/{"id"} . 
+target		:cityobject/{"id"} brid:lod1Solid :solidgeometry/{"id"} .
 source		SELECT "id", "lod1_solid_id"
 			FROM "bridge"
 
 mappingId	Bridge - LoD2Solid
-target		:cityobject/{"id"} brid:lod2Solid :geometry/{"id"} . 
+target		:cityobject/{"id"} brid:lod2Solid :solidgeometry/{"id"} .
 source		SELECT "id", "lod2_solid_id"
 			FROM "bridge"
 
 mappingId	Bridge - LoD3Solid
-target		:cityobject/{"id"} brid:lod3Solid :geometry/{"id"} . 
+target		:cityobject/{"id"} brid:lod3Solid :solidgeometry/{"id"} .
 source		SELECT "id", "lod3_solid_id"
 			FROM "bridge"
 
 mappingId	Bridge - LoD4Solid
-target		:cityobject/{"id"} brid:lod4Solid :geometry/{"id"} . 
+target		:cityobject/{"id"} brid:lod4Solid :solidgeometry/{"id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "bridge"
 
@@ -538,7 +543,7 @@ source		SELECT "class", "function", "id", "usage"
 			FROM "room"
 
 mappingId	Room - LoD4Solid
-target		:cityobject/{"id"} bldg:lod4Solid :geometry/{"lod4_solid_id"} . 
+target		:cityobject/{"id"} bldg:lod4Solid :solidgeometry/{"lod4_solid_id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "room"
 
@@ -583,13 +588,13 @@ source		SELECT "class", "function", "id", "usage"
 			FROM "tunnel_hollow_space"
 
 mappingId	Tunnel Hollow Space - LoD4Solid
-target		:cityobject/{"id"} tun:lod4Solid :geometry/{"lod4_solid_id"} . 
+target		:cityobject/{"id"} tun:lod4Solid :solidgeometry/{"lod4_solid_id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "tunnel_hollow_space"
 
 mappingId	Tunnel Hollow Space - LoD4MultiSurface
 target		:cityobject/{"id"} tun:lod4MultiSurface :geometry/{"lod4_multi_surface_id"} . 
-source		SELECT "id", "lod4_multi_surface_id", "lod4_solid_id"
+source		SELECT "id", "lod4_multi_surface_id"
 			FROM "tunnel_hollow_space"
 
 mappingId	Tunnel Hollow Space - Consists Of
@@ -683,22 +688,22 @@ source		SELECT "id", "lod4_multi_surface_id"
 			FROM "tunnel"
 
 mappingId	Tunnel - LoD1Solid
-target		:cityobject/{"id"} tun:lod1Solid :geometry/{"lod1_solid_id"} . 
+target		:cityobject/{"id"} tun:lod1Solid :solidgeometry/{"lod1_solid_id"} .
 source		SELECT "id", "lod1_solid_id"
 			FROM "tunnel"
 
 mappingId	Tunnel - LoD2Solid
-target		:cityobject/{"id"} tun:lod2Solid :geometry/{"lod2_solid_id"} . 
+target		:cityobject/{"id"} tun:lod2Solid :solidgeometry/{"lod2_solid_id"} .
 source		SELECT "id", "lod2_solid_id"
 			FROM "tunnel"
 
 mappingId	Tunnel - LoD3Solid
-target		:cityobject/{"id"} tun:lod3Solid :geometry/{"lod3_solid_id"} . 
+target		:cityobject/{"id"} tun:lod3Solid :solidgeometry/{"lod3_solid_id"} .
 source		SELECT "id", "lod3_solid_id"
 			FROM "tunnel"
 
 mappingId	Tunnel - LoD4Solid
-target		:cityobject/{"id"} tun:lod4Solid :geometry/{"lod4_solid_id"} . 
+target		:cityobject/{"id"} tun:lod4Solid :solidgeometry/{"lod4_solid_id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "tunnel"
 
@@ -763,22 +768,22 @@ source		SELECT "id", "lod1_multi_surface_id"
 			FROM "waterbody"
 
 mappingId	WaterBody - LoD1Solid
-target		:cityobject/{"id"} wtr:lod1Solid :geometry/{"lod1_solid_id"} . 
+target		:cityobject/{"id"} wtr:lod1Solid :solidgeometry/{"lod1_solid_id"} .
 source		SELECT "id", "lod1_solid_id"
 			FROM "waterbody"
 
 mappingId	WaterBody - LoD2Solid
-target		:cityobject/{"id"} wtr:lod3Solid :geometry/{"lod2_solid_id"} . 
+target		:cityobject/{"id"} wtr:lod3Solid :solidgeometry/{"lod2_solid_id"} .
 source		SELECT "id", "lod2_solid_id"
 			FROM "waterbody"
 
 mappingId	WaterBody - LoD3Solid
-target		:cityobject/{"id"} wtr:lod3Solid :geometry/{"lod3_solid_id"} . 
+target		:cityobject/{"id"} wtr:lod3Solid :solidgeometry/{"lod3_solid_id"} .
 source		SELECT "id", "lod3_solid_id"
 			FROM "waterbody"
 
 mappingId	WaterBody - LoD4Solid
-target		:cityobject/{"id"} wtr:lod4Solid :geometry/{"lod4_solid_id"} . 
+target		:cityobject/{"id"} wtr:lod4Solid :solidgeometry/{"lod4_solid_id"} .
 source		SELECT "id", "lod4_solid_id"
 			FROM "waterbody"
 

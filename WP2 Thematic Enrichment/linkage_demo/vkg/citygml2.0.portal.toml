@@ -64,11 +64,11 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 # Q2: Get building addresses
 SELECT *
 {
-?x bldg:address ?address_id .
+?building bldg:address ?address_id .
 ?address_id rdfs:label ?address_label .
-FILTER(CONTAINS(?address_label, "Landsberger Str")) .
+FILTER(CONTAINS(?address_label, "Stephansplatz")) .
 # EPSG:25832 used
-?x bldg:lod2Solid ?solid .
+?building bldg:lod2Solid ?solid .
 ?solid geo:asWKT ?geom .
 }
 """
@@ -85,14 +85,14 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 # Q3: Get buildings with height over 40m
 SELECT *
 {
-?x a bldg:Building .
-?x bldg:measuredHeight ?buildingHeight .
+?building a bldg:Building .
+?building bldg:measuredHeight ?buildingHeight .
 # Get buildings over 40 meters
 FILTER(?buildingHeight > 40) .
-?x bldg:address ?address_id .
+?building bldg:address ?address_id .
 ?address_id rdfs:label ?address_label .
 # EPSG:25832 used
-?x bldg:lod2Solid ?solid .
+?building bldg:lod2Solid ?solid .
 ?solid geo:asWKT ?geom .
 }
 """
@@ -109,13 +109,13 @@ PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 # Q4: Get buildings with most roof surfaces
-SELECT ?x (COUNT(?surface) AS ?totalsurface)
+SELECT ?building (COUNT(?surface) AS ?totalsurface)
 {
-?x a bldg:Building .
-?x bldg:boundedBy ?surface .
+?building a bldg:Building .
+?building bldg:boundedBy ?surface .
 ?surface a bldg:RoofSurface .
 }
-GROUP BY ?x
+GROUP BY ?building
 ORDER BY DESC(?totalsurface)
 """
 
@@ -132,10 +132,10 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 # Q5: Map roof surfaces of buildings over 35m
 SELECT ?geom
 {
-?x a bldg:Building .
-?x bldg:measuredHeight ?buildingHeight .
+?building a bldg:Building .
+?building bldg:measuredHeight ?buildingHeight .
 FILTER(?buildingHeight > 35) .
-?x bldg:boundedBy ?surface .
+?building bldg:boundedBy ?surface .
 ?surface a bldg:RoofSurface .
 ?surface geo:hasGeometry/geo:asWKT ?geom .
 }
@@ -294,7 +294,10 @@ SELECT *
 {
 ?citygmlentity bldg:roofType ?roofType .
 FILTER(?roofType = "flat roof") .
-?citygmlentity geo:hasGeometry/geo:asWKT ?citygmlGeom .
+?citygmlentity bldg:boundedBy ?citygmlsurface .
+# NOTE: We only care about RoofSurface
+?citygmlsurface a bldg:RoofSurface .
+?citygmlsurface geo:hasGeometry/geo:asWKT ?citygmlGeom .
 BIND("jet,0.8" AS ?citygmlGeomColor) # Red
 }
 """
