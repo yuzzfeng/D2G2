@@ -231,19 +231,20 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
 
 # Q1: When a road need to be extended and the affected buildings need to be removed. Calculate the volume/area that needs to be torn down.
-SELECT * #we only care about the CityGMLGeom!
+SELECT ?citygmlGeom
 {
-# No linkage since it is limited to buildings
+# Filter highways of interest
 VALUES ?highwayclasses { lgdo:SecondaryHighway lgdo:TertiaryHighway lgdo:HighwayService lgdo:UnclassifiedHighway } .
 ?osmentity rdf:type ?highwayclasses .
 ?osmentity geo:hasGeometry/geo:asWKT ?osmGeom .
-BIND(geof:buffer(?osmGeom, 1, uom:metre) AS ?impactArea) .
+# Set impact area buffer
+BIND(geof:buffer(?osmGeom, 20, uom:metre) AS ?impactArea) .
 ?citygmlentity bldg:boundedBy ?citygmlsurface .
 ?citygmlsurface a bldg:GroundSurface .
 ?citygmlsurface geo:hasGeometry/geo:asWKT ?citygmlGeom .
 
-#Clause below fails because 1) Poylhedral surfaces are not accepted as intersecton input 2) Query too slow
-#BIND(geof:sfIntersects(?impactArea, ?citygmlGeom) AS ?affectedBuildings)
+# Filter buildings within range of impact area
+FILTER(geof:sfIntersects(?impactArea, ?citygmlGeom))
 }
 """
 
@@ -267,7 +268,7 @@ SELECT *
 ?linkage :matchesOSM ?osmentity .
 ?linkage :matchesCityGML ?citygmlentity .
 #NOTE: Residential categorization might need expansion
-VALUES ?highwayclasses { lgdo:Residential lgdo:Apartment lgdo:House } .
+VALUES ?highwayclasses { lgdo:Residential lgdo:ResidentialHome lgdo:BuildingResidential lgdo:ApartmentBuilding lgdo:House } .
 ?osmentity rdf:type ?highwayclasses .
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
 FILTER(?buildingHeight > 15) .

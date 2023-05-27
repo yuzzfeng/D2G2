@@ -77,3 +77,8 @@ INSERT INTO citydb.roof_codelist VALUES
 
 ALTER TABLE ONLY citydb.building
     ADD CONSTRAINT fk_roof_type FOREIGN KEY ("roof_type") REFERENCES citydb.roof_codelist ("name");
+
+
+-- Add more spatial indexes for GEOGRAPHY datatype
+CREATE INDEX surfacegeom_geog ON citydb.surface_geometry USING gist(CAST(ST_TRANSFORM("geometry",4326) AS GEOGRAPHY));
+CREATE INDEX classes_geog ON public.classes USING gist(CAST(geom AS geography));
