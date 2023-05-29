@@ -182,7 +182,7 @@ local function refineclasses(list1, k ,v)
     then return k_upper .. v_upper
     elseif starts_with(k, "highway") and contains(highwayUndescoreList, v)
     then return removeUnderscoreAndCapitalize(v)
-    elseif starts_with(k, "highway") and contains(highwaySubclassSuperclassList)
+    elseif starts_with(k, "highway") and contains(highwaySubclassSuperclassList, v)
     then return v_upper .. k_upper
     elseif starts_with(k, "highway") and contains(highwaySubclassList, v)
     then return v_upper
@@ -194,7 +194,7 @@ local function refineclasses(list1, k ,v)
         -- Amenity
     elseif starts_with(k, "amenity") and contains(amenitySubclassList, v)
     then return v_upper
-    elseif starts_with(k, "amenity") and contains(amenityUndescoreList)
+    elseif starts_with(k, "amenity") and contains(amenityUndescoreList, v)
     then return removeUnderscoreAndCapitalize(v)
     elseif starts_with(k, "amenity") and starts_with(v, "atm")
     then return "ATM"
