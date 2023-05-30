@@ -61,7 +61,7 @@ source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometr
 
 mappingId	Non-Solid Geometry
 target		:geometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
-source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("geometry", 4326)) AS "geometry_wkt"
+source		SELECT "id", ST_ASTEXT("geometry_wgs84") AS "geometry_wkt"
 			FROM "surface_geometry"
 
 mappingId	Surface Geometry to City Object
@@ -78,16 +78,6 @@ mappingId	Thematic Surface - Link Building to BuildingSurface LoD2
 target		:cityobject/{"building_id"} bldg:boundedBy :cityobject/{"cityobject_id"} .
 source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
 			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod2_multi_surface_id" = v2."root_id"
-
-mappingId	Thematic Surface - Link Building to BuildingSurface LoD3
-target		:cityobject/{"building_id"} bldg:boundedBy :cityobject/{"cityobject_id"} .
-source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
-			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod3_multi_surface_id" = v2."root_id"
-
-mappingId	Thematic Surface - Link Building to BuildingSurface LoD4
-target		:cityobject/{"building_id"} bldg:boundedBy :cityobject/{"cityobject_id"} .
-source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
-			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod4_multi_surface_id" = v2."root_id"
 
 mappingId	BuildingWallSurface
 target		:cityobject/{"id"} a bldg:WallSurface . 
