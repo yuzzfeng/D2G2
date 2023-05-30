@@ -1,5 +1,8 @@
-FROM python:3.9-bullseye
+FROM python:3.8-bullseye
 WORKDIR /code
+
+RUN apt-get update &&\
+    apt-get install -y binutils libproj-dev gdal-bin libgdal-dev
 
 # Install required packages
 ADD requirements.txt .
