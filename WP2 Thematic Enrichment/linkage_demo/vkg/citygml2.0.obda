@@ -12,6 +12,7 @@ grp:		http://www.opengis.net/citygml/cityobjectgroup/2.0/
 lgd:		http://linkedgeodata.org/resource/
 owl:		http://www.w3.org/2002/07/owl#
 rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+sf:         http://www.opengis.net/ont/sf#
 tex:		http://www.opengis.net/citygml/texturedsurface/2.0/
 tun:		http://www.opengis.net/citygml/tunnel/2.0/
 veg:		http://www.opengis.net/citygml/vegetation/2.0/
@@ -55,14 +56,16 @@ source		SELECT "address_id", "building_id"
 			FROM "address_to_building"
 
 mappingId	Solid Geometry
-target		:solidgeometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
-source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometry_wkt"
+target		:solidgeometry/{"id"} a sf:PolyhderalSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:decimal ; geo:hasMetricVolume {"volume_cbm"}^^xsd:decimal .
+source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometry_wkt", ST_AREA("solid_geometry") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geometry", 4326))) AS "volume_cbm"
 			FROM "surface_geometry"
+			WHERE "solid_geometry" IS NOT NULL
 
 mappingId	Non-Solid Geometry
-target		:geometry/{"id"} a gml:Geometry ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
-source		SELECT "id", ST_ASTEXT("geometry_wgs84") AS "geometry_wkt"
+target		:geometry/{"id"} a sf:Polygon ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:decimal .
+source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("geometry", 4326)) AS "geometry_wkt", ST_AREA("geometry") AS "area_sqm"
 			FROM "surface_geometry"
+			WHERE "geometry" IS NOT NULL
 
 mappingId	Surface Geometry to City Object
 target		:cityobject/{"cityobject_id"} geo:hasGeometry :geometry/{"id"} . 

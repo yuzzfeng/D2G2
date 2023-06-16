@@ -80,13 +80,13 @@ ALTER TABLE ONLY citydb.building
 
 
 -- Add transformed geometry to WGS84 directly for surfaces in citydb table
-ALTER TABLE citydb.surface_geometry
-    ADD COLUMN geometry_wgs84 GEOMETRY;
+-- ALTER TABLE citydb.surface_geometry
+--     ADD COLUMN geometry_wgs84 GEOMETRY;
 
-UPDATE citydb.surface_geometry
-    SET geometry_wgs84 = ST_TRANSFORM("geometry", 4326);
+-- UPDATE citydb.surface_geometry
+--     SET geometry_wgs84 = ST_TRANSFORM("geometry", 4326);
 
 -- Add more spatial indexes for GEOGRAPHY datatype
 CREATE INDEX surfacegeom_geog ON citydb.surface_geometry USING gist(CAST(ST_TRANSFORM("geometry",4326) AS GEOGRAPHY));
-CREATE INDEX surfacegeom_geog2 ON citydb.surface_geometry USING gist(CAST("geometry_wgs84" AS GEOGRAPHY));
+-- CREATE INDEX surfacegeom_geog2 ON citydb.surface_geometry USING gist(CAST("geometry_wgs84" AS GEOGRAPHY));
 CREATE INDEX classes_geog ON public.classes USING gist(CAST(geom AS geography));

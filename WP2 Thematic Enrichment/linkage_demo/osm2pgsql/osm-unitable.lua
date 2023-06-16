@@ -292,7 +292,6 @@ local function filluptable(object, geometry)
     end
 end
 
--- str_house = object.tags["addr:street"].tostring() .. " " .. object.tags["addr:housenumber"].tostring()
 
 function process(object, geometry)
     -- If after removing the useless tags there is nothing left, ignore,
