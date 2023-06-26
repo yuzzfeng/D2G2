@@ -104,6 +104,32 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  # Add data on Open-air baths and lidos
+  schwimmbad:
+    image: ghcr.io/osgeo/gdal:alpine-normal-latest
+    # TODO: Filter area of interest?
+    command:
+      - "ogr2ogr"
+      #- "-progress" # Fast feature count is unavailable
+      - "-f"
+      - "PostgreSQL"
+      - "-a_srs"
+      - "EPSG:4326"
+      - "PG:host=host.docker.internal port=7778 dbname=citydb user=citydb password=citydb"
+      - "data/schwimmbad.kml"
+      # NOTE: If not specified, the table name will come from the <Folder><name> tag in the KML file
+      - "-nln"
+      - "schwimmbad"
+    depends_on:
+      db-edit:
+        condition: service_completed_successfully
+    volumes:
+      - ./kml-data:/data
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   # Start ontop
   ontop:
  #   image: ontop/ontop:5.0.2

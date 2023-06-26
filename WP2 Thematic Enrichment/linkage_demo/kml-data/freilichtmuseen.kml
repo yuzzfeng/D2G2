@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/kml/2.2         http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd         http://www.google.com/kml/ext/2.2         https://developers.google.com/kml/schema/kml22gx.xsd         http://www.w3.org/2005/Atom         http://schemas.opengis.net/kml/2.2.0/atom-author-link.xsd">
+<Document id="root_doc">
+<Schema name="freilichtmuseum" id="freilichtmuseum">
+	<SimpleField name="Name" type="string"> </SimpleField>
+	<SimpleField name="objektart" type="string"> </SimpleField>
+	<SimpleField name="art" type="string"> </SimpleField>
+	<SimpleField name="rw_wgs84" type="float"> </SimpleField>
+	<SimpleField name="hw_wgs84" type="float"> </SimpleField>
+	<SimpleField name="adresse_strasse" type="string"> </SimpleField>
+	<SimpleField name="adresse_ort" type="string"/>
+	<SimpleField name="url" type="string"> </SimpleField>
+</Schema>
+<Folder><name>Freilichtmuseen</name>
+<Style id="Icon">
+      <IconStyle>
+        <color>ffffffff</color>
+        <Icon>
+          <href>http://www.geodaten.bayern.de/ba-data/Themen/icons/freilichtmuseen-pik.png</href>
+		</Icon>
+      </IconStyle>
+</Style>
+
+     <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Apollo-Grannus-Tempel&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Tempelweg  &lt;br/&gt;89415 Lauingen (Donau)&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.lauingen.de/de/freizeit-touristik/sehenswuerdigkeiten/apollo-grannus-tempel/" target="_blank"&gt;Apollo-Grannus-Tempel&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Apollo-Grannus-Tempel</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.409056</SimpleData>
+		<SimpleData name="hw_wgs84">48.561670</SimpleData>
+		<SimpleData name="adresse_strasse">Tempelweg  </SimpleData>
+		<SimpleData name="adresse_ort">89415 Lauingen (Donau)</SimpleData>
+		<SimpleData name="url">https://www.lauingen.de/de/freizeit-touristik/sehenswuerdigkeiten/apollo-grannus-tempel/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.409056,48.561670</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Villa Rustica Königsbrunn&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Wertachstraße  &lt;br/&gt;86343 Königsbrunn b Augsburg&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.koenigsbrunn.de/kultur/sehenswertes/roemerbad/" target="_blank"&gt;Villa Rustica Königsbrunn&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Villa Rustica Königsbrunn</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.875022</SimpleData>
+		<SimpleData name="hw_wgs84">48.274808</SimpleData>
+		<SimpleData name="adresse_strasse">Wertachstraße  </SimpleData>
+		<SimpleData name="adresse_ort">86343 Königsbrunn b Augsburg</SimpleData>
+		<SimpleData name="url">https://www.koenigsbrunn.de/kultur/sehenswertes/roemerbad/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.875022,48.274808</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Filmkulissendorf FLAKE&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Seestraße  &lt;br/&gt;82432 Walchensee, Oberbay&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.zwei-seen-land.de/flake" target="_blank"&gt;Filmkulissendorf FLAKE&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Filmkulissendorf FLAKE</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.318497</SimpleData>
+		<SimpleData name="hw_wgs84">47.593341</SimpleData>
+		<SimpleData name="adresse_strasse">Seestraße  </SimpleData>
+		<SimpleData name="adresse_ort">82432 Walchensee, Oberbay</SimpleData>
+		<SimpleData name="url">https://www.zwei-seen-land.de/flake</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.318497,47.593341</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Dinosaurier-Park Altmühltal&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Dinopark 1 &lt;br/&gt;85095 Denkendorf, Oberbay&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://dinopark.bayern/#" target="_blank"&gt;Dinosaurier-Park Altmühltal&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Dinosaurier-Park Altmühltal</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.468983</SimpleData>
+		<SimpleData name="hw_wgs84">48.952955</SimpleData>
+		<SimpleData name="adresse_strasse">Dinopark 1 </SimpleData>
+		<SimpleData name="adresse_ort">85095 Denkendorf, Oberbay</SimpleData>
+		<SimpleData name="url">http://dinopark.bayern/#</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.468983,48.952955</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bauernhausmuseum des Landkreises Erding&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Taufkirchener Straße 24 &lt;br/&gt;85435 Erding&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.erding.de/bildung-kultur/kulturelle-einrichtungen/bauernhausmuseum" target="_blank"&gt;Bauernhausmuseum des Landkreises Erding&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bauernhausmuseum des Landkreises Erding</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.924155</SimpleData>
+		<SimpleData name="hw_wgs84">48.304354</SimpleData>
+		<SimpleData name="adresse_strasse">Taufkirchener Straße 24 </SimpleData>
+		<SimpleData name="adresse_ort">85435 Erding</SimpleData>
+		<SimpleData name="url">https://www.erding.de/bildung-kultur/kulturelle-einrichtungen/bauernhausmuseum</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.924155,48.304354</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Steinzeitdorf Pestenacker&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Hauptstraße 100 &lt;br/&gt;86947 Weil, Kr Landsberg a Lech&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.steinzeitdorf-pestenacker.de/" target="_blank"&gt;Steinzeitdorf Pestenacker&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Steinzeitdorf Pestenacker</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.948477</SimpleData>
+		<SimpleData name="hw_wgs84">48.145661</SimpleData>
+		<SimpleData name="adresse_strasse">Hauptstraße 100 </SimpleData>
+		<SimpleData name="adresse_ort">86947 Weil, Kr Landsberg a Lech</SimpleData>
+		<SimpleData name="url">https://www.steinzeitdorf-pestenacker.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.948477,48.145661</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Rupertiwinkler Bauernhofmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Hof 1 &lt;br/&gt;83417 Kirchanschöring&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.kirchanschoering.de/freizeit-tourismus/freizeit-geniessen/bauernhofmuseum" target="_blank"&gt;Rupertiwinkler Bauernhofmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Rupertiwinkler Bauernhofmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.862810</SimpleData>
+		<SimpleData name="hw_wgs84">47.951302</SimpleData>
+		<SimpleData name="adresse_strasse">Hof 1 </SimpleData>
+		<SimpleData name="adresse_ort">83417 Kirchanschöring</SimpleData>
+		<SimpleData name="url">https://www.kirchanschoering.de/freizeit-tourismus/freizeit-geniessen/bauernhofmuseum</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.862810,47.951302</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Graphit Kropfmühl Besucherbergwerk&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Langheinrichstraße 1 &lt;br/&gt;94051 Hauzenberg, Niederbay&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.graphit-bbw.de/" target="_blank"&gt;Graphit Kropfmühl Besucherbergwerk&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Graphit Kropfmühl Besucherbergwerk</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.659878</SimpleData>
+		<SimpleData name="hw_wgs84">48.621903</SimpleData>
+		<SimpleData name="adresse_strasse">Langheinrichstraße 1 </SimpleData>
+		<SimpleData name="adresse_ort">94051 Hauzenberg, Niederbay</SimpleData>
+		<SimpleData name="url">http://www.graphit-bbw.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.659878,48.621903</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bauernhaus-Museum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Kramerstraße 4 &lt;br/&gt;94227 Lindberg, Kr Regen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bauernhausmuseum-lindberg.de/" target="_blank"&gt;Bauernhaus-Museum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bauernhaus-Museum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.252074</SimpleData>
+		<SimpleData name="hw_wgs84">49.035242</SimpleData>
+		<SimpleData name="adresse_strasse">Kramerstraße 4 </SimpleData>
+		<SimpleData name="adresse_ort">94227 Lindberg, Kr Regen</SimpleData>
+		<SimpleData name="url">http://www.bauernhausmuseum-lindberg.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.252074,49.035242</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Hallertauer Bauernhofmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Untermantelkirchen 4 &lt;br/&gt;93348 Kirchdorf, Kr Kelheim&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.hallertauer-bauernhof-museum.de/" target="_blank"&gt;Hallertauer Bauernhofmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Hallertauer Bauernhofmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.924739</SimpleData>
+		<SimpleData name="hw_wgs84">48.766231</SimpleData>
+		<SimpleData name="adresse_strasse">Untermantelkirchen 4 </SimpleData>
+		<SimpleData name="adresse_ort">93348 Kirchdorf, Kr Kelheim</SimpleData>
+		<SimpleData name="url">http://www.hallertauer-bauernhof-museum.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.924739,48.766231</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Römerkastell Abusina&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Abusinastraße 1 &lt;br/&gt;93333 Neustadt a.d.Donau&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.abusina.com/" target="_blank"&gt;Römerkastell Abusina&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Römerkastell Abusina</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.771318</SimpleData>
+		<SimpleData name="hw_wgs84">48.850164</SimpleData>
+		<SimpleData name="adresse_strasse">Abusinastraße 1 </SimpleData>
+		<SimpleData name="adresse_ort">93333 Neustadt a.d.Donau</SimpleData>
+		<SimpleData name="url">http://www.abusina.com/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.771318,48.850164</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Oberpfälzer Handwerksmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Hillstett 52 &lt;br/&gt;92444 Rötz, Oberpf&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=547&amp;L=0&amp;cHash=7a3959a3ed517154166bf36cf038d946" target="_blank"&gt;Oberpfälzer Handwerksmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Oberpfälzer Handwerksmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.485110</SimpleData>
+		<SimpleData name="hw_wgs84">49.342269</SimpleData>
+		<SimpleData name="adresse_strasse">Hillstett 52 </SimpleData>
+		<SimpleData name="adresse_ort">92444 Rötz, Oberpf</SimpleData>
+		<SimpleData name="url">https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=547&amp;L=0&amp;cHash=7a3959a3ed517154166bf36cf038d946</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.485110,49.342269</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bergbau- und Industriemuseum Ostbayern&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Portnerstraße 29 &lt;br/&gt;92245 Kümmersbruck&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.museumtheuern.de/" target="_blank"&gt;Bergbau- und Industriemuseum Ostbayern&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bergbau- und Industriemuseum Ostbayern</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.903814</SimpleData>
+		<SimpleData name="hw_wgs84">49.390081</SimpleData>
+		<SimpleData name="adresse_strasse">Portnerstraße 29 </SimpleData>
+		<SimpleData name="adresse_ort">92245 Kümmersbruck</SimpleData>
+		<SimpleData name="url">http://www.museumtheuern.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.903814,49.390081</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilandmuseum Goglhof&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Eberhardsbühl 6 &lt;br/&gt;92265 Edelsfeld&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilandmuseum-goglhof.de/" target="_blank"&gt;Freilandmuseum Goglhof&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilandmuseum Goglhof</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.758820</SimpleData>
+		<SimpleData name="hw_wgs84">49.566125</SimpleData>
+		<SimpleData name="adresse_strasse">Eberhardsbühl 6 </SimpleData>
+		<SimpleData name="adresse_ort">92265 Edelsfeld</SimpleData>
+		<SimpleData name="url">http://www.freilandmuseum-goglhof.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.758820,49.566125</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Volkskundliches Gerätemuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Wunsiedler Straße 14 &lt;br/&gt;95659 Arzberg, Oberfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bergnersreuth.de/" target="_blank"&gt;Volkskundliches Gerätemuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Volkskundliches Gerätemuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.151494</SimpleData>
+		<SimpleData name="hw_wgs84">50.068149</SimpleData>
+		<SimpleData name="adresse_strasse">Wunsiedler Straße 14 </SimpleData>
+		<SimpleData name="adresse_ort">95659 Arzberg, Oberfr</SimpleData>
+		<SimpleData name="url">http://www.bergnersreuth.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.151494,50.068149</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Historisches Fabrikgut Hammer&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Christoph-Carl-Platz 19 &lt;br/&gt;90482 Nürnberg, Mittelfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=1040&amp;L=0&amp;cHash=748c9464b153dc66bd444bb8749605f2" target="_blank"&gt;Historisches Fabrikgut Hammer&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Historisches Fabrikgut Hammer</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.168471</SimpleData>
+		<SimpleData name="hw_wgs84">49.469975</SimpleData>
+		<SimpleData name="adresse_strasse">Christoph-Carl-Platz 19 </SimpleData>
+		<SimpleData name="adresse_ort">90482 Nürnberg, Mittelfr</SimpleData>
+		<SimpleData name="url">https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=1040&amp;L=0&amp;cHash=748c9464b153dc66bd444bb8749605f2</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.168471,49.469975</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Laubenmuseum Nürnberg&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Karwendelstraße 30 &lt;br/&gt;90471 Nürnberg, Mittelfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://kleingaertner-nuernberg.de/?page_id=739" target="_blank"&gt;Laubenmuseum Nürnberg&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Laubenmuseum Nürnberg</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.126213</SimpleData>
+		<SimpleData name="hw_wgs84">49.405126</SimpleData>
+		<SimpleData name="adresse_strasse">Karwendelstraße 30 </SimpleData>
+		<SimpleData name="adresse_ort">90471 Nürnberg, Mittelfr</SimpleData>
+		<SimpleData name="url">https://kleingaertner-nuernberg.de/?page_id=739</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.126213,49.405126</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freiland-Aquarium und Terrarium&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Heuweg 16 &lt;br/&gt;90547 Stein, Mittelfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.nhg-nuernberg.de/main.php?section=Freil&amp;page=" target="_blank"&gt;Freiland-Aquarium und Terrarium&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freiland-Aquarium und Terrarium</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.015507</SimpleData>
+		<SimpleData name="hw_wgs84">49.405581</SimpleData>
+		<SimpleData name="adresse_strasse">Heuweg 16 </SimpleData>
+		<SimpleData name="adresse_ort">90547 Stein, Mittelfr</SimpleData>
+		<SimpleData name="url">http://www.nhg-nuernberg.de/main.php?section=Freil&amp;page=</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.015507,49.405581</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Museum für Historische Wehrtechnik&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Heinrich-Diehl-Straße  &lt;br/&gt;90552 Röthenbach a.d.Pegnitz&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.wehrtechnikmuseum.de" target="_blank"&gt;Museum für Historische Wehrtechnik&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Museum für Historische Wehrtechnik</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.222351</SimpleData>
+		<SimpleData name="hw_wgs84">49.477058</SimpleData>
+		<SimpleData name="adresse_strasse">Heinrich-Diehl-Straße  </SimpleData>
+		<SimpleData name="adresse_ort">90552 Röthenbach a.d.Pegnitz</SimpleData>
+		<SimpleData name="url">http://www.wehrtechnikmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.222351,49.477058</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Grenzmuseum Eußenhausen&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;97638 Mellrichstadt&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.skulpturenpark-deutsche-einheit.de/" target="_blank"&gt;Grenzmuseum Eußenhausen&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Grenzmuseum Eußenhausen</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.335549</SimpleData>
+		<SimpleData name="hw_wgs84">50.483467</SimpleData>
+		<SimpleData name="adresse_strasse">  </SimpleData>
+		<SimpleData name="adresse_ort">97638 Mellrichstadt</SimpleData>
+		<SimpleData name="url">http://www.skulpturenpark-deutsche-einheit.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.335549,50.483467</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Eisenbahnmuseum Bahnpark Augsburg&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Firnhaberstraße 22 c&lt;br/&gt;86159 Augsburg, Bay&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bahnpark-augsburg.de/" target="_blank"&gt;Eisenbahnmuseum Bahnpark Augsburg&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Eisenbahnmuseum Bahnpark Augsburg</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.894417</SimpleData>
+		<SimpleData name="hw_wgs84">48.348007</SimpleData>
+		<SimpleData name="adresse_strasse">Firnhaberstraße 22 c</SimpleData>
+		<SimpleData name="adresse_ort">86159 Augsburg, Bay</SimpleData>
+		<SimpleData name="url">http://www.bahnpark-augsburg.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.894417,48.348007</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Allgäuer Bergbauernmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Diepolz 44 &lt;br/&gt;87509 Immenstadt i. Allgäu&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bergbauernmuseum.de" target="_blank"&gt;Allgäuer Bergbauernmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Allgäuer Bergbauernmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.177625</SimpleData>
+		<SimpleData name="hw_wgs84">47.613576</SimpleData>
+		<SimpleData name="adresse_strasse">Diepolz 44 </SimpleData>
+		<SimpleData name="adresse_ort">87509 Immenstadt i. Allgäu</SimpleData>
+		<SimpleData name="url">http://www.bergbauernmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.177625,47.613576</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Jura-Bauernhof-Museum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Schloßstraße 19 &lt;br/&gt;85122 Hitzhofen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.jura-bauernhof-museum.de" target="_blank"&gt;Jura-Bauernhof-Museum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Jura-Bauernhof-Museum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.328725</SimpleData>
+		<SimpleData name="hw_wgs84">48.872465</SimpleData>
+		<SimpleData name="adresse_strasse">Schloßstraße 19 </SimpleData>
+		<SimpleData name="adresse_ort">85122 Hitzhofen</SimpleData>
+		<SimpleData name="url">http://www.jura-bauernhof-museum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.328725,48.872465</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Heimatmuseum Thal&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Thal 11 &lt;br/&gt;84434 Kirchberg, Holzland&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://oldtimerfreunde-kirchberg.de/" target="_blank"&gt;Heimatmuseum Thal&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Heimatmuseum Thal</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.085593</SimpleData>
+		<SimpleData name="hw_wgs84">48.407696</SimpleData>
+		<SimpleData name="adresse_strasse">Thal 11 </SimpleData>
+		<SimpleData name="adresse_ort">84434 Kirchberg, Holzland</SimpleData>
+		<SimpleData name="url">http://oldtimerfreunde-kirchberg.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.085593,48.407696</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bauernhofmuseum Jexhof&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Jexhof  &lt;br/&gt;82296 Schöngeising&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.jexhof.de" target="_blank"&gt;Bauernhofmuseum Jexhof&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bauernhofmuseum Jexhof</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.206159</SimpleData>
+		<SimpleData name="hw_wgs84">48.115979</SimpleData>
+		<SimpleData name="adresse_strasse">Jexhof  </SimpleData>
+		<SimpleData name="adresse_ort">82296 Schöngeising</SimpleData>
+		<SimpleData name="url">http://www.jexhof.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.206159,48.115979</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilichtmuseum Glentleiten des Bezirks Oberbayern&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;An der Glentleiten 4 &lt;br/&gt;82439 Großweil&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.glentleiten.de/" target="_blank"&gt;Freilichtmuseum Glentleiten des Bezirks Oberbayern&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilichtmuseum Glentleiten des Bezirks Oberbayern</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.284423</SimpleData>
+		<SimpleData name="hw_wgs84">47.665859</SimpleData>
+		<SimpleData name="adresse_strasse">An der Glentleiten 4 </SimpleData>
+		<SimpleData name="adresse_ort">82439 Großweil</SimpleData>
+		<SimpleData name="url">http://www.glentleiten.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.284423,47.665859</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Markus Wasmeier Freilichtmuseum Schliersee&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Brunnbichl 5 &lt;br/&gt;83727 Schliersee&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.wasmeier.de/" target="_blank"&gt;Markus Wasmeier Freilichtmuseum Schliersee&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Markus Wasmeier Freilichtmuseum Schliersee</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.878449</SimpleData>
+		<SimpleData name="hw_wgs84">47.707684</SimpleData>
+		<SimpleData name="adresse_strasse">Brunnbichl 5 </SimpleData>
+		<SimpleData name="adresse_ort">83727 Schliersee</SimpleData>
+		<SimpleData name="url">http://www.wasmeier.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.878449,47.707684</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Tertiärwelt Aubenham&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Ziegelberg 4 &lt;br/&gt;84564 Oberbergkirchen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.tertiaerwelt.de" target="_blank"&gt;Tertiärwelt Aubenham&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Tertiärwelt Aubenham</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.381332</SimpleData>
+		<SimpleData name="hw_wgs84">48.306053</SimpleData>
+		<SimpleData name="adresse_strasse">Ziegelberg 4 </SimpleData>
+		<SimpleData name="adresse_ort">84564 Oberbergkirchen</SimpleData>
+		<SimpleData name="url">http://www.tertiaerwelt.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.381332,48.306053</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bajuwarenhof Kirchheim&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Bajuwarenstraße 11 &lt;br/&gt;85551 Kirchheim b. München&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bajuwarenhof.de/" target="_blank"&gt;Bajuwarenhof Kirchheim&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bajuwarenhof Kirchheim</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.747730</SimpleData>
+		<SimpleData name="hw_wgs84">48.160808</SimpleData>
+		<SimpleData name="adresse_strasse">Bajuwarenstraße 11 </SimpleData>
+		<SimpleData name="adresse_ort">85551 Kirchheim b. München</SimpleData>
+		<SimpleData name="url">http://www.bajuwarenhof.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.747730,48.160808</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilichtmuseum Haus im Moos&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Kleinhohenried 108 &lt;br/&gt;86668 Karlshuld&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.haus-im-moos.de" target="_blank"&gt;Freilichtmuseum Haus im Moos&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilichtmuseum Haus im Moos</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.340159</SimpleData>
+		<SimpleData name="hw_wgs84">48.672636</SimpleData>
+		<SimpleData name="adresse_strasse">Kleinhohenried 108 </SimpleData>
+		<SimpleData name="adresse_ort">86668 Karlshuld</SimpleData>
+		<SimpleData name="url">http://www.haus-im-moos.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.340159,48.672636</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bauernhausmuseum Amerang des Bezirks Oberbayern&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Hopfgarten 2 &lt;br/&gt;83123 Amerang&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bhm-amerang.de" target="_blank"&gt;Bauernhausmuseum Amerang des Bezirks Oberbayern&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bauernhausmuseum Amerang des Bezirks Oberbayern</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.305035</SimpleData>
+		<SimpleData name="hw_wgs84">48.003258</SimpleData>
+		<SimpleData name="adresse_strasse">Hopfgarten 2 </SimpleData>
+		<SimpleData name="adresse_ort">83123 Amerang</SimpleData>
+		<SimpleData name="url">http://www.bhm-amerang.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.305035,48.003258</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Museum Torfbahnhof&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Hackenstraße  &lt;br/&gt;83224 Grassau, Chiemgau&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.torfbahnhof-rottau.de" target="_blank"&gt;Museum Torfbahnhof&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Museum Torfbahnhof</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.427869</SimpleData>
+		<SimpleData name="hw_wgs84">47.813492</SimpleData>
+		<SimpleData name="adresse_strasse">Hackenstraße  </SimpleData>
+		<SimpleData name="adresse_ort">83224 Grassau, Chiemgau</SimpleData>
+		<SimpleData name="url">http://www.torfbahnhof-rottau.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.427869,47.813492</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Holzknechtmuseum Ruhpolding&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Laubau 12 &lt;br/&gt;83324 Ruhpolding&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.holzknechtmuseum.com/hkm/museum/" target="_blank"&gt;Holzknechtmuseum Ruhpolding&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Holzknechtmuseum Ruhpolding</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.658786</SimpleData>
+		<SimpleData name="hw_wgs84">47.724192</SimpleData>
+		<SimpleData name="adresse_strasse">Laubau 12 </SimpleData>
+		<SimpleData name="adresse_ort">83324 Ruhpolding</SimpleData>
+		<SimpleData name="url">http://www.holzknechtmuseum.com/hkm/museum/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.658786,47.724192</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Museumsdorf Bayerischer Wald&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Herrenstraße 11 &lt;br/&gt;94104 Tittling&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.museumsdorf.com" target="_blank"&gt;Museumsdorf Bayerischer Wald&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Museumsdorf Bayerischer Wald</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.350326</SimpleData>
+		<SimpleData name="hw_wgs84">48.740923</SimpleData>
+		<SimpleData name="adresse_strasse">Herrenstraße 11 </SimpleData>
+		<SimpleData name="adresse_ort">94104 Tittling</SimpleData>
+		<SimpleData name="url">http://www.museumsdorf.com</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.350326,48.740923</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Historisches Besucherbergwerk&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Silberberg 28 &lt;br/&gt;94249 Bodenmais&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.silberberg-online.de" target="_blank"&gt;Historisches Besucherbergwerk&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Historisches Besucherbergwerk</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.121481</SimpleData>
+		<SimpleData name="hw_wgs84">49.059120</SimpleData>
+		<SimpleData name="adresse_strasse">Silberberg 28 </SimpleData>
+		<SimpleData name="adresse_ort">94249 Bodenmais</SimpleData>
+		<SimpleData name="url">http://www.silberberg-online.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.121481,49.059120</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilichtmuseum Massing&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Steinbüchl 5 &lt;br/&gt;84323 Massing im Rottal&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilichtmuseum.de" target="_blank"&gt;Freilichtmuseum Massing&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilichtmuseum Massing</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.600226</SimpleData>
+		<SimpleData name="hw_wgs84">48.395679</SimpleData>
+		<SimpleData name="adresse_strasse">Steinbüchl 5 </SimpleData>
+		<SimpleData name="adresse_ort">84323 Massing im Rottal</SimpleData>
+		<SimpleData name="url">http://www.freilichtmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.600226,48.395679</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Ziegel und Kalk Museum Flintsbach&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Museumstraße 4 &lt;br/&gt;94577 Winzer, Donau&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.ziegel-kalkmuseum.de" target="_blank"&gt;Ziegel und Kalk Museum Flintsbach&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Ziegel und Kalk Museum Flintsbach</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.106498</SimpleData>
+		<SimpleData name="hw_wgs84">48.714052</SimpleData>
+		<SimpleData name="adresse_strasse">Museumstraße 4 </SimpleData>
+		<SimpleData name="adresse_ort">94577 Winzer, Donau</SimpleData>
+		<SimpleData name="url">http://www.ziegel-kalkmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.106498,48.714052</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Museum Burg Runding&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Zur Burgruine  &lt;br/&gt;93486 Runding b Cham, Oberpf&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.burg-runding.de/" target="_blank"&gt;Museum Burg Runding&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Museum Burg Runding</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.762245</SimpleData>
+		<SimpleData name="hw_wgs84">49.217881</SimpleData>
+		<SimpleData name="adresse_strasse">Zur Burgruine  </SimpleData>
+		<SimpleData name="adresse_ort">93486 Runding b Cham, Oberpf</SimpleData>
+		<SimpleData name="url">http://www.burg-runding.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.762245,49.217881</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Geschichtspark Bärnau-Tachov&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Naaber Straße 5 b&lt;br/&gt;95671 Bärnau, Oberpf&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.geschichtspark.de" target="_blank"&gt;Geschichtspark Bärnau-Tachov&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Geschichtspark Bärnau-Tachov</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.431837</SimpleData>
+		<SimpleData name="hw_wgs84">49.808637</SimpleData>
+		<SimpleData name="adresse_strasse">Naaber Straße 5 b</SimpleData>
+		<SimpleData name="adresse_ort">95671 Bärnau, Oberpf</SimpleData>
+		<SimpleData name="url">http://www.geschichtspark.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.431837,49.808637</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bergbaumuseum Maffeischächte&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Nitzlbuch  &lt;br/&gt;91275 Auerbach i.d.OPf.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.maffeispiele.de" target="_blank"&gt;Bergbaumuseum Maffeischächte&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bergbaumuseum Maffeischächte</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.649580</SimpleData>
+		<SimpleData name="hw_wgs84">49.679746</SimpleData>
+		<SimpleData name="adresse_strasse">Nitzlbuch  </SimpleData>
+		<SimpleData name="adresse_ort">91275 Auerbach i.d.OPf.</SimpleData>
+		<SimpleData name="url">http://www.maffeispiele.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.649580,49.679746</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Vorgeschichtliches Erlebnisdorf ALCMONA&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Schleusenhaus Nummer 14 &lt;br/&gt;92345 Dietfurt a.d.Altmühl&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.alcmona.de" target="_blank"&gt;Vorgeschichtliches Erlebnisdorf ALCMONA&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Vorgeschichtliches Erlebnisdorf ALCMONA</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.562238</SimpleData>
+		<SimpleData name="hw_wgs84">49.031407</SimpleData>
+		<SimpleData name="adresse_strasse">Schleusenhaus Nummer 14 </SimpleData>
+		<SimpleData name="adresse_ort">92345 Dietfurt a.d.Altmühl</SimpleData>
+		<SimpleData name="url">http://www.alcmona.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.562238,49.031407</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Museum für bäuerliche Arbeitsgeräte des Bezirks Oberfranken&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Adolf-Wächter-Straße 17 &lt;br/&gt;95447 Bayreuth&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.lettenhof.de" target="_blank"&gt;Museum für bäuerliche Arbeitsgeräte des Bezirks Oberfranken&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Museum für bäuerliche Arbeitsgeräte des Bezirks Oberfranken</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.548888</SimpleData>
+		<SimpleData name="hw_wgs84">49.931372</SimpleData>
+		<SimpleData name="adresse_strasse">Adolf-Wächter-Straße 17 </SimpleData>
+		<SimpleData name="adresse_ort">95447 Bayreuth</SimpleData>
+		<SimpleData name="url">http://www.lettenhof.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.548888,49.931372</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilichtmuseum Scherzenmühle&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;In der Au  &lt;br/&gt;95466 Weidenberg, Fichtelgeb&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.fgv-weidenberg.de/info-sm.html" target="_blank"&gt;Freilichtmuseum Scherzenmühle&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilichtmuseum Scherzenmühle</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.726049</SimpleData>
+		<SimpleData name="hw_wgs84">49.937865</SimpleData>
+		<SimpleData name="adresse_strasse">In der Au  </SimpleData>
+		<SimpleData name="adresse_ort">95466 Weidenberg, Fichtelgeb</SimpleData>
+		<SimpleData name="url">http://www.fgv-weidenberg.de/info-sm.html</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.726049,49.937865</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilandmuseum Grassemann&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Grassemann 3 &lt;br/&gt;95485 Warmensteinach&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://warmensteinach.de/urlaub-tourismus-freizeit/kultur-sehenswert/grassemann/" target="_blank"&gt;Freilandmuseum Grassemann&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilandmuseum Grassemann</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.788917</SimpleData>
+		<SimpleData name="hw_wgs84">50.019015</SimpleData>
+		<SimpleData name="adresse_strasse">Grassemann 3 </SimpleData>
+		<SimpleData name="adresse_ort">95485 Warmensteinach</SimpleData>
+		<SimpleData name="url">https://warmensteinach.de/urlaub-tourismus-freizeit/kultur-sehenswert/grassemann/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.788917,50.019015</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Gerätemuseum des Coburger Landes&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Schäferei 2 &lt;br/&gt;96482 Ahorn, Kr Coburg&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.geraetemuseum-ahorn.de" target="_blank"&gt;Gerätemuseum des Coburger Landes&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Gerätemuseum des Coburger Landes</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.948442</SimpleData>
+		<SimpleData name="hw_wgs84">50.231726</SimpleData>
+		<SimpleData name="adresse_strasse">Schäferei 2 </SimpleData>
+		<SimpleData name="adresse_ort">96482 Ahorn, Kr Coburg</SimpleData>
+		<SimpleData name="url">http://www.geraetemuseum-ahorn.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.948442,50.231726</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Deutsch-Deutsches Museum Mödlareuth&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Mödlareuth 13 &lt;br/&gt;95183 Töpen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://moedlareuth.de/" target="_blank"&gt;Deutsch-Deutsches Museum Mödlareuth&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Deutsch-Deutsches Museum Mödlareuth</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.883524</SimpleData>
+		<SimpleData name="hw_wgs84">50.414809</SimpleData>
+		<SimpleData name="adresse_strasse">Mödlareuth 13 </SimpleData>
+		<SimpleData name="adresse_ort">95183 Töpen</SimpleData>
+		<SimpleData name="url">https://moedlareuth.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.883524,50.414809</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Oberfränkisches Bauernhofmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Kleinlosnitz 5 &lt;br/&gt;95239 Zell im Fichtelgebirge&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.kleinlosnitz.de" target="_blank"&gt;Oberfränkisches Bauernhofmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Oberfränkisches Bauernhofmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.790773</SimpleData>
+		<SimpleData name="hw_wgs84">50.155887</SimpleData>
+		<SimpleData name="adresse_strasse">Kleinlosnitz 5 </SimpleData>
+		<SimpleData name="adresse_ort">95239 Zell im Fichtelgebirge</SimpleData>
+		<SimpleData name="url">http://www.kleinlosnitz.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.790773,50.155887</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;LIMESEUM&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Ruffenhofen 1 &lt;br/&gt;91744 Weiltingen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.roemerpark-ruffenhofen.de" target="_blank"&gt;LIMESEUM&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">LIMESEUM</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.480364</SimpleData>
+		<SimpleData name="hw_wgs84">49.046513</SimpleData>
+		<SimpleData name="adresse_strasse">Ruffenhofen 1 </SimpleData>
+		<SimpleData name="adresse_ort">91744 Weiltingen</SimpleData>
+		<SimpleData name="url">http://www.roemerpark-ruffenhofen.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.480364,49.046513</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Baugruppe Stadt des Fränkischen Freilandmuseums&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;91438 Bad Windsheim&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilandmuseum.de/" target="_blank"&gt;Baugruppe Stadt des Fränkischen Freilandmuseums&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Baugruppe Stadt des Fränkischen Freilandmuseums</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.416461</SimpleData>
+		<SimpleData name="hw_wgs84">49.499947</SimpleData>
+		<SimpleData name="adresse_strasse">  </SimpleData>
+		<SimpleData name="adresse_ort">91438 Bad Windsheim</SimpleData>
+		<SimpleData name="url">http://www.freilandmuseum.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.416461,49.499947</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Fränkisches Freilandmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Eisweiherweg 1 &lt;br/&gt;91438 Bad Windsheim&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilandmuseum.de" target="_blank"&gt;Fränkisches Freilandmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Fränkisches Freilandmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.418908</SimpleData>
+		<SimpleData name="hw_wgs84">49.497659</SimpleData>
+		<SimpleData name="adresse_strasse">Eisweiherweg 1 </SimpleData>
+		<SimpleData name="adresse_ort">91438 Bad Windsheim</SimpleData>
+		<SimpleData name="url">http://www.freilandmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.418908,49.497659</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Fränkisches Freilandmuseum Fladungen&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Bahnhofstraße 19 &lt;br/&gt;97650 Fladungen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilandmuseum-fladungen.de" target="_blank"&gt;Fränkisches Freilandmuseum Fladungen&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Fränkisches Freilandmuseum Fladungen</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.152013</SimpleData>
+		<SimpleData name="hw_wgs84">50.521969</SimpleData>
+		<SimpleData name="adresse_strasse">Bahnhofstraße 19 </SimpleData>
+		<SimpleData name="adresse_ort">97650 Fladungen</SimpleData>
+		<SimpleData name="url">http://www.freilandmuseum-fladungen.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.152013,50.521969</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Deutsch-deutsches Freilandmuseum Rappershausen&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Am Wasserturm  &lt;br/&gt;97640 Hendungen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://deutsch-deutsches-freilandmuseum.de/" target="_blank"&gt;Deutsch-deutsches Freilandmuseum Rappershausen&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Deutsch-deutsches Freilandmuseum Rappershausen</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.407021</SimpleData>
+		<SimpleData name="hw_wgs84">50.390051</SimpleData>
+		<SimpleData name="adresse_strasse">Am Wasserturm  </SimpleData>
+		<SimpleData name="adresse_ort">97640 Hendungen</SimpleData>
+		<SimpleData name="url">http://deutsch-deutsches-freilandmuseum.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.407021,50.390051</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Kirchenburgmuseum Mönchsondheim&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;An der Kirchenburg 5 &lt;br/&gt;97346 Iphofen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.kirchenburgmuseum.de" target="_blank"&gt;Kirchenburgmuseum Mönchsondheim&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Kirchenburgmuseum Mönchsondheim</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.278178</SimpleData>
+		<SimpleData name="hw_wgs84">49.667093</SimpleData>
+		<SimpleData name="adresse_strasse">An der Kirchenburg 5 </SimpleData>
+		<SimpleData name="adresse_ort">97346 Iphofen</SimpleData>
+		<SimpleData name="url">http://www.kirchenburgmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.278178,49.667093</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Archäologischer Park Cambodunum (APC)&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Cambodunumweg 3 &lt;br/&gt;87437 Kempten&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.apc-kempten.de" target="_blank"&gt;Archäologischer Park Cambodunum (APC)&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Archäologischer Park Cambodunum (APC)</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.323432</SimpleData>
+		<SimpleData name="hw_wgs84">47.727492</SimpleData>
+		<SimpleData name="adresse_strasse">Cambodunumweg 3 </SimpleData>
+		<SimpleData name="adresse_ort">87437 Kempten</SimpleData>
+		<SimpleData name="url">http://www.apc-kempten.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.323432,47.727492</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Hammerschmiede und Stockerhof Naichen&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Zur Hammerschmiede 3 &lt;br/&gt;86476 Neuburg a.d.Kammel&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.hammerschmiede-naichen.de" target="_blank"&gt;Hammerschmiede und Stockerhof Naichen&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Hammerschmiede und Stockerhof Naichen</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.370495</SimpleData>
+		<SimpleData name="hw_wgs84">48.327985</SimpleData>
+		<SimpleData name="adresse_strasse">Zur Hammerschmiede 3 </SimpleData>
+		<SimpleData name="adresse_ort">86476 Neuburg a.d.Kammel</SimpleData>
+		<SimpleData name="url">http://www.hammerschmiede-naichen.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.370495,48.327985</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Süddeutsches Schützenmuseum im Schwäbischen Bauernhofmuseum&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Museumstraße 8 &lt;br/&gt;87758 Kronburg&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bauernhofmuseum.de" target="_blank"&gt;Süddeutsches Schützenmuseum im Schwäbischen Bauernhofmuseum&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Süddeutsches Schützenmuseum im Schwäbischen Bauernhofmuseum</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.123920</SimpleData>
+		<SimpleData name="hw_wgs84">47.902906</SimpleData>
+		<SimpleData name="adresse_strasse">Museumstraße 8 </SimpleData>
+		<SimpleData name="adresse_ort">87758 Kronburg</SimpleData>
+		<SimpleData name="url">http://www.bauernhofmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.123920,47.902906</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bayerisches Eisenbahnmuseum e. V.&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Am Hohen Weg 6 a&lt;br/&gt;86720 Nördlingen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bayerisches-eisenbahnmuseum.de" target="_blank"&gt;Bayerisches Eisenbahnmuseum e. V.&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bayerisches Eisenbahnmuseum e. V.</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.499414</SimpleData>
+		<SimpleData name="hw_wgs84">48.850089</SimpleData>
+		<SimpleData name="adresse_strasse">Am Hohen Weg 6 a</SimpleData>
+		<SimpleData name="adresse_ort">86720 Nördlingen</SimpleData>
+		<SimpleData name="url">http://www.bayerisches-eisenbahnmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.499414,48.850089</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bauernhausmuseum Ebersbach, Leben im Museum Ebersbach&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Auf der Puit 1 &lt;br/&gt;85258 Weichs, Kr Dachau&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.ebersbach-lebenimmuseum.de/details.html " target="_blank"&gt;Bauernhausmuseum Ebersbach, Leben im Museum Ebersbach&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bauernhausmuseum Ebersbach, Leben im Museum Ebersbach</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.441882</SimpleData>
+		<SimpleData name="hw_wgs84">48.388276</SimpleData>
+		<SimpleData name="adresse_strasse">Auf der Puit 1 </SimpleData>
+		<SimpleData name="adresse_ort">85258 Weichs, Kr Dachau</SimpleData>
+		<SimpleData name="url">http://www.ebersbach-lebenimmuseum.de/details.html </SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.441882,48.388276</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Römerkastell Vetoniana bei Pfünz&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Römersteig  &lt;br/&gt;85137 Walting, Kr Eichstätt, Bay&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.naturpark-altmuehltal.de/sehenswertes/kastell_vetoniana_bei_pfuenz-1869/" target="_blank"&gt;Römerkastell Vetoniana bei Pfünz&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Römerkastell Vetoniana bei Pfünz</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.263039</SimpleData>
+		<SimpleData name="hw_wgs84">48.884794</SimpleData>
+		<SimpleData name="adresse_strasse">Römersteig  </SimpleData>
+		<SimpleData name="adresse_ort">85137 Walting, Kr Eichstätt, Bay</SimpleData>
+		<SimpleData name="url">https://www.naturpark-altmuehltal.de/sehenswertes/kastell_vetoniana_bei_pfuenz-1869/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.263039,48.884794</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Flughafen München Besucherpark&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Nordallee 9 &lt;br/&gt;85356 München-Flughafen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.munich-airport.de/besucherpark-90422" target="_blank"&gt;Flughafen München Besucherpark&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Flughafen München Besucherpark</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.772674</SimpleData>
+		<SimpleData name="hw_wgs84">48.354690</SimpleData>
+		<SimpleData name="adresse_strasse">Nordallee 9 </SimpleData>
+		<SimpleData name="adresse_ort">85356 München-Flughafen</SimpleData>
+		<SimpleData name="url">https://www.munich-airport.de/besucherpark-90422</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.772674,48.354690</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Villa Rustica&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Feldkirchner Straße 100 &lt;br/&gt;85609 Aschheim&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.nordostkultur-muenchen.de/themen/roemische_villa_rustica_aschheim.htm" target="_blank"&gt;Villa Rustica&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Villa Rustica</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.716682</SimpleData>
+		<SimpleData name="hw_wgs84">48.160142</SimpleData>
+		<SimpleData name="adresse_strasse">Feldkirchner Straße 100 </SimpleData>
+		<SimpleData name="adresse_ort">85609 Aschheim</SimpleData>
+		<SimpleData name="url">http://www.nordostkultur-muenchen.de/themen/roemische_villa_rustica_aschheim.htm</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.716682,48.160142</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Archäologischer Park&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;82211 Herrsching a. Ammersee&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.ammersee-region.de/upload/1307372661.pdf" target="_blank"&gt;Archäologischer Park&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Archäologischer Park</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.177318</SimpleData>
+		<SimpleData name="hw_wgs84">48.001619</SimpleData>
+		<SimpleData name="adresse_strasse">  </SimpleData>
+		<SimpleData name="adresse_ort">82211 Herrsching a. Ammersee</SimpleData>
+		<SimpleData name="url">http://www.ammersee-region.de/upload/1307372661.pdf</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.177318,48.001619</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Villa Rustica Leutstetten&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;82319 Starnberg&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=749&amp;L=0&amp;cHash=8cc8e61fdbcee0bad2de5c08ba870d71" target="_blank"&gt;Villa Rustica Leutstetten&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Villa Rustica Leutstetten</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.370503</SimpleData>
+		<SimpleData name="hw_wgs84">48.018623</SimpleData>
+		<SimpleData name="adresse_strasse">  </SimpleData>
+		<SimpleData name="adresse_ort">82319 Starnberg</SimpleData>
+		<SimpleData name="url">https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=749&amp;L=0&amp;cHash=8cc8e61fdbcee0bad2de5c08ba870d71</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.370503,48.018623</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilichtmuseum Finsterau&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Museumsstraße 51 &lt;br/&gt;94151 Mauth, Niederbay&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilichtmuseum.de/" target="_blank"&gt;Freilichtmuseum Finsterau&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilichtmuseum Finsterau</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.563062</SimpleData>
+		<SimpleData name="hw_wgs84">48.935703</SimpleData>
+		<SimpleData name="adresse_strasse">Museumsstraße 51 </SimpleData>
+		<SimpleData name="adresse_ort">94151 Mauth, Niederbay</SimpleData>
+		<SimpleData name="url">http://www.freilichtmuseum.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.563062,48.935703</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Archäologischer Erlebnispark Gabreta&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Lichtenau 1 a&lt;br/&gt;94160 Ringelai&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.gabreta.de/" target="_blank"&gt;Archäologischer Erlebnispark Gabreta&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Archäologischer Erlebnispark Gabreta</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.448067</SimpleData>
+		<SimpleData name="hw_wgs84">48.809873</SimpleData>
+		<SimpleData name="adresse_strasse">Lichtenau 1 a</SimpleData>
+		<SimpleData name="adresse_ort">94160 Ringelai</SimpleData>
+		<SimpleData name="url">http://www.gabreta.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.448067,48.809873</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Amphitheater Künzing&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Am Amphitheater  &lt;br/&gt;94550 Künzing&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://amphi-theatrum.de/1876.html" target="_blank"&gt;Amphitheater Künzing&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Amphitheater Künzing</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">13.082951</SimpleData>
+		<SimpleData name="hw_wgs84">48.667132</SimpleData>
+		<SimpleData name="adresse_strasse">Am Amphitheater  </SimpleData>
+		<SimpleData name="adresse_ort">94550 Künzing</SimpleData>
+		<SimpleData name="url">http://amphi-theatrum.de/1876.html</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>13.082951,48.667132</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Freilandmuseum Oberpfalz&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Neusath 200 &lt;br/&gt;92507 Nabburg&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.freilandmuseum.org/" target="_blank"&gt;Freilandmuseum Oberpfalz&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Freilandmuseum Oberpfalz</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.218096</SimpleData>
+		<SimpleData name="hw_wgs84">49.466416</SimpleData>
+		<SimpleData name="adresse_strasse">Neusath 200 </SimpleData>
+		<SimpleData name="adresse_ort">92507 Nabburg</SimpleData>
+		<SimpleData name="url">http://www.freilandmuseum.org/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.218096,49.466416</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Resl Garten&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Waldsassener Straße 4 &lt;br/&gt;95692 Konnersreuth, Oberpf&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.reslgarten.de/" target="_blank"&gt;Resl Garten&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Resl Garten</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">12.229361</SimpleData>
+		<SimpleData name="hw_wgs84">50.010121</SimpleData>
+		<SimpleData name="adresse_strasse">Waldsassener Straße 4 </SimpleData>
+		<SimpleData name="adresse_ort">95692 Konnersreuth, Oberpf</SimpleData>
+		<SimpleData name="url">http://www.reslgarten.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>12.229361,50.010121</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Fernweh-Park  Signs of Fame&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Fabrikstraße  &lt;br/&gt;95145 Oberkotzau&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.fernweh-park.de/" target="_blank"&gt;Fernweh-Park  Signs of Fame&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Fernweh-Park  Signs of Fame</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.942477</SimpleData>
+		<SimpleData name="hw_wgs84">50.263301</SimpleData>
+		<SimpleData name="adresse_strasse">Fabrikstraße  </SimpleData>
+		<SimpleData name="adresse_ort">95145 Oberkotzau</SimpleData>
+		<SimpleData name="url">https://www.fernweh-park.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.942477,50.263301</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Kulturlandschaftsgarten&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;95709 Leupoldsdorf&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bvv.bayern.de/dateien/dokumente/doc_33659.pdf" target="_blank"&gt;Kulturlandschaftsgarten&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Kulturlandschaftsgarten</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.933628</SimpleData>
+		<SimpleData name="hw_wgs84">50.026725</SimpleData>
+		<SimpleData name="adresse_strasse">  </SimpleData>
+		<SimpleData name="adresse_ort">95709 Leupoldsdorf</SimpleData>
+		<SimpleData name="url">http://www.bvv.bayern.de/dateien/dokumente/doc_33659.pdf</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.933628,50.026725</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Erstes Deutsches Baumaschinenmuseum / Monsterpark&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Im Stock 11 &lt;br/&gt;96179 Rattelsdorf, Oberfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.erstes-deutsches-baumaschinenmuseum.de/" target="_blank"&gt;Erstes Deutsches Baumaschinenmuseum / Monsterpark&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Erstes Deutsches Baumaschinenmuseum / Monsterpark</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.893245</SimpleData>
+		<SimpleData name="hw_wgs84">50.010675</SimpleData>
+		<SimpleData name="adresse_strasse">Im Stock 11 </SimpleData>
+		<SimpleData name="adresse_ort">96179 Rattelsdorf, Oberfr</SimpleData>
+		<SimpleData name="url">http://www.erstes-deutsches-baumaschinenmuseum.de/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.893245,50.010675</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Geschichtsdorf Landersdorf&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Landersdorf 15 &lt;br/&gt;91177 Thalmässing, Mittelfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.thalmaessing.de/fileadmin/Dateien/Dateien/KeltenhausNeu.pdf" target="_blank"&gt;Geschichtsdorf Landersdorf&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Geschichtsdorf Landersdorf</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.247641</SimpleData>
+		<SimpleData name="hw_wgs84">49.062932</SimpleData>
+		<SimpleData name="adresse_strasse">Landersdorf 15 </SimpleData>
+		<SimpleData name="adresse_ort">91177 Thalmässing, Mittelfr</SimpleData>
+		<SimpleData name="url">http://www.thalmaessing.de/fileadmin/Dateien/Dateien/KeltenhausNeu.pdf</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.247641,49.062932</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Historischer Eisenhammer&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Eisenhammer 1 &lt;br/&gt;91154 Roth, Mittelfr&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=331&amp;L=0&amp;cHash=46edc8b08958c697e90d71a9ea653311" target="_blank"&gt;Historischer Eisenhammer&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Historischer Eisenhammer</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">11.133541</SimpleData>
+		<SimpleData name="hw_wgs84">49.219951</SimpleData>
+		<SimpleData name="adresse_strasse">Eisenhammer 1 </SimpleData>
+		<SimpleData name="adresse_ort">91154 Roth, Mittelfr</SimpleData>
+		<SimpleData name="url">https://www.museen-in-bayern.de/das-museumsportal/museen/museen/?tx_landesstelle_searchmuseum%5Bmid%5D=331&amp;L=0&amp;cHash=46edc8b08958c697e90d71a9ea653311</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>11.133541,49.219951</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Grenzsteingarten&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Kirchgasse  &lt;br/&gt;63853 Mömlingen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.geschichte-untermain.de/moem_schulmuseum.html" target="_blank"&gt;Grenzsteingarten&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Grenzsteingarten</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">9.084492</SimpleData>
+		<SimpleData name="hw_wgs84">49.858746</SimpleData>
+		<SimpleData name="adresse_strasse">Kirchgasse  </SimpleData>
+		<SimpleData name="adresse_ort">63853 Mömlingen</SimpleData>
+		<SimpleData name="url">http://www.geschichte-untermain.de/moem_schulmuseum.html</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>9.084492,49.858746</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Schwäbisches Bauernhofmuseum Illerbeuren&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Museumstraße 8 &lt;br/&gt;87758 Kronburg&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.bauernhofmuseum.de" target="_blank"&gt;Schwäbisches Bauernhofmuseum Illerbeuren&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Schwäbisches Bauernhofmuseum Illerbeuren</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.123920</SimpleData>
+		<SimpleData name="hw_wgs84">47.902906</SimpleData>
+		<SimpleData name="adresse_strasse">Museumstraße 8 </SimpleData>
+		<SimpleData name="adresse_ort">87758 Kronburg</SimpleData>
+		<SimpleData name="url">http://www.bauernhofmuseum.de</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.123920,47.902906</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Bauernhofmuseum s'Huimatle&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;Knechtenhofen 7 &lt;br/&gt;87534 Oberstaufen&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="https://www.oberstaufen.de/partner/bauernhofmuseum-shuimatle/" target="_blank"&gt;Bauernhofmuseum s'Huimatle&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Bauernhofmuseum s'Huimatle</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.059346</SimpleData>
+		<SimpleData name="hw_wgs84">47.555162</SimpleData>
+		<SimpleData name="adresse_strasse">Knechtenhofen 7 </SimpleData>
+		<SimpleData name="adresse_ort">87534 Oberstaufen</SimpleData>
+		<SimpleData name="url">https://www.oberstaufen.de/partner/bauernhofmuseum-shuimatle/</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.059346,47.555162</coordinates></Point>
+</Placemark>
+    <Placemark>
+	<description>&lt;p&gt;&lt;b&gt;Erzgruben Erlebniswelt am Grünten&lt;/b&gt;&lt;/p&gt;Freilichtmuseum&lt;br/&gt;87545 Burgberg i. Allgäu&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Weitere Informationen finden Sie unter:&lt;/b&gt;&lt;br/&gt;&lt;a href="http://www.erzgruben.de/29-0-Preise-und-Oeffnungszeiten.html" target="_blank"&gt;Erzgruben Erlebniswelt am Grünten&lt;/a&gt;</description>
+	<styleUrl>#Icon</styleUrl>
+	<ExtendedData>
+	<SchemaData schemaUrl="#freilichtmuseum">
+		<SimpleData name="Name">Erzgruben Erlebniswelt am Grünten</SimpleData>
+		<SimpleData name="objektart">Freilichtmuseum</SimpleData>
+		<SimpleData name="art">Freilichtmuseum</SimpleData>
+		<SimpleData name="rw_wgs84">10.322416</SimpleData>
+		<SimpleData name="hw_wgs84">47.539086</SimpleData>
+		<SimpleData name="adresse_strasse">  </SimpleData>
+		<SimpleData name="adresse_ort">87545 Burgberg i. Allgäu</SimpleData>
+		<SimpleData name="url">http://www.erzgruben.de/29-0-Preise-und-Oeffnungszeiten.html</SimpleData>
+	</SchemaData>
+	</ExtendedData>      
+    <Point><coordinates>10.322416,47.539086</coordinates></Point>
+</Placemark>
+     
+    
+  
+</Folder>
+</Document> 
+</kml>
