@@ -1,4 +1,4 @@
-### Instructions
+### Instructions to run Ontop
 #### Execution
 Keep the ports 7778, 8082 free.
 
@@ -43,3 +43,11 @@ If a different file is required for the linkage please modify the files located 
 
 #### xAL addresses
 For different regions (i.e. outside Bavaria) the extraction of the xAL properties might need to be modified in [db edit SQL file](db-edit/edit-citydb-bavaria.sql).
+
+### Instructions to run Apache Jena-Fuseki
+Keep the ports 7778, 8082, 3030 free.
+
+Utilize the same pipeline details as above with the exception being that
+ ontop materialize is utilized instead of ontop endpoint.
+
+Open localhost:3030 and upload the TDB2 file just generated.
