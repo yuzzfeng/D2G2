@@ -90,3 +90,7 @@ ALTER TABLE ONLY citydb.building
 CREATE INDEX surfacegeom_geog ON citydb.surface_geometry USING gist(CAST(ST_TRANSFORM("geometry",4326) AS GEOGRAPHY));
 -- CREATE INDEX surfacegeom_geog2 ON citydb.surface_geometry USING gist(CAST("geometry_wgs84" AS GEOGRAPHY));
 CREATE INDEX classes_geog ON public.classes USING gist(CAST(geom AS geography));
+
+
+-- Add https://postgis.net/docs/reference.html#reference_sfcgal support for SCFGAL
+create extension postgis_sfcgal

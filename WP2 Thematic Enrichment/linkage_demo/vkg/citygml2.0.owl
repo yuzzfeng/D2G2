@@ -30,7 +30,6 @@
      xmlns:luse="http://www.opengis.net/citygml/landuse/2.0/"
      xmlns:obda="https://w3id.org/obda/vocabulary#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:tran="http://www.opengis.net/citygml/transportation/2.0/"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="http://cui.unige.ch/isi/onto/citygml2.0.owl">

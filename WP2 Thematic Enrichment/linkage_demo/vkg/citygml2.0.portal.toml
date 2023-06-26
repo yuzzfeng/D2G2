@@ -245,7 +245,7 @@ BIND(geof:buffer(?osmGeom, 20, uom:metre) AS ?impactArea) .
 
 # Filter buildings within range of impact area
 FILTER(geof:sfIntersects(?impactArea, ?citygmlGeom))
-?citygmlsurface geo:hasGeometry/geo:asWKT ?citygmlGeomAreaSqm .
+?citygmlsurface geo:hasGeometry/geo:hasMetricArea ?citygmlGeomAreaSqm .
 }
 """
 
