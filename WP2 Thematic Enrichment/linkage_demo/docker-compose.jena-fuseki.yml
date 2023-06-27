@@ -139,7 +139,7 @@ services:
       - TDB=2
     volumes:
       - ./wait-for-it:/wait-for-it
-      - ./vkg/materialized-triples.ttl:/vkg/staging/materialized-triples.ttl
+      - ./vkg/materialized-triples.ttl:/jena-fuseki/staging/materialized-triples.ttl
     entrypoint:
       [
         "/wait-for-it/wait-for-it.sh",
