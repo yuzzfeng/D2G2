@@ -69,10 +69,6 @@ RUN  $FUSEKI_HOME/fuseki-server & \
 # As "localhost" is often inaccessible within Docker container,
 # we'll enable basic-auth with a random admin password
 # (which we'll generate on start-up)
-#USER ROOT
-#RUN /bin/bash -c chmod a+rwx shiro.ini
-#RUN ["/bin/bash", "-c", "chmod a+rwx shiro.ini"]
-#RUN chmod og+rwx shiro.ini
 COPY shiro.ini $FUSEKI_HOME/shiro.ini
 COPY docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
@@ -82,6 +78,7 @@ COPY load.sh $FUSEKI_HOME/
 COPY tdbloader $FUSEKI_HOME/
 COPY tdbloader2 $FUSEKI_HOME/
 RUN chmod 755 $FUSEKI_HOME/load.sh $FUSEKI_HOME/tdbloader $FUSEKI_HOME/tdbloader2
+#VOLUME /staging
 
 RUN addgroup -S fuseki && \
     adduser -G fuseki -S -D -H fuseki
@@ -96,15 +93,8 @@ RUN mkdir -p $FUSEKI_BASE; \
     chown -R fuseki:fuseki $FUSEKI_BASE
 VOLUME $FUSEKI_BASE
 
-#RUN mkdir -p $FUSEKI_BASE/ontologies/
-#RUN mkdir -p $FUSEKI_BASE/configuration/
-
-# Add configuration file which specifies inside the ontology name
-#COPY config.ttl configuration/config.ttl
-# Add ontology
-#COPY materialized-triples.ttl ontologies/materialized-triples.ttl
-#RUN mkdir -p /fuseki
-#WORKDIR /fuseki
+# Add Jena configuration file with rdf input file name
+COPY config.ttl "${FUSEKI_BASE}"
 
 EXPOSE 3030
 USER fuseki

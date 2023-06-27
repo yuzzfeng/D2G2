@@ -127,16 +127,12 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-  jena-fuseki:
+  jena-fuseki-geosparql:
     build:
-      context: ./jena-fuseki
-    container_name: fuseki
-    init: true
+      context: ./jena-fuseki-geosparql
+    container_name: fuseki-geosparql
     environment:
-      #- user is "admin"
-      - ADMIN_PASSWORD=admin
-      - JVM_ARGS=-Xmx24G
-      - TDB=2
+      - JAVA_OPTIONS=-Xmx24G
     volumes:
       - ./wait-for-it:/wait-for-it
       - ./vkg/materialized-triples.ttl:/vkg/staging/materialized-triples.ttl

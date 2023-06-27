@@ -47,7 +47,27 @@ For different regions (i.e. outside Bavaria) the extraction of the xAL propertie
 ### Instructions to run Apache Jena-Fuseki
 Keep the ports 7778, 8082, 3030 free.
 
-Utilize the same pipeline details as above with the exception being that
- ontop materialize is utilized instead of ontop endpoint.
+The same pipeline as above is used with the exception being that
+ ontop materialize is utilized instead of ontop endpoint. A file named 
+```materialized-triples.ttl``` is generated via Ontop.
 
-Open localhost:3030 and upload the TDB2 file just generated.
+#### Run Apache Jena-Fuseki without the GeoSPARQL extension
+
+Execute:
+```
+docker-compose -f docker-compose.jena-fuseki.yml up
+```
+
+#### Run Apache Jena-Fuseki with the GeoSPARQL extension
+
+Execute:
+```
+docker-compose -f docker-compose.jena-fuseki-geosparql.yml up
+```
+NOTE: The GeoSPARQL extension of Jena-Fuseki does not currently support
+polyhedral surfaces as geometry datatypes.
+
+#### Explore results
+Open [localhost:3030](http://localhost:3030/) and manually copy and execute sample queries
+from [citygml2.0.portal.toml](vkg/citygml2.0.portal.toml). The Jena UI does not currently
+support predefined queries.
