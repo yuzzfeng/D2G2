@@ -138,20 +138,10 @@ services:
       - JVM_ARGS=-Xmx24G
       - TDB=2
     volumes:
-      - ./wait-for-it:/wait-for-it
       - ./vkg/materialized-triples.ttl:/jena-fuseki/staging/materialized-triples.ttl
-    entrypoint:
-      [
-        "/wait-for-it/wait-for-it.sh",
-        "ontop:8080",
-        "--timeout=0",
-        "--strict",
-        "--",
-        "/usr/bin/tini",
-        "--",
-        "sh",
-        "/docker-entrypoint.sh",
-      ]
+    depends_on:
+      ontop:
+        condition: service_completed_successfully
     ports:
       - "3030:3030"
     extra_hosts:

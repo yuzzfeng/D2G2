@@ -68,6 +68,10 @@ NOTE: The GeoSPARQL extension of Jena-Fuseki does not currently support
 polyhedral surfaces as geometry datatypes.
 
 #### Explore results
-Open [localhost:3030](http://localhost:3030/) and manually copy and execute sample queries
-from [citygml2.0.portal.toml](vkg/citygml2.0.portal.toml). The Jena UI does not currently
+Open [localhost:3030](http://localhost:3030/). When prompted for username and password
+provide:
+- username: admin
+- password: admin
+Manually copy and execute sample queries such as those 
+from [citygml2.0.portal.toml](vkg/citygml2.0.portal.toml). The Jena UI of version 4.8.0 does not currently
 support predefined queries.
