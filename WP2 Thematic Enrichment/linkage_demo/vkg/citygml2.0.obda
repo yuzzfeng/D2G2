@@ -890,57 +890,57 @@ source		SELECT "id", "room_id"
 			FROM "building_furniture"
 
 mappingId	lgd_nodes
-target		lgd:node{osm_id} a lgdo:{class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} .
-source		SELECT *
-			FROM public.classes
+target		lgd:node{osm_id_f} a lgdo:{class_f} ; rdfs:label {name_f}^^xsd:string ; lgdo:height {height_f}^^xsd:string .
+source		SELECT t1.osm_id as osm_id_f, t1.name as name_f, t1.height as height_f, t3.class_name as class_f
+			FROM public.entities t1 LEFT JOIN public.association_osm t2 ON t1.osm_id=t2.osm_id LEFT JOIN public.classes t3 ON t2.class_id=t3.class_id
 			WHERE osm_type='N'
 
 mappingId	lgd_ways
-target		lgd:way{osm_id} a lgdo:{class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} .
-source		SELECT *
-			FROM public.classes
+target		lgd:way{osm_id_f} a lgdo:{class_f} ; rdfs:label {name_f}^^xsd:string ; lgdo:height {height_f}^^xsd:string .
+source		SELECT t1.osm_id as osm_id_f, t1.name as name_f, t1.height as height_f, t3.class_name as class_f
+			FROM public.entities t1 LEFT JOIN public.association_osm t2 ON t1.osm_id=t2.osm_id LEFT JOIN public.classes t3 ON t2.class_id=t3.class_id
 			WHERE osm_type='W'
 
 mappingId	lgd_relations
-target		lgd:relation{osm_id} a lgdo:{class} ; rdfs:label {name}^^www:XMLSchema#string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height} .
-source		SELECT *
-			FROM public.classes
+target		lgd:relation{osm_id_f} a lgdo:{class_f} ; rdfs:label {name_f}^^xsd:string ; lgdo:height {height_f}^^xsd:string .
+source		SELECT t1.osm_id as osm_id_f, t1.name as name_f, t1.height as height_f, t3.class_name as class_f
+			FROM public.entities t1 LEFT JOIN public.association_osm t2 ON t1.osm_id=t2.osm_id LEFT JOIN public.classes t3 ON t2.class_id=t3.class_id
 			WHERE osm_type='R'
 
 mappingId	lgd_nodes_has_geom
 target		lgd:node{osm_id} geo:hasGeometry lgdg:node{osm_id} . 
 source		SELECT osm_id
-			FROM public.classes
+			FROM public.entities
 			WHERE osm_type='N'
 
 mappingId	lgd_ways_has_geom
 target		lgd:way{osm_id} geo:hasGeometry lgdg:way{osm_id} . 
 source		SELECT osm_id
-			FROM public.classes
+			FROM public.entities
 			WHERE osm_type='W'
 
 mappingId	lgd_relations_has_geom
 target		lgd:relation{osm_id} geo:hasGeometry lgdg:relation{osm_id} . 
 source		SELECT osm_id
-			FROM public.classes
+			FROM public.entities
 			WHERE osm_type='R'
 
 mappingId	lgd_nodes_wkt
 target		lgdg:node{osm_id} a geo:Geometry ; geo:asWKT {wkt}^^geo:wktLiteral . 
 source		SELECT osm_id, ST_ASTEXT(geom) AS wkt
-			FROM public.classes
+			FROM public.entities
 			WHERE osm_type='N'
 
 mappingId	lgd_ways_wkt
 target		lgdg:way{osm_id} a geo:Geometry ; geo:asWKT {wkt}^^geo:wktLiteral . 
 source		SELECT osm_id, ST_ASTEXT(geom) AS wkt
-			FROM public.classes
+			FROM public.entities
 			WHERE osm_type='W'
 
 mappingId	lgd_relations_wkt
 target		lgdg:relation{osm_id} a geo:Geometry ; geo:asWKT {wkt}^^geo:wktLiteral . 
 source		SELECT osm_id, ST_ASTEXT(geom) AS wkt
-			FROM public.classes
+			FROM public.entities
 			WHERE osm_type='R'
 
 mappingId	Association_CityGML_OSM

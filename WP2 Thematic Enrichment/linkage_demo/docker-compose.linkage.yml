@@ -72,9 +72,9 @@ services:
       PG_ENV_POSTGRES_USER: citydb
       PG_ENV_POSTGRES_PASSWORD: citydb
       REGION: europe/germany/bayern/oberbayern
-    depends_on:
-      impexp-citydb:
-        condition: service_completed_successfully
+#    depends_on:
+#      impexp-citydb:
+#        condition: service_completed_successfully
     networks:
       - citydb-net
     extra_hosts:
@@ -96,9 +96,9 @@ services:
   citygml2osmlinkage:
     build:
       context: linkage_citygml_osm/
-    depends_on:
-      db-edit:
-        condition: service_completed_successfully
+#    depends_on:
+#      db-edit:
+#        condition: service_completed_successfully
     networks:
       - citydb-net
     extra_hosts:
@@ -121,9 +121,9 @@ services:
     volumes:
       - ./vkg:/opt/ontop/input
       - ./jdbc:/opt/ontop/jdbc
-    depends_on:
-      citygml2osmlinkage:
-        condition: service_completed_successfully
+#    depends_on:
+#      citygml2osmlinkage:
+#        condition: service_completed_successfully
     ports:
       - "8082:8080"
     extra_hosts:

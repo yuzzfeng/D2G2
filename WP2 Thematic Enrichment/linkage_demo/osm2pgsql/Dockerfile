@@ -14,6 +14,7 @@ RUN apt-get clean \
 
 ADD ./osm-importer.sh /usr/local/bin/osm-importer.sh
 ADD osm-unitable.lua /user/local/bin/osm-unitable.lua
+ADD osm-refined.lua /user/local/bin/.
 
 RUN chmod +x /usr/local/bin/osm-importer.sh
 
