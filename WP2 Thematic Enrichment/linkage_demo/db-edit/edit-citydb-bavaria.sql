@@ -93,4 +93,18 @@ CREATE INDEX classes_geog ON public.classes USING gist(CAST(geom AS geography));
 
 
 -- Add https://postgis.net/docs/reference.html#reference_sfcgal support for SCFGAL
-create extension postgis_sfcgal
+CREATE extension postgis_sfcgal;
+
+
+ALTER TABLE citydb.surface_geometry ADD COLUMN solid_geometry_wgs84 GEOMETRY;
+ALTER TABLE citydb.surface_geometry ADD COLUMN geometry_wgs84 GEOMETRY;
+ALTER TABLE citydb.surface_geometry ADD COLUMN area_sqm DOUBLE PRECISION;
+
+UPDATE citydb.surface_geometry
+SET solid_geometry_wgs84 = ST_TRANSFORM("solid_geometry", 4326);
+
+UPDATE citydb.surface_geometry
+SET geometry_wgs84 = ST_TRANSFORM("geometry", 4326);
+
+UPDATE citydb.surface_geometry
+SET area_sqm = ST_AREA("geometry");

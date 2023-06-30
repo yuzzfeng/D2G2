@@ -56,13 +56,13 @@ source		SELECT "address_id", "building_id"
 
 mappingId	Solid Geometry
 target		:solidgeometry/{"id"} a sf:PolyhderalSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double ; geo:hasMetricVolume {"volume_cbm"}^^xsd:double .
-source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometry_wkt", ST_AREA("solid_geometry") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geometry", 4326))) AS "volume_cbm"
+source		SELECT "id", ST_ASTEXT(solid_geometry_wgs84) AS "geometry_wkt", ST_AREA("solid_geometry") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geometry", 4326))) AS "volume_cbm"
 			FROM "surface_geometry"
 			WHERE "solid_geometry" IS NOT NULL
 
 mappingId	Non-Solid Geometry
 target		:geometry/{"id"} a sf:Polygon ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double .
-source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("geometry", 4326)) AS "geometry_wkt", ST_AREA("geometry") AS "area_sqm"
+source		SELECT "id", ST_ASTEXT(geometry_wgs84) AS "geometry_wkt", "area_sqm"
 			FROM "surface_geometry"
 			WHERE "geometry" IS NOT NULL
 
