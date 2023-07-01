@@ -76,28 +76,40 @@ target		:geometry/{"id"} grp:parent :geometry/{"parent_id"} .
 source		SELECT "id", "parent_id"
 			FROM "surface_geometry"
 
-mappingId	Thematic Surface - Link Building to BuildingSurface LoD2
-target		:cityobject/{"building_id"} bldg:boundedBy :cityobject/{"cityobject_id"} .
-source		SELECT v1."building_id" AS "building_id", v2."cityobject_id" AS "cityobject_id"
-			FROM "thematic_surface" v1 LEFT JOIN "surface_geometry" v2 ON v1."lod2_multi_surface_id" = v2."root_id"
+mappingId	Thematic Surface - Link Building to BuildingSurface LoD2 p1
+target		:cityobject/{"building_id"} bldg:boundedBy :cityobject/{"id"} .
+source		SELECT building_id, id
+			FROM thematic_surface
+
+mappingId	BuildingFloorSurface
+target		:cityobject/{"id"} a bldg:WallSurface .
+source		SELECT id
+			FROM cityobject
+			WHERE objectclass_id=32
 
 mappingId	BuildingWallSurface
 target		:cityobject/{"id"} a bldg:WallSurface . 
-source		SELECT v1."id" AS "id"
-			FROM "cityobject" v1 LEFT JOIN "objectclass" v2 ON v1."objectclass_id"=v2."id"
-			WHERE v2."classname"='BuildingWallSurface'
+source		SELECT id
+			FROM cityobject
+			WHERE objectclass_id=34
 
 mappingId	BuildingRoofSurface
 target		:cityobject/{"id"} a bldg:RoofSurface . 
-source		SELECT v1."id" AS "id"
-			FROM "cityobject" v1 LEFT JOIN "objectclass" v2 ON v1."objectclass_id"=v2."id"
-			WHERE v2."classname"='BuildingRoofSurface'
+source		SELECT id
+			FROM cityobject
+			WHERE objectclass_id=33
 
 mappingId	BuildingGroundSurface
 target		:cityobject/{"id"} a bldg:GroundSurface . 
-source		SELECT v1."id" AS "id"
-			FROM "cityobject" v1 LEFT JOIN "objectclass" v2 ON v1."objectclass_id"=v2."id"
-			WHERE v2."classname"='BuildingGroundSurface'
+source		SELECT id
+			FROM cityobject
+			WHERE objectclass_id=35
+
+mappingId	BuildingClosureSurface
+target		:cityobject/{"id"} a bldg:GroundSurface .
+source		SELECT id
+			FROM cityobject
+			WHERE objectclass_id=35
 
 mappingId	Appearance
 target		:appearance/{"id"} a app:Appearance ; rdfs:label {"name"}^^www:XMLSchema#string ; app:theme {"theme"}^^www:XMLSchema#string . 
@@ -325,9 +337,14 @@ source		SELECT "building_parent_id", "building_root_id", "class", "function", "i
 			FROM "building"
 
 mappingId	Building_Roof_Type
-target		:cityobject/{"id"} bldg:roofType {"description_en"}^^www:XMLSchema#string .
-source		SELECT v1."id", v2."description_en"
-			FROM "building" v1 LEFT JOIN "roof_codelist" v2 ON v1."roof_type"=v2."name"
+target		:cityobject/{"id"} bldg:roofSurface :roof/{"roof_type"} .
+source		SELECT "id", "roof_type"
+			FROM "building"
+
+mappingId	Building_Roof_Type_Name
+target		:roof/{"name"} bldg:roofType {"description_en"}^^www:XMLSchema#string .
+source		SELECT "name", "description_en"
+			FROM "roof_codelist"
 
 mappingId	Building - LoD1MultiSurface
 target		:cityobject/{"id"} bldg:lod1MultiSurface :geometry/{"lod1_multi_surface_id"} . 
@@ -948,58 +965,68 @@ target		:{id} a :Association_CityGML_OSM .
 source		SELECT "id"
 			FROM "citygml_osm_association"
 
-mappingId	Matches_CityGML_OSM_Node
-target		:{id} :matchesOSM lgd:node{osm_id} ; :matchesCityGML :cityobject/{cityobject_id} .
-source		SELECT t1."id", t1."associated_osmid" AS osm_id, t3."building_id" AS cityobject_id
+mappingId	Matches_CityGML_gml
+target		:{id} :matchesCityGML :gmlid/{associated_citygmlid} .
+source		SELECT id, associated_citygmlid
+			FROM "citygml_osm_association"
+			WHERE "association_type" = 'matched'
+
+mappingId	Adjacent_CityGML_gml
+target		:{id} :adjacentCityGML :gmlid/{associated_citygmlid} .
+source		SELECT id, associated_citygmlid
+			FROM "citygml_osm_association"
+			WHERE "association_type" = 'adjacent'
+
+mappingId	Matches_CityGML_surf
+target		:gmlid/{gmlid} :mapSurface :cityobject/{id} .
+source		SELECT gmlid, id
+			FROM cityobject
+
+mappingId	Matches_CityGML_bldg
+target		:cityobject/{id} bldg:bounds :cityobject/{building_id} .
+source		SELECT id, building_id
+			FROM thematic_surface
+
+mappingId	Matches_OSM_Node
+target		:{id} :matchesOSM lgd:node{osm_id} .
+source		SELECT t1."id", t1."associated_osmid" AS osm_id
 			FROM "citygml_osm_association" t1
-			LEFT JOIN "cityobject" t2 ON t1."associated_citygmlid"=t2."gmlid"
-			LEFT JOIN "thematic_surface" t3 ON t2."id"=t3."id"
 			WHERE t1."association_type" = 'matched'
 			AND t1."osm_type" = 'n'
 
-mappingId	Matches_CityGML_OSM_Way
-target		:{id} :matchesOSM lgd:way{osm_id} ; :matchesCityGML :cityobject/{cityobject_id} .
-source		SELECT t1."id", t1."associated_osmid" AS osm_id, t3."building_id" AS cityobject_id
-			FROM "citygml_osm_association" t1
-			LEFT JOIN "cityobject" t2 ON t1."associated_citygmlid"=t2."gmlid"
-			LEFT JOIN "thematic_surface" t3 ON t2."id"=t3."id"
-			WHERE t1."association_type" = 'matched'
+mappingId	Matches_OSM_Way
+target		:{id} :matchesOSM lgd:way{osm_id} .
+source		SELECT t1."id", t1."associated_osmid" AS osm_id
+            			FROM "citygml_osm_association" t1
+            			WHERE t1."association_type" = 'matched'
 			AND t1."osm_type" = 'w'
 
-mappingId	Matches_CityGML_OSM_Relation
-target		:{id} :matchesOSM lgd:relation{osm_id} ; :matchesCityGML :cityobject/{cityobject_id} .
-source		SELECT t1."id", t1."associated_osmid" AS osm_id, t3."building_id" AS cityobject_id
-			FROM "citygml_osm_association" t1
-			LEFT JOIN "cityobject" t2 ON t1."associated_citygmlid"=t2."gmlid"
-			LEFT JOIN "thematic_surface" t3 ON t2."id"=t3."id"
-			WHERE t1."association_type" = 'matched'
+mappingId	Matches_OSM_Relation
+target		:{id} :matchesOSM lgd:relation{osm_id} .
+source		SELECT t1."id", t1."associated_osmid" AS osm_id
+            			FROM "citygml_osm_association" t1
+            			WHERE t1."association_type" = 'matched'
 			AND t1."osm_type" = 'r'
 
-mappingId	Adjacent_CityGML_OSM_Node
-target		:{id} :adjacentOSM lgd:node{osm_id} ; :adjacentCityGML :cityobject/{cityobject_id} .
-source		SELECT t1."id", t1."associated_osmid" AS osm_id, t3."building_id" AS cityobject_id
-			FROM "citygml_osm_association" t1
-			LEFT JOIN "cityobject" t2 ON t1."associated_citygmlid"=t2."gmlid"
-			LEFT JOIN "thematic_surface" t3 ON t2."id"=t3."id"
-			WHERE t1."association_type" = 'adjacent'
+mappingId	Adjacent_OSM_Node
+target		:{id} :adjacentOSM lgd:node{osm_id} .
+source		SELECT t1."id", t1."associated_osmid" AS osm_id
+                        			FROM "citygml_osm_association" t1
+                        			WHERE t1."association_type" = 'adjacent'
 			AND t1."osm_type" = 'n'
 
-mappingId	Adjacent_CityGML_OSM_Way
-target		:{id} :adjacentOSM lgd:way{osm_id} ; :adjacentCityGML :cityobject/{cityobject_id} .
-source		SELECT t1."id", t1."associated_osmid" AS osm_id, t3."building_id" AS cityobject_id
-			FROM "citygml_osm_association" t1
-			LEFT JOIN "cityobject" t2 ON t1."associated_citygmlid"=t2."gmlid"
-			LEFT JOIN "thematic_surface" t3 ON t2."id"=t3."id"
-			WHERE t1."association_type" = 'adjacent'
+mappingId	Adjacent_OSM_Way
+target		:{id} :adjacentOSM lgd:way{osm_id} .
+source		SELECT t1."id", t1."associated_osmid" AS osm_id
+                                    			FROM "citygml_osm_association" t1
+                                    			WHERE t1."association_type" = 'adjacent'
 			AND t1."osm_type" = 'w'
 
-mappingId	Adjacent_CityGML_OSM_Relation
-target		:{id} :adjacentOSM lgd:relation{osm_id} ; :adjacentCityGML :cityobject/{cityobject_id} .
-source		SELECT t1."id", t1."associated_osmid" AS osm_id, t3."building_id" AS cityobject_id
-			FROM "citygml_osm_association" t1
-			LEFT JOIN "cityobject" t2 ON t1."associated_citygmlid"=t2."gmlid"
-			LEFT JOIN "thematic_surface" t3 ON t2."id"=t3."id"
-			WHERE t1."association_type" = 'adjacent'
+mappingId	Adjacent_OSM_Relation
+target		:{id} :adjacentOSM lgd:relation{osm_id} .
+source		SELECT t1."id", t1."associated_osmid" AS osm_id
+                                    			FROM "citygml_osm_association" t1
+                                    			WHERE t1."association_type" = 'adjacent'
 			AND t1."osm_type" = 'r'
 ]]
 

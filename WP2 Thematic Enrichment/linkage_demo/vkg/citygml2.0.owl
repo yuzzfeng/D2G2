@@ -54,23 +54,29 @@
      -->
 
     
+    <!-- http://cui.unige.ch/citygml/2.0/matchesCityGML -->
+
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchesCityGML"/>
 
 
     <!-- http://cui.unige.ch/citygml/2.0/adjacentCityGML -->
 
     <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/adjacentCityGML"/>
-    
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/mapSurface -->
+
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/mapSurface"/>
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/bounds -->
+
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/citygml/building/2.0/bounds"/>
 
 
     <!-- http://cui.unige.ch/citygml/2.0/adjacentOSM -->
 
     <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/adjacentOSM"/>
-    
-
-
-    <!-- http://cui.unige.ch/citygml/2.0/matchesCityGML -->
-
-    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchesCityGML"/>
     
 
 

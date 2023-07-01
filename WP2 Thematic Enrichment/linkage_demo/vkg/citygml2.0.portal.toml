@@ -42,7 +42,7 @@ SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
 ?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML ?citygmlentity .
+?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmentity a lgdo:Hotel .
     OPTIONAL { ?osmentity rdfs:label ?hotelname .}
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
@@ -159,7 +159,7 @@ SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
 ?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML ?citygmlentity .
+?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 10) .
 
@@ -199,7 +199,7 @@ SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
 ?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML ?citygmlentity .
+?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 10) .
 OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
@@ -267,7 +267,7 @@ SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
 ?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML ?citygmlentity .
+?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 #NOTE: Residential categorization might need expansion
 VALUES ?highwayclasses { lgdo:Residential lgdo:ResidentialHome lgdo:BuildingResidential lgdo:ApartmentBuilding lgdo:House } .
 ?osmentity rdf:type ?highwayclasses .
@@ -294,7 +294,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 # Q3: Heavy snow is dangerous for flat roofs/at certain angles. Which buildings are possibly affected?
 SELECT *
 {
-?citygmlentity bldg:roofType ?roofType .
+?citygmlentity bldg:roofSurface/bldg:roofType ?roofType .
 FILTER(?roofType = "flat roof") .
 ?citygmlentity bldg:boundedBy ?citygmlsurface .
 # NOTE: We only care about RoofSurface
