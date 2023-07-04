@@ -40,7 +40,7 @@ HOST=download.geofabrik.de
         --cache 4000 \
         --extra-attributes \
         --output=flex \
-        --style /user/local/bin/osm-unitable.lua \
+        --style /user/local/bin/osm-refined.lua \
         --host $PG_PORT_5432_TCP_ADDR \
         --database $PG_ENV_POSTGRES_DB \
         --username $PG_ENV_POSTGRES_USER \

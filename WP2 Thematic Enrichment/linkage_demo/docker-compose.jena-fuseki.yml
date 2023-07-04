@@ -104,6 +104,17 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  db-postprocess:
+    build:
+      context: post-processing/
+    depends_on:
+      citygml2osmlinkage:
+        condition: service_completed_successfully
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   # Use Ontop to materialize triples
   ontop:
     #   image: ontop/ontop:5.0.2
@@ -115,12 +126,13 @@ services:
       ONTOP_XML_CATALOG_FILE: /opt/ontop/input/catalog-v001.xml
       ONTOP_MAPPING_FILE: /opt/ontop/input/citygml2.0.obda
       ONTOP_PROPERTIES_FILE: /opt/ontop/input/citygml2.0.properties
+      ONTOP_SPARQL_RULES_FILE: /opt/ontop/input/citygml2.0-rules.toml
       ONTOP_LOG_LEVEL: "true"
     volumes:
       - ./vkg:/opt/ontop/input
       - ./jdbc:/opt/ontop/jdbc
     depends_on:
-      citygml2osmlinkage:
+      db-postprocess:
         condition: service_completed_successfully
     ports:
       - "8082:8080"

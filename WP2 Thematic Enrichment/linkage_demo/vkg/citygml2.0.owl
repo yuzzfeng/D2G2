@@ -53,6 +53,14 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+
+    <!-- http://cui.unige.ch/citygml/2.0/matchCityGMLtoOSM -->
+
+        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchCityGMLtoOSM"/>
+
+    <!-- http://cui.unige.ch/citygml/2.0/hasOSMClassName -->
+
+        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasOSMClassName"/>
     
     <!-- http://cui.unige.ch/citygml/2.0/matchesCityGML -->
 
@@ -83,7 +91,16 @@
     <!-- http://cui.unige.ch/citygml/2.0/matchesOSM -->
 
     <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchesOSM"/>
-    
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/hasosmid -->
+
+        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasosmid"/>
+
+
+    <!-- http://cui.unige.ch/citygml/2.0/hasosmclassid -->
+
+        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasosmclassid"/>
 
 
     <!-- http://www.opengis.net/citygml/2.0/generalizesTo -->
@@ -1863,6 +1880,10 @@
 
     <owl:Class rdf:about="http://cui.unige.ch/citygml/2.0/Association_CityGML_OSM"/>
     
+
+    <!-- http://cui.unige.ch/citygml/2.0/Association_OSM_Class -->
+
+    <owl:Class rdf:about="http://cui.unige.ch/citygml/2.0/Association_OSM_Class"/>
 
 
     <!-- http://www.opengis.net/citygml/2.0/Address -->

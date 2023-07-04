@@ -11,9 +11,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 # Q1: Get all hotels over 30m high
 SELECT *
 {
-?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML ?citygmlentity .
+?citygmlentity :matchCityGMLtoOSM ?osmentity .
+?osmentity :hasOSMClassName ?osmclassname .
 ?osmentity a lgdo:Hotel .
     OPTIONAL { ?osmentity rdfs:label ?hotelname .}
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
@@ -40,9 +39,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 # Q1: Get all hotels over 30m high
 SELECT *
 {
-?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?citygmlentity :matchCityGMLtoOSM ?osmentity .
+?osmentity :hasOSMClassName ?osmclassname .
 ?osmentity a lgdo:Hotel .
     OPTIONAL { ?osmentity rdfs:label ?hotelname .}
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
@@ -157,9 +155,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 # Q6: Get citygml surfaces and osm building geometries
 SELECT *
 {
-?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?citygmlentity :matchCityGMLtoOSM ?osmentity .
+?osmentity :hasOSMClassName ?osmclassname .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 10) .
 
@@ -197,9 +194,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 # Q7: Get citygml solids and osm building geometries
 SELECT *
 {
-?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?citygmlentity :matchCityGMLtoOSM ?osmentity .
+?osmentity :hasOSMClassName ?osmclassname .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 10) .
 OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
@@ -265,9 +261,8 @@ PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
 # Q2: When a hurricane passes through a city, people in (residential) building above XX meters need to be evacuated. Which are the building that is affected?
 SELECT *
 {
-?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?citygmlentity :matchCityGMLtoOSM ?osmentity .
+?osmentity :hasOSMClassName ?osmclassname .
 #NOTE: Residential categorization might need expansion
 VALUES ?highwayclasses { lgdo:Residential lgdo:ResidentialHome lgdo:BuildingResidential lgdo:ApartmentBuilding lgdo:House } .
 ?osmentity rdf:type ?highwayclasses .

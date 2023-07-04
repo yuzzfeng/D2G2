@@ -13,14 +13,12 @@
 -- A place to store the SQL tables we will define shortly.
 local tables = {}
 
-tables.classes = osm2pgsql.define_table{
-    name = "classes",
+tables.entities = osm2pgsql.define_table{
+    name = "entities",
     -- This will generate a column "osm_id INT8" for the id, and a column
     -- "osm_type CHAR(1)" for the type of object: N(ode), W(way), R(relation)
     ids = { type = 'any', id_column = 'osm_id', type_column = 'osm_type' },
     columns = {
-        -- Ignore attributes
-        -- { column = 'attrs', type = 'jsonb' },
         { column = 'class',  type = 'text' },
         { column = 'geom',  type = 'geometry', projection = 4326, not_null = true },
         { column = 'name',  type = 'text' },
@@ -37,6 +35,280 @@ tables.classes = osm2pgsql.define_table{
         { column = 'street', type = 'text' },
         { column = 'housenumber', type = 'text' },
     }
+}
+
+-- Table with class names defined separately
+tables.classes = osm2pgsql.define_table{
+    name = "classes",
+    -- This will generate a column "class_id INT8" for the class id
+    ids = { type = 'any', id_column = 'id' },
+    columns = {
+        { column = 'class_name',  type = 'text' },
+    }
+}
+
+-- Linkage table between classes and osm entities. Many-to-many relationship.
+tables.association_osm = osm2pgsql.define_table{
+    name = "association_osm",
+    -- This will generate a column "class_id INT8" for the class id
+
+    ids = { type = 'any', id_column = 'osm_id', type_column = 'osm_type' }, --,  -- TODO: Check if adding type breaks things
+    columns = {
+        --    { column = 'osm_id',  type = 'int8' },
+        { column = 'class_id',  type = 'int8' },
+    }
+}
+
+-- List all permitted classes
+local orderedList = {
+    "AlcoholShop",
+    "AntiquesShop",
+    "ApartmentBuilding",
+    "ApplianceShop",
+    "ArtShop",
+    "ArtsCentre",
+    "ArtShop",
+    "Artwork",
+    "ATM",
+    "Attraction",
+    "BabyGoods",
+    "BagsShop",
+    "Bakery",
+    "Bank",
+    "Bar",
+    "BathroomFurnishing",
+    "BeautyShop",
+    "BedShop",
+    "Bench",
+    "BicycleParking",
+    "BicycleRental",
+    "BicycleShop",
+    "Biergarten",
+    "BookmakerShop",
+    "BooksShop",
+    "Boutique",
+    "Bridge",
+    "Brownfield",
+    "Building",
+    "BuildingChapel",
+    "BuildingChurch",
+    "BuildingCommercial",
+    "BuildingDormitory",
+    "BuildingGarage",
+    "BuildingHospital",
+    "BuildingKiosk",
+    "BuildingOffice",
+    "BuildingResidential",
+    "BuildingRetail",
+    "BuildingSchool",
+    "BureauDeChange",
+    "BusStop",
+    "Butcher",
+    "Cafe",
+    "CameraShop",
+    "Carpet",
+    "CarRental",
+    "CarSharing",
+    "CarShop",
+    "CarWash",
+    "Casino",
+    "Cemetery",
+    "CharityShop",
+    "Cheese",
+    "Chemist",
+    "Childcare",
+    "Chocolate",
+    "Cinema",
+    "City",
+    "Clinic",
+    "Clock",
+    "Clothes",
+    "CoffeeShop",
+    "Collapsed",
+    "College",
+    "CommercialLanduse",
+    "CommunityCentre",
+    "Computer",
+    "Confectionery",
+    "Construction",
+    "Convenience",
+    "Copyshop",
+    "Cosmetics",
+    "Courthouse",
+    "Crafts",
+    "Courthouse",
+    "Cycling",
+    "Cycleway",
+    "Dance",
+    "Deli",
+    "Dentist",
+    "DepartmentStore",
+    "Detached",
+    "Doctors",
+    "DrinkingWater",
+    "DryCleaning",
+    "ElectronicsShop",
+    "Elevator",
+    "EstateAgent",
+    "Fabric",
+    "FashionShop",
+    "FastFood",
+    "FireStation",
+    "FitnessCentre",
+    "Florist",
+    "Footway",
+    "Fountain",
+    "Fraternity",
+    "FuneralDirectors",
+    "Furniture",
+    "Gallery",
+    "Gambling",
+    "Games",
+    "Garage",
+    "Garden",
+    "Gift",
+    "GiveWaySign",
+    "Glaziery",
+    "GovernmentBuilding",
+    "GrassLanduse",
+    "Greengrocer",
+    "GritBin",
+    "GuestHouse",
+    "Hackerspace",
+    "Hairdresser",
+    "Hardware",
+    "HealthFood",
+    "HearingAids",
+    "Hifi",
+    "HighwayConstruction",
+    "HighwayCrossing",
+    "HighwayService",
+    "HobbyShop",
+    "HomeFurnishing",
+    "Hospital",
+    "Hostel",
+    "Hotel",
+    "House",
+    "Housewares",
+    "IceCream",
+    "IndustrialLanduse",
+    "IndustrialProductionBuilding",
+    "InternetCafe",
+    "Jewelry",
+    "Kindergarten",
+    "Kiosk",
+    "KitchenShop",
+    "LanguageSchool",
+    "Laundry",
+    "Library",
+    "Lighting",
+    "LivingStreet",
+    "Locksmith",
+    "MassageShop",
+    "Marketplace",
+    "Meadow",
+    "MobilePhone",
+    "Monastery",
+    "Motorcycle",
+    "Museum",
+    "Music",
+    "MusicalInstrument",
+    "Newsagent",
+    "Nightclub",
+    "OpticianShop",
+    "Outdoor",
+    "Paint",
+    "Park",
+    "Parking",
+    "ParkingEntrance",
+    "ParkingSpace",
+    "Pastry",
+    "Path",
+    "PedestrianUse",
+    "Perfumery",
+    "PetShop",
+    "Pharmacy",
+    "Photo",
+    "PicnicSite",
+    "Pitch",
+    "PlaceOfWorship",
+    "Platform",
+    "Playground",
+    "Police",
+    "PostBox",
+    "PostOffice",
+    "Pottery",
+    "Pub",
+    "PublicBuilding",
+    "RailwayLanduse",
+    "Recycling",
+    "Religious",
+    "Rent",
+    "ResidentialHighway",
+    "ResidentialLanduse",
+    "Restaurant",
+    "RetailLanduse",
+    "Ruins",
+    "Sauna",
+    "School",
+    "Scrub",
+    "SecondaryHighway",
+    "SecondaryLink",
+    "SecondHand",
+    "Service",
+    "Shed",
+    "Shelter",
+    "Shoes",
+    "Shop",
+    "SocialFacility",
+    "SpeedCamera",
+    "SportsCentre",
+    "SportsShop",
+    "Stationery",
+    "Steps",
+    "StreetLamp",
+    "Stripclub",
+    "Studio",
+    "Supermarket",
+    "Synagogue",
+    "Tailor",
+    "Tanning",
+    "Tattoo",
+    "Taxi",
+    "Tea",
+    "Telecommunication",
+    "Telephone",
+    "Terrace",
+    "TertiaryHighway",
+    "Ticket",
+    "Tobacco",
+    "Toilets",
+    "TourismInformation",
+    "TourismThing",
+    "Townhall",
+    "Toys",
+    "Track",
+    "TrafficSignals",
+    "TrainStation",
+    "TravelAgency",
+    "Tree",
+    "TreeRow",
+    "TurningCircle",
+    "University",
+    "UnclassifiedHighway",
+    "Vacant",
+    "VendingMachine",
+    "Veterinary",
+    "VideoGames",
+    "VideoShop",
+    "Viewpoint",
+    "VillageGreen",
+    "WasteBasket",
+    "WasteDisposal",
+    "Watches",
+    "Water",
+    "Wine",
+    "Wood"
 }
 
 
@@ -88,10 +360,10 @@ local filteredlist = { "highway", "building", "amenity", "shop", "natural", "pla
 -- Within Building
 local buildingUndescoreList = { "sports_centre", "train_station"}
 local buildingSuperclassSubclassList = {"barn", "bunker", "cabin", "chapel", "church", "commercial", "office", "retail",
-        "kiosk", "garage", "hospital",  "school", "dormitory", "hut", "residential"}
+                                        "kiosk", "garage", "hospital",  "school", "dormitory", "hut", "residential"}
 local buildingSubclassSuperclassList = { "public", "government"}
 local buildingSubclassList = { "hotel", "university", "house", "bridge", "elevator", "construction", "shed", "parking",
-        "service", "kindergarten", "terrace", "college", "ruins", "synagogue", "detached", "collapsed" }
+                               "service", "kindergarten", "terrace", "college", "ruins", "synagogue", "detached", "collapsed" }
 -- Highway
 local highwayUndescoreList = { "primary_link", "secondary_link", "tertiary_link", "turning_circle", "traffic_signals",
                                "street_lamp", "speed_camera", "living_street", "bus_stop", "mini_roundabout", "rest_area", "service_station",
@@ -118,8 +390,8 @@ local shopUndescoreList = { "mobile_phone", "travel_agency", "department_store",
                             "health_food", "funeral_directors", "bathroom_furnishing", "musical_instrument", "second_hand",
                             "video_games", "estate_agent", "baby_goods"}
 local shopSubclassSuperclassList = { "art", "optician", "beauty", "sports", "books", "antiques", "bicycle", "car",
-"electronics", "coffee", "bookmaker", "alcohol", "bed", "massage", "kitchen", "camera", "pet", "appliance", "video",
-"charity", "fitness", "fitness"}
+                                     "electronics", "coffee", "bookmaker", "alcohol", "bed", "massage", "kitchen", "camera", "pet", "appliance", "video",
+                                     "charity", "fitness", "fitness"}
 local shopSubclassList = { "clothes", "hairdresser", "jewelry", "bakery", "shoes", "furniture", "supermarket", "gift",
                            "deli", "cosmetics", "butcher", "convenience", "chemist", "kiosk", "greengrocer", "ticket", "vacant", "confectionery",
                            "fabric", "perfumery", "watches", "tobacco", "florist", "computer", "wine", "tailor",
@@ -247,18 +519,26 @@ local function refineclasses(list1, k ,v)
     elseif starts_with(k, "leisure") and contains(leisureSubclassList, v)
     then return v_upper
     elseif starts_with(k, "leisure") and contains(leisureUndescoreList, v)
-        then return removeUnderscoreAndCapitalize(v)
+    then return removeUnderscoreAndCapitalize(v)
     elseif starts_with(k, "leisure") and (starts_with(v, "tanning_salon") )
-        then return "Tanning"
+    then return "Tanning"
     elseif starts_with(k, "tourism") and (starts_with(v, "apartment") )
-        then return "ApartmentBuilding"
+    then return "ApartmentBuilding"
 
     else
-    return "do_nothing"
-    --return v_upper
+        return "do_nothing"
+        --return v_upper
     end
 end
 
+
+local function mapToValue(val)
+    for key, value in ipairs(orderedList) do
+        if value == val then
+            return key
+        end
+    end
+end
 
 
 -- Helper function to fill up table
@@ -267,12 +547,13 @@ local function filluptable(object, geometry)
     local refinedval
     for k, v in pairs(object.tags) do
         local refinedvalcheck = refineclasses(filteredlist, k ,v)
-            refinedval = refinedvalcheck
+        refinedval = refinedvalcheck
         if (refinedval == "do_nothing") then
             --pass if not in list of classes of interest
         else
-            tables.classes:insert({
-                class = refinedval,
+
+            tables.entities:insert({
+                class = mapToValue(refinedval),
                 geom = geometry,
                 name = object.tags.name,
                 name_en = object.tags['name:en'],
@@ -286,7 +567,12 @@ local function filluptable(object, geometry)
                 city = object.tags["addr:city"],
                 place = object.tags["addr:place"],
                 street = object.tags["addr:street"],
-                housenumber = object.tags["addr:housenumber"],
+                housenumber = object.tags["addr:housenumber"]
+            })
+
+            tables.association_osm:insert({
+                --    osm_id = object.tags.osm_id,
+                class_id = mapToValue(refinedval)
             })
         end
     end
