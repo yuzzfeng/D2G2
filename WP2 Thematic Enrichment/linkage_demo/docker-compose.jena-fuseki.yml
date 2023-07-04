@@ -126,7 +126,7 @@ services:
       ONTOP_XML_CATALOG_FILE: /opt/ontop/input/catalog-v001.xml
       ONTOP_MAPPING_FILE: /opt/ontop/input/citygml2.0.obda
       ONTOP_PROPERTIES_FILE: /opt/ontop/input/citygml2.0.properties
-      ONTOP_SPARQL_RULES_FILE: /opt/ontop/input/citygml2.0-rules.toml
+      #ONTOP_SPARQL_RULES_FILE: /opt/ontop/input/citygml2.0-rules.toml
       ONTOP_LOG_LEVEL: "true"
     volumes:
       - ./vkg:/opt/ontop/input

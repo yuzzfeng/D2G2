@@ -371,15 +371,14 @@ ALTER COLUMN osm_id type TEXT using osm_id::TEXT;
 -- Reshape linkage table
 -- Add constraints to linkage table
 ALTER TABLE public.association_osm ADD COLUMN id SERIAL PRIMARY KEY;
-
+ALTER TABLE public.association_osm ALTER COLUMN osm_id type TEXT using osm_id::TEXT;
 -- Remove any unknown records remaining
 DELETE FROM public."association_osm"
 WHERE osm_id NOT IN (
     SELECT entities.osm_id
     FROM public."entities");
 
-ALTER TABLE public.association_osm
-    ALTER COLUMN osm_id type TEXT using osm_id::TEXT;
+
 
 -- Add remaining FKs
 ALTER TABLE ONLY public.association_osm
