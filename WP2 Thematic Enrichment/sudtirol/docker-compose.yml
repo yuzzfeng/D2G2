@@ -1,0 +1,64 @@
+version: "3.8"
+
+services:
+  pgsql:
+    container_name: pgsql
+    build: ./pgsql
+    env_file: .env
+    ports:
+      - "7777:5432"
+    environment:
+     # - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=sudtirol_db
+      - POSTGRES_USER=citydb
+      - POSTGRES_PASSWORD=citydb
+      - PGDATA=postgres
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  gdal:
+    container_name: gdal
+    build: ./gdal
+#    image: ghcr.io/osgeo/gdal:ubuntu-full-latest
+#    command:
+#      - "ogr2ogr"
+#      - "-f"
+#      - PostgreSQL
+#      - PG:host=host.docker.internal user=citydb dbname=sudtirol_db password=citydb port=7777
+#      - "-nln"
+#      - "construction_01k"
+#      - "-a_srs"
+#      - "EPSG:25832"
+#      - WFS:https://geoservices3.civis.bz.it/geoserver/gvcc-Cartography/ows?service=wfs&version=2.0.0&request=getCapabilities
+#      - gvcc-Cartography:ConstructionAreas-01k
+
+    #volumes:
+    #  - ./ogr2ogr:/data
+    networks:
+      - citydb-net
+#    entrypoint:
+#      [
+#        "/opt/wait-for-it/wait-for-it.sh",
+#        "pgsql:5432",
+#        "--timeout=0",
+#        "--strict",
+#        "--",
+#        "impexp",
+#      ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  db-edit:
+    build:
+      context: db-edit/
+#    depends_on:
+#      gdal:
+#        condition: service_completed_successfully
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  citydb-net:
+    name: citydb-net
