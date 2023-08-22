@@ -899,6 +899,14 @@
 
 
 
+    <!-- http://linkedgeodata.org/ontology/addr_place -->
+
+        <owl:DatatypeProperty rdf:about="http://linkedgeodata.org/ontology/addr_place">
+            <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        </owl:DatatypeProperty>
+
+
+
     <!-- http://linkedgeodata.org/ontology/addr_street -->
 
     <owl:DatatypeProperty rdf:about="http://linkedgeodata.org/ontology/addr_street">

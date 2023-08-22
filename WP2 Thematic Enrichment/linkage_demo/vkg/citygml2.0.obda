@@ -940,19 +940,19 @@ source		SELECT *
 			FROM public.classes
 
 mappingId	lgd_nodes_properties
-target		lgd:node{osm_id} rdfs:label {name}^^xsd:string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height}^^xsd:string .
+target		lgd:node{osm_id} rdfs:label {name}^^xsd:string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height}^^xsd:string ; lgdo:addr_city {city}^^xsd:string ; lgdo:addr_country {country}^^xsd:string ; lgdo:addr_housenumber {housenumber}^^xsd:string ; lgdo:addr_street {street}^^xsd:string ; lgdo:postCode {postcode}^^xsd:string ; lgdo:addr_place {place}^^xsd:string .
 source		SELECT *
 			FROM public.entities
 			WHERE osm_type='N'
 
 mappingId	lgd_ways_properties
-target		lgd:way{osm_id} rdfs:label {name}^^xsd:string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height}^^xsd:string .
+target		lgd:way{osm_id} rdfs:label {name}^^xsd:string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height}^^xsd:string ; lgdo:addr_city {city}^^xsd:string ; lgdo:addr_country {country}^^xsd:string ; lgdo:addr_housenumber {housenumber}^^xsd:string ; lgdo:addr_street {street}^^xsd:string ; lgdo:postCode {postcode}^^xsd:string ; lgdo:addr_place {place}^^xsd:string .
 source		SELECT *
 			FROM public.entities
 			WHERE osm_type='W'
 
 mappingId	lgd_relations_properties
-target		lgd:relation{osm_id} rdfs:label {name}^^xsd:string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height}^^xsd:string .
+target		lgd:relation{osm_id} rdfs:label {name}^^xsd:string , {name_en}@en , {name_de}@de , {name_fr}@fr , {name_it}@it ; lgdo:height {height}^^xsd:string ; lgdo:addr_city {city}^^xsd:string ; lgdo:addr_country {country}^^xsd:string ; lgdo:addr_housenumber {housenumber}^^xsd:string ; lgdo:addr_street {street}^^xsd:string ; lgdo:postCode {postcode}^^xsd:string ; lgdo:addr_place {place}^^xsd:string .
 source		SELECT *
 			FROM public.entities
 			WHERE osm_type='R'
