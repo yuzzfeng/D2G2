@@ -11,10 +11,16 @@ services:
      # - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=sudtirol_db
       - POSTGRES_USER=citydb
+      - PGUSER=citydb
       - POSTGRES_PASSWORD=citydb
       - PGDATA=postgres
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h pgsql"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   gdal:
     container_name: gdal
@@ -36,24 +42,18 @@ services:
     #  - ./ogr2ogr:/data
     networks:
       - citydb-net
-#    entrypoint:
-#      [
-#        "/opt/wait-for-it/wait-for-it.sh",
-#        "pgsql:5432",
-#        "--timeout=0",
-#        "--strict",
-#        "--",
-#        "impexp",
-#      ]
+    depends_on:
+      pgsql:
+        condition: service_healthy
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   db-edit:
     build:
       context: db-edit/
-#    depends_on:
-#      gdal:
-#        condition: service_completed_successfully
+    depends_on:
+      gdal:
+        condition: service_completed_successfully
     networks:
       - citydb-net
     extra_hosts:

@@ -1,8 +1,8 @@
 # Because we want multiple layers, we need to use the Dockerfile
-FROM ghcr.io/osgeo/gdal:alpine-normal-latest
+FROM ghcr.io/osgeo/gdal:ubuntu-small-latest
 
 # Update package index and install curl
-RUN apk update
+#RUN apk update
 
 ENV PG_CONN='host=host.docker.internal user=citydb dbname=sudtirol_db password=citydb port=7777'
 ENV WFS_CART_URL=https://geoservices3.civis.bz.it/geoserver/gvcc-Cartography/ows?service=wfs&version=2.0.0&request=getCapabilities
