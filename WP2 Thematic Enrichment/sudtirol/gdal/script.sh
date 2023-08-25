@@ -11,8 +11,8 @@ max_retries=3
 
 # Define list of layers
 table_layer_pair=(
-  "construction_01k" "gvcc-Cartography:ConstructionAreas-01k"
-  "roofarea_01k" "gvcc-Cartography:RoofAreasScale-01k"
+  "construction_01k gvcc-Cartography:ConstructionAreas-01k"
+  "roofarea_01k gvcc-Cartography:RoofAreasScale-01k"
   )
 
 for pair in "${table_layer_pair[@]}"; do

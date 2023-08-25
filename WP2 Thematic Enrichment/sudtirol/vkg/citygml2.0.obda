@@ -1,0 +1,55 @@
+[PrefixDeclaration]
+:		http://cui.unige.ch/citygml/2.0/
+dc:		http://purl.org/dc/elements/1.1/
+sf:		http://www.opengis.net/ont/sf#
+xs:		http://www.w3.org/2001/XMLSchema
+app:		http://www.opengis.net/citygml/appearance/2.0/
+dem:		http://www.opengis.net/citygml/relief/2.0/
+frn:		http://www.opengis.net/citygml/cityfurniture/2.0/
+gen:		http://www.opengis.net/citygml/generics/2.0/
+geo:		http://www.opengis.net/ont/geosparql#
+gml:		http://www.opengis.net/gml/
+grp:		http://www.opengis.net/citygml/cityobjectgroup/2.0/
+lgd:		http://linkedgeodata.org/resource/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+tex:		http://www.opengis.net/citygml/texturedsurface/2.0/
+tun:		http://www.opengis.net/citygml/tunnel/2.0/
+veg:		http://www.opengis.net/citygml/vegetation/2.0/
+voc:		http://vocabulary.example.org/
+wtr:		http://www.opengis.net/citygml/waterbody/2.0/
+www:		http://www.w3.org/2001/
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+bldg:		http://www.opengis.net/citygml/building/2.0/
+brid:		http://www.opengis.net/citygml/bridge/2.0/
+core:		http://www.opengis.net/citygml/2.0/
+data:		http://mydata.example.org/
+lgdg:		http://linkedgeodata.org/geometry/
+lgdo:		http://linkedgeodata.org/ontology/
+luse:		http://www.opengis.net/citygml/landuse/2.0/
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+skos:		http://www.w3.org/2004/02/skos/core#
+tran:		http://www.opengis.net/citygml/transportation/2.0/
+terms:		http://purl.org/dc/terms/
+schema:		https://schema.org/
+
+[MappingDeclaration] @collection [[
+mappingId	Solid Geometry
+target		:solidgeometry/{"ogc_fid"} a sf:PolyhedralSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double ; geo:hasMetricVolume {"volume_cbm"}^^xsd:double .
+source		SELECT "ogc_fid", ST_ASTEXT(ST_TRANSFORM("geom3d", 4326)) AS "geometry_wkt", ST_AREA("geom3d") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geom3d", 4326))) AS "volume_cbm"
+			FROM "construction_01k"
+
+mappingId	Non-Solid Geometry
+target		:geometry/{"id"} a sf:Polygon ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double .
+source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("ct1a_shape", 4326)) AS "geometry_wkt", ST_AREA("ct1a_shape") AS "area_sqm"
+			FROM "construction_01k"
+			WHERE "ct1a_shape" IS NOT NULL
+
+mappingId	Building
+target		:cityobject/{"id"} a bldg:Building ; bldg:function {"cat1_descr_it"}^^xsd:string .
+source		SELECT "ogc_fid", "ct1a_alt", "cat1_descr_it", "cat1_descr_de"
+			FROM "construction_01k"
+			WHERE ct1a_alt > 0
+]]
