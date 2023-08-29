@@ -55,8 +55,8 @@ source		SELECT "address_id", "building_id"
 			FROM "address_to_building"
 
 mappingId	Solid Geometry
-target		:solidgeometry/{"id"} a sf:PolyhderalSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double ; geo:hasMetricVolume {"volume_cbm"}^^xsd:double .
-source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometry_wkt", ST_AREA("solid_geometry") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geometry", 4326))) AS "volume_cbm"
+target		:solidgeometry/{"id"} a sf:PolyhderalSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral .
+source		SELECT "id", ST_ASTEXT(ST_TRANSFORM("solid_geometry", 4326)) AS "geometry_wkt"
 			FROM "surface_geometry"
 			WHERE "solid_geometry" IS NOT NULL
 
@@ -70,6 +70,7 @@ mappingId	Surface Geometry to City Object
 target		:cityobject/{"cityobject_id"} geo:hasGeometry :geometry/{"id"} .
 source		SELECT "cityobject_id", "id"
 			FROM "surface_geometry"
+			WHERE "geometry" IS NOT NULL
 
 mappingId	Surface Geometry - Parent
 target		:geometry/{"id"} grp:parent :geometry/{"parent_id"} .

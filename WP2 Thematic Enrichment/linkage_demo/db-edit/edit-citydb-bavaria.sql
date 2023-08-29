@@ -386,3 +386,18 @@ ALTER TABLE ONLY public.association_osm
 
 ALTER TABLE ONLY public.association_osm
     ADD CONSTRAINT fk_association_osm_classes FOREIGN KEY ("class_id") REFERENCES public."classes" ("class_id");
+
+
+
+-- Volumes can only be calculated on closed polyhedral surfaces with valid planar polygons
+-- Based on discussions:
+-- https://github.com/3dcitydb/importer-exporter/issues/193
+-- https://gis.stackexchange.com/questions/447297/st-tesselate-on-polyhedralsurface-is-invalid-polygon-0-is-invalid-points-don
+-- https://gis.stackexchange.com/questions/447491/why-is-this-polygon-not-planar-for-postgis
+-- https://gis.stackexchange.com/questions/429589/postgis-sfcgal-error-polyhedralsurface-is-invalid-inconsistent-orientation-of
+--ALTER TABLE citydb.surface_geometry ADD COLUMN solid_closed BOOLEAN;
+--ALTER TABLE citydb.surface_geometry ADD COLUMN solid_planar BOOLEAN;
+--UPDATE citydb.surface_geometry
+--    SET solid_closed = CASE WHEN solid_geometry IS NOT NULL THEN ST_ISCLOSED(solid_geometry) ELSE NULL END ;
+--UPDATE citydb.surface_geometry
+--    SET solid_planar = CASE WHEN solid_geometry IS NOT NULL THEN ST_ISPLANAR(geom(ST_DUMP(solid_geometry))) ELSE NULL END ;
