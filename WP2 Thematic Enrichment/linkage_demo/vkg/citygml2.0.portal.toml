@@ -415,32 +415,13 @@ BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 
 [[tabGroups.tabs]]
 
-name="Q6: Building Volume/Area"
+name="Q6: Building Geometries in CityGML and OSM"
 query="""
 PREFIX : <http://cui.unige.ch/citygml/2.0/>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
-# Q6: Calculate the volume/area of buildings over 30 meters
-SELECT ?citygmlGeomVolCbm
-{
-?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
-FILTER(?citygmlBuildingHeight > 30) .
-?citygmlentity bldg:lod2Solid ?solid .
-#?solid geo:hasMetricVolume ?citygmlGeomVolCbm .
-?solid geo:hasMetricArea ?citygmlGeomVolCbm .
-}
-"""
-
-[[tabGroups.tabs]]
-
-name="Q7: Building Geometries in CityGML and OSM"
-query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
-PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
-PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-
-# Q7: Find CityGML ground surfaces and OSM building polygons for buildings over 30 meters (comparison of different geospatial data for quality analysis)
+# Q6: Find CityGML ground surfaces and OSM building polygons for buildings over 30 meters (comparison of different geospatial data for quality analysis)
 SELECT ?citygmlGeom ?osmGeom
 {
 ?linkage a :Association_CityGML_OSM .
@@ -459,7 +440,7 @@ BIND("jet,0.8" AS ?osmGeomColor) # Red
 
 [[tabGroups.tabs]]
 
-name="Q8: Hotels"
+name="Q7: Hotels"
 query="""
 PREFIX : <http://cui.unige.ch/citygml/2.0/>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
@@ -467,7 +448,7 @@ PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 
-# Q8: Find hotels over 30 meters high (tourists want to have a skyline view of the city)
+# Q7: Find hotels over 30 meters high (tourists want to have a skyline view of the city)
 SELECT ?citygmlentity ?buildingHeight ?hotelname ?address_geom
 {
 ?linkage a :Association_CityGML_OSM .
@@ -486,7 +467,7 @@ FILTER(?buildingHeight > 30) .
 """
 
 [[tabGroups.tabs]]
-name="Q9: Emergency evacuation"
+name="Q8: Emergency evacuation"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX : <http://cui.unige.ch/citygml/2.0/>
@@ -497,7 +478,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
 
-# Q9: Find residential buildings under 3m high (emergency evacuation to flood disaster)
+# Q8: Find residential buildings under 3m high (emergency evacuation to flood disaster)
 SELECT ?citygmlentity ?citygmlGeom
 {
 ?linkage a :Association_CityGML_OSM .
@@ -521,7 +502,7 @@ BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 
 
 [[tabGroups.tabs]]
-name="Q10: Non flat roofs"
+name="Q9: Non flat roofs"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX : <http://cui.unige.ch/citygml/2.0/>
@@ -531,7 +512,7 @@ PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 
-# Q10: Find residential buildings with non-flat roofs (searching for potential roofs for PV)
+# Q9: Find residential buildings with non-flat roofs (searching for potential roofs for PV)
 SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
@@ -555,7 +536,7 @@ BIND("jet,0.8" AS ?citygmlGeomColor) # Red
 
 
 [[tabGroups.tabs]]
-name="Q11: CityGML buildings affected by road expansion"
+name="Q10: CityGML buildings affected by road expansion"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX : <http://cui.unige.ch/citygml/2.0/>
@@ -566,18 +547,9 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
 
-# Q11: Find residential buildings along a certain road within 20 meters and calculate the total affected area in qm(urban renewal)
+# Q10: Find buildings along a certain road within 20 meters and calculate the total affected area in qm(urban renewal)
 SELECT ?citygmlGeom ?citygmlGeomAreaSqm
 {
-#?linkage a :Association_CityGML_OSM .
-#?linkage :matchesOSM ?osmentity .
-#?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
-#?osmlinkage a :Association_OSM_Class .
-#?osmlinkage :hasosmid ?osmentity .
-#?osmlinkage :hasosmclassid ?osmclassname .
-#VALUES ?residentialclasses { lgdo:Residential lgdo:ResidentialHome lgdo:BuildingResidential lgdo:ApartmentBuilding lgdo:House } .
-#?osmclassname rdf:type ?residentialclasses .
-
 # Filter highways of interest
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
