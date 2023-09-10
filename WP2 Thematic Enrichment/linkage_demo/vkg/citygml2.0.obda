@@ -334,7 +334,7 @@ source		SELECT "bridge_room_id", "class", "function", "id", "lod4_brep_id", "lod
 
 mappingId	Building
 target		:cityobject/{"id"} a bldg:Building ; bldg:storeysBelowGround {"storeys_below_ground"}^^www:XMLSchema#decimal ; bldg:storeysAboveGround {"storeys_above_ground"}^^www:XMLSchema#decimal ; bldg:function {"function"}^^www:XMLSchema#string ; bldg:usage {"usage"}^^www:XMLSchema#string ; bldg:storeyHeightsAboveGround {"storey_heights_above_ground"}^^www:XMLSchema#decimal ; bldg:yearOfConstruction {"year_of_construction"}^^www:XMLSchema#date ; bldg:yearOfDemolition {"year_of_demolition"}^^www:XMLSchema#date ; bldg:measuredHeight {"measured_height"}^^www:XMLSchema#double ; bldg:storeyHeightsBelowGround {"storey_heights_below_ground"}^^www:XMLSchema#decimal ; bldg:class {"class"}^^www:XMLSchema#string .
-source		SELECT "building_parent_id", "building_root_id", "class", "function", "id", "measured_height", "measured_height_unit", "storey_heights_above_ground", "storey_heights_ag_unit", "storey_heights_below_ground", "storey_heights_bg_unit", "storeys_above_ground", "storeys_below_ground", "usage", "year_of_construction", "year_of_demolition"
+source		SELECT "building_parent_id", "building_root_id", "class", "function", "id", "measured_height", "measured_height_unit", "storey_heights_above_ground", "storey_heights_below_ground", "storeys_above_ground", "storeys_below_ground", "usage", "year_of_construction", "year_of_demolition"
 			FROM "building"
 
 mappingId	Building_Roof_Type
