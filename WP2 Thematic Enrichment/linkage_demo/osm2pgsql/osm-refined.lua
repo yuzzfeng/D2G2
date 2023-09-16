@@ -34,6 +34,7 @@ tables.entities = osm2pgsql.define_table{
         { column = 'place', type = 'text' },
         { column = 'street', type = 'text' },
         { column = 'housenumber', type = 'text' },
+        { column = 'type', type = 'text' },
     }
 }
 
@@ -567,7 +568,8 @@ local function filluptable(object, geometry)
                 city = object.tags["addr:city"],
                 place = object.tags["addr:place"],
                 street = object.tags["addr:street"],
-                housenumber = object.tags["addr:housenumber"]
+                housenumber = object.tags["addr:housenumber"],
+                type = object.tags["type"]
             })
 
             tables.association_osm:insert({
@@ -596,9 +598,25 @@ function osm2pgsql.process_node(object)
 end
 
 function osm2pgsql.process_way(object)
-    process(object, object:as_linestring())
+    if object.is_closed
+    --and has_area_tags(object.tags)
+    then
+        process(object, object:as_polygon())
+    else
+        process(object, object:as_linestring())
+    end
 end
 
+-- NOTE: Iterating over all members might further reduce geometry collections
 function osm2pgsql.process_relation(object)
-    process(object, object:as_geometrycollection())
+    local relation_type = object:grab_tag('type')
+    if relation_type == 'multipolygon' then
+        process(object, object:as_multipolygon())
+    elseif relation_type == 'multilinestring' then
+        process(object, object:as_multilinestring())
+    elseif relation_type == 'multipoint' then
+        process(object, object:as_multipoint())
+    else
+        process(object, object:as_geometrycollection())
+    end
 end
