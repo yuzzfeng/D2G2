@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  viz:
+    container_name: visualization
+    #image:
+    #  nginx:alpine
+    build:
+      context: viz
+    #volumes:
+    #  - ./viz:/usr/share/nginx/html
+    ports:
+      - 8083:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
