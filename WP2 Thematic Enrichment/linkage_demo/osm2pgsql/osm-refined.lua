@@ -53,7 +53,7 @@ tables.association_osm = osm2pgsql.define_table{
     name = "association_osm",
     -- This will generate a column "class_id INT8" for the class id
 
-    ids = { type = 'any', id_column = 'osm_id', type_column = 'osm_type' }, --,  -- TODO: Check if adding type breaks things
+    ids = { type = 'any', id_column = 'osm_id', type_column = 'osm_type' },
     columns = {
         --    { column = 'osm_id',  type = 'int8' },
         { column = 'class_id',  type = 'int8' },

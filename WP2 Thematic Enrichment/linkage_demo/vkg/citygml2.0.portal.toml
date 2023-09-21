@@ -22,7 +22,7 @@ SELECT *
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
 FILTER(?buildingHeight > 30) .
 ?citygmlentity bldg:lod2Solid ?solid .
-?solid geo:asWKT ?address_geom .
+?solid geo:asWKT ?citygmlGeom .
 }
 """
 
@@ -54,7 +54,7 @@ SELECT *
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
 FILTER(?buildingHeight > 30) .
 ?citygmlentity bldg:lod2Solid ?solid .
-?solid geo:asWKT ?address_geom .
+?solid geo:asWKT ?citygmlGeom .
 }
 """
 
@@ -449,7 +449,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 
 # Q7: Find hotels over 30 meters high (tourists want to have a skyline view of the city)
-SELECT ?citygmlentity ?buildingHeight ?hotelname ?address_geom
+SELECT ?citygmlentity ?buildingHeight ?hotelname ?citygmlGeom
 {
 ?linkage a :Association_CityGML_OSM .
 ?linkage :matchesOSM ?osmentity .
@@ -462,7 +462,7 @@ SELECT ?citygmlentity ?buildingHeight ?hotelname ?address_geom
 ?citygmlentity bldg:measuredHeight ?buildingHeight .
 FILTER(?buildingHeight > 30) .
 ?citygmlentity bldg:lod2Solid ?solid .
-?solid geo:asWKT ?address_geom .
+?solid geo:asWKT ?citygmlGeom .
 }
 """
 
@@ -513,7 +513,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 
 # Q9: Find residential buildings with non-flat roofs (searching for potential roofs for PV)
-SELECT *
+SELECT ?citygmlGeom ?roofType
 {
 ?linkage a :Association_CityGML_OSM .
 ?linkage :matchesOSM ?osmentity .
