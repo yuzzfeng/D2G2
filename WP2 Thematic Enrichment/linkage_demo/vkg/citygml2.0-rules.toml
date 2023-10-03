@@ -11,8 +11,8 @@ rules = [
     } WHERE {
     # Get citygml-osm linkage
     ?linkage a :Association_CityGML_OSM .
-    ?linkage :matchesOSM ?osmentity .
-    ?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+    ?linkage :matchOSM ?osmentity .
+    ?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
     }
     """,
     """

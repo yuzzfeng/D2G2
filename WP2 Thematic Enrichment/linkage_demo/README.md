@@ -19,10 +19,10 @@ Open [localhost:8082](http://localhost:8082/) to see sample queries.
 Reification is used to express linkages OSM and CityGML instances. An example is provided below for matches, a similar one can be constructed for adjacency.
 
 ```
- :Association_CityGML_OSM       rdf:type            owl:Class .
- :association_CityGML_OSM1      rdf:type            :Association_CityGML_OSM .
- :association_CityGML_OSM1      :matchesCityGML     :cityobject1 .
- :association_CityGML_OSM1      :matchesOSM         lgdo:osm_id1 .
+ :Association_CityGML_OSM       rdf:type          owl:Class .
+ :association_CityGML_OSM1      rdf:type          :Association_CityGML_OSM .
+ :association_CityGML_OSM1      :matchCityGML     :cityobject1 .
+ :association_CityGML_OSM1      :matchOSM         lgdo:osm_id1 .
 ```
 
 ### Mofidying the demo with different data
@@ -72,6 +72,7 @@ Open [localhost:3030](http://localhost:3030/). When prompted for username and pa
 provide:
 - username: admin
 - password: admin
+
 Manually copy and execute sample queries such as those 
 from [citygml2.0.portal.toml](vkg/citygml2.0.portal.toml). The Jena UI of version 4.8.0 does not currently
 support predefined queries.

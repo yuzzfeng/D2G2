@@ -1000,7 +1000,7 @@ source		SELECT "id"
 			FROM "citygml_osm_association"
 
 mappingId	Matches_CityGML_gml
-target		:linkage/{id} :matchesCityGML :gmlid/{associated_citygmlid} .
+target		:linkage/{id} :matchCityGML :gmlid/{associated_citygmlid} .
 source		SELECT id, associated_citygmlid
 			FROM "citygml_osm_association"
 			WHERE "association_type" = 'matched'
@@ -1022,21 +1022,21 @@ source		SELECT id, building_id
 			FROM thematic_surface
 
 mappingId	Matches_OSM_Node
-target		:linkage/{id} :matchesOSM lgd:node{osm_id} .
+target		:linkage/{id} :matchOSM lgd:node{osm_id} .
 source		SELECT t1."id", t1."associated_osmid" AS osm_id
 			FROM "citygml_osm_association" t1
 			WHERE t1."association_type" = 'matched'
 			AND t1."osm_type" = 'n'
 
 mappingId	Matches_OSM_Way
-target		:linkage/{id} :matchesOSM lgd:way{osm_id} .
+target		:linkage/{id} :matchOSM lgd:way{osm_id} .
 source		SELECT t1."id", t1."associated_osmid" AS osm_id
             			FROM "citygml_osm_association" t1
             			WHERE t1."association_type" = 'matched'
 			AND t1."osm_type" = 'w'
 
 mappingId	Matches_OSM_Relation
-target		:linkage/{id} :matchesOSM lgd:relation{osm_id} .
+target		:linkage/{id} :matchOSM lgd:relation{osm_id} .
 source		SELECT t1."id", t1."associated_osmid" AS osm_id
             			FROM "citygml_osm_association" t1
             			WHERE t1."association_type" = 'matched'

@@ -12,8 +12,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
 ?osmlinkage :hasosmclassid ?osmclassname .
@@ -44,8 +44,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
 ?osmlinkage :hasosmclassid ?osmclassname .
@@ -164,8 +164,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 10) .
 
@@ -204,8 +204,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 10) .
 OPTIONAL { ?osmentity lgdo:height ?osmBuildingHeight . }
@@ -275,8 +275,8 @@ PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
 SELECT *
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
 ?osmlinkage :hasosmclassid ?osmclassname .
@@ -425,8 +425,8 @@ PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 SELECT ?citygmlGeom ?osmGeom
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?citygmlentity bldg:measuredHeight ?citygmlBuildingHeight .
 FILTER(?citygmlBuildingHeight > 30) .
 ?citygmlentity bldg:boundedBy ?citygmlsurface .
@@ -452,8 +452,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 SELECT ?citygmlentity ?buildingHeight ?hotelname ?citygmlGeom
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
 ?osmlinkage :hasosmclassid ?osmclassname .
@@ -482,8 +482,8 @@ PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
 SELECT ?citygmlentity ?citygmlGeom
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
 ?osmlinkage :hasosmclassid ?osmclassname .
@@ -516,8 +516,8 @@ PREFIX lgdo: <http://linkedgeodata.org/ontology/>
 SELECT ?citygmlGeom ?roofType
 {
 ?linkage a :Association_CityGML_OSM .
-?linkage :matchesOSM ?osmentity .
-?linkage :matchesCityGML/:mapSurface/bldg:bounds ?citygmlentity .
+?linkage :matchOSM ?osmentity .
+?linkage :matchCityGML/:mapSurface/bldg:bounds ?citygmlentity .
 ?osmlinkage a :Association_OSM_Class .
 ?osmlinkage :hasosmid ?osmentity .
 ?osmlinkage :hasosmclassid ?osmclassname .

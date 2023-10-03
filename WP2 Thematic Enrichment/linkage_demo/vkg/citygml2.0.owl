@@ -56,20 +56,28 @@
 
     <!-- http://cui.unige.ch/citygml/2.0/matchCityGMLtoOSM -->
 
-        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchCityGMLtoOSM"/>
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchCityGMLtoOSM"/>
 
     <!-- http://cui.unige.ch/citygml/2.0/hasOSMClassName -->
 
-        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasOSMClassName"/>
-    
-    <!-- http://cui.unige.ch/citygml/2.0/matchesCityGML -->
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasOSMClassName"/>
 
-    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchesCityGML"/>
+    <!-- http://cui.unige.ch/citygml/2.0/linkCityGML -->
+
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/linkCityGML"/>
+
+    <!-- http://cui.unige.ch/citygml/2.0/matchCityGML -->
+
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchCityGML">
+            <rdfs:subPropertyOf rdf:resource="http://cui.unige.ch/citygml/2.0/linkCityGML"/>
+    </owl:ObjectProperty>
 
 
     <!-- http://cui.unige.ch/citygml/2.0/adjacentCityGML -->
 
-    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/adjacentCityGML"/>
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/adjacentCityGML">
+            <rdfs:subPropertyOf rdf:resource="http://cui.unige.ch/citygml/2.0/linkCityGML"/>
+    </owl:ObjectProperty>
 
 
     <!-- http://cui.unige.ch/citygml/2.0/mapSurface -->
@@ -82,25 +90,32 @@
     <owl:ObjectProperty rdf:about="http://www.opengis.net/citygml/building/2.0/bounds"/>
 
 
+    <!-- http://cui.unige.ch/citygml/2.0/linkOSM -->
+
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/linkOSM"/>
+
+
     <!-- http://cui.unige.ch/citygml/2.0/adjacentOSM -->
 
-    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/adjacentOSM"/>
-    
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/adjacentOSM">
+            <rdfs:subPropertyOf rdf:resource="http://cui.unige.ch/citygml/2.0/linkOSM"/>
+    </owl:ObjectProperty>
 
 
-    <!-- http://cui.unige.ch/citygml/2.0/matchesOSM -->
+    <!-- http://cui.unige.ch/citygml/2.0/matchOSM -->
 
-    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchesOSM"/>
-
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/matchOSM">
+            <rdfs:subPropertyOf rdf:resource="http://cui.unige.ch/citygml/2.0/linkOSM"/>
+    </owl:ObjectProperty>
 
     <!-- http://cui.unige.ch/citygml/2.0/hasosmid -->
 
-        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasosmid"/>
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasosmid"/>
 
 
     <!-- http://cui.unige.ch/citygml/2.0/hasosmclassid -->
 
-        <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasosmclassid"/>
+    <owl:ObjectProperty rdf:about="http://cui.unige.ch/citygml/2.0/hasosmclassid"/>
 
 
     <!-- http://www.opengis.net/citygml/2.0/generalizesTo -->
