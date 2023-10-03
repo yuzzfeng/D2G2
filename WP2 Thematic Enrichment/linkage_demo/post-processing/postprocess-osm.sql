@@ -15,7 +15,7 @@ ALTER TABLE ONLY citydb."citygml_osm_association"
 ALTER TABLE citygml_osm_association DROP COLUMN id;
 
 INSERT INTO citygml_osm_association (associated_citygmlid, associated_osmid, association_type, osm_type)
-SELECT associated_citygmlid, points.osm_id AS associated_osm_id, association_type, 'n' AS osm_type
+SELECT DISTINCT associated_citygmlid, points.osm_id AS associated_osm_id, association_type, 'n' AS osm_type
 FROM (
         SELECT osm_id, geom FROM public.entities
         WHERE osm_type='N')
