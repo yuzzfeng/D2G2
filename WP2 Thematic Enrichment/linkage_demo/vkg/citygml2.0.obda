@@ -1,5 +1,6 @@
 [PrefixDeclaration]
-:		http://cui.unige.ch/citygml/2.0/
+:		https://github.com/yuzzfeng/D2G2/citygml#
+d2g2:		https://github.com/yuzzfeng/D2G2/citygml#
 dc:		http://purl.org/dc/elements/1.1/
 xs:		http://www.w3.org/2001/XMLSchema
 app:		http://www.opengis.net/citygml/appearance/2.0/
