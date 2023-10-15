@@ -2,7 +2,7 @@ title="CityGML-OSM Munich example queries"
 
 [defaultTab]
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -34,7 +34,7 @@ name="Examples"
 
 name="Hotels over 30m high"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -62,7 +62,7 @@ FILTER(?buildingHeight > 30) .
 
 name="Building address"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -83,7 +83,7 @@ FILTER(CONTAINS(?address_label, "Stephansplatz")) .
 
 name="Buildings over 40m"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -108,7 +108,7 @@ FILTER(?buildingHeight > 40) .
 
 name="Buildings with most roof surfaces"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -129,7 +129,7 @@ ORDER BY DESC(?totalsurface)
 
 name="Mapped roofs"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -154,7 +154,7 @@ name="CityGML surfaces and OSM geometries"
 query="""
 PREFIX lgd: <http://linkedgeodata.org/triplify/>
 PREFIX lg: <https://purl.org/lg/>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -193,7 +193,7 @@ name="CityGML solid geometries and OSM 2D geometries"
 query="""
 PREFIX lgd: <http://linkedgeodata.org/triplify/>
 PREFIX lg: <https://purl.org/lg/>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -228,7 +228,7 @@ name="More realistic queries"
 name="CityGML buildings affected by road expansion"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -263,7 +263,7 @@ FILTER(geof:sfIntersects(?impactArea, ?citygmlGeom))
 name="CityGML buildings affected by hurricane flooding"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -297,7 +297,7 @@ BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 name="CityGML buildings affected by heavy snow"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -324,7 +324,7 @@ name="Final experiments"
 
 name="Q1: Building addresses"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
@@ -342,7 +342,7 @@ FILTER(?buildingHeight > 30) .
 
 name="Q2: Filter building addresses"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
@@ -359,7 +359,7 @@ FILTER(CONTAINS(?address_label, "Stephansplatz")) .
 
 name="Q3: Buildings with most roof surfaces"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 
 # Q3: Find 10 buildings that have the maximum number of roof surfaces
@@ -378,7 +378,7 @@ LIMIT 10
 
 name="Q4: Roof Surfaces"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
@@ -398,7 +398,7 @@ BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 
 name="Q5: 3D Geometries"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
@@ -417,7 +417,7 @@ BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 
 name="Q6: Building Geometries in CityGML and OSM"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
@@ -442,7 +442,7 @@ BIND("jet,0.8" AS ?osmGeomColor) # Red
 
 name="Q7: Hotels"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -470,7 +470,7 @@ FILTER(?buildingHeight > 30) .
 name="Q8: Emergency evacuation"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -505,7 +505,7 @@ BIND("chlorophyll,0.5" AS ?citygmlGeomColor) # Green
 name="Q9: Non flat roofs"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
@@ -539,7 +539,7 @@ BIND("jet,0.8" AS ?citygmlGeomColor) # Red
 name="Q10: CityGML buildings affected by road expansion"
 query="""
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
