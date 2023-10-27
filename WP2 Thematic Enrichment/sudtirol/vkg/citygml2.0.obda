@@ -53,4 +53,12 @@ target		:cityobject/{"ogc_fid"} a bldg:Building ; bldg:function {"cat1_descr_de"
 source		SELECT "ogc_fid", "ct1a_alt", "cat1_descr_it", "cat1_descr_de", "muni_muni_it", "muni_muni_de"
 			FROM "construction_01k"
 			WHERE ct1a_alt > 0
+
+mappingId	municipality
+target		:municipality/municipality={istat_code} a :Municipality ; rdfs:label {name_it}@it , {name_de}@de ; :hasIStatCode {istat_code}^^xsd:integer .
+source		SELECT istat_code, name_it, name_de FROM municipalities
+
+mappingId	municipality_geom
+target		:municipality/municipality={istat_code} geo:asWKT {wkt}^^geo:wktLiteral .
+source		SELECT istat_code, ST_AsText(shape) AS wkt FROM municipalities
 ]]
