@@ -46,6 +46,7 @@
         <owl:imports rdf:resource="http://www.opengis.net/ont/gml#"/>
         <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
         <owl:imports rdf:resource="http://www.w3.org/ns/sosa/"/>
+        <owl:imports rdf:resource="https://w3id.org/italia/onto/CLV/"/>
     </owl:Ontology>
 
 

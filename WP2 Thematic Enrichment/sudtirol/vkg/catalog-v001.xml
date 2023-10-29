@@ -9,5 +9,7 @@
         <uri id="Automatically generated entry, Timestamp=1692869749358" name="http://www.opengis.net/ont/gml" uri="gml.owl"/>
         <uri id="Automatically generated entry, Timestamp=1692869749358" name="http://www.w3.org/2004/02/skos/core" uri="core.owl"/>
         <uri id="Automatically generated entry, Timestamp=1692869749358" name="http://www.w3.org/ns/sosa/" uri="sosa.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1692869749358" name="https://w3id.org/italia/onto/CLV" uri="CLV-AP_IT.ttl"/>
+        <uri id="Automatically generated entry, Timestamp=1692869749358" name="https://w3id.org/italia/onto/l0" uri="l0-AP_IT.ttl"/>
     </group>
 </catalog>

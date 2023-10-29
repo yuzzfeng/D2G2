@@ -35,8 +35,11 @@ skos:		http://www.w3.org/2004/02/skos/core#
 tran:		http://www.opengis.net/citygml/transportation/2.0/
 terms:		http://purl.org/dc/terms/
 schema:		https://schema.org/
+clvapit:    https://w3id.org/italia/onto/CLV/
+l0:         https://w3id.org/italia/onto/l0/
 
 [MappingDeclaration] @collection [[
+; Construction data - South Tyrol Geoservices
 mappingId	Solid Geometry
 target		:solidgeometry/{"ogc_fid"} a sf:PolyhedralSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double ; geo:hasMetricVolume {"volume_cbm"}^^xsd:double .
 source		SELECT "ogc_fid", ST_ASTEXT(ST_TRANSFORM("geom3d", 4326)) AS "geometry_wkt", ST_AREA("geom3d") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geom3d", 4326))) AS "volume_cbm"
@@ -54,11 +57,16 @@ source		SELECT "ogc_fid", "ct1a_alt", "cat1_descr_it", "cat1_descr_de", "muni_mu
 			FROM "construction_01k"
 			WHERE ct1a_alt > 0
 
+[Adminitrative Area Data - Bolzano Geoservices]
 mappingId	municipality
-target		:municipality/municipality={istat_code} a :Municipality ; rdfs:label {name_it}@it , {name_de}@de ; :hasIStatCode {istat_code}^^xsd:integer .
+target		<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/-{istat_code_controlled}> a clvapit:City ; rdfs:label {name_it}@it , {name_de}@de, {name_ld}@lld-latn ; clvapit:hasIdentifier <https://w3id.org/italia/data/identifiers/cities-identifiers/numeric-istat-code/{istat_code}> .
 source		SELECT istat_code, name_it, name_de FROM municipalities
 
 mappingId	municipality_geom
-target		:municipality/municipality={istat_code} geo:asWKT {wkt}^^geo:wktLiteral .
-source		SELECT istat_code, ST_AsText(shape) AS wkt FROM municipalities
+target		clvapit:city-{istat_code_controlled} geo:asWKT {wkt}^^geo:wktLiteral .
+source		SELECT istat_code_controlled, ST_AsText(shape) AS wkt FROM municipalities
+
+mappingId	istat_identifier
+target		clvapit:city-{istat_code_controlled} a clvapit:Identifier ; l0:identifier {istat_code}^^xsd:integer .
+source		SELECT istat_code_controlled, istat_code FROM municipalities
 ]]

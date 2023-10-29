@@ -41,7 +41,7 @@ for pair in "${table_layer_pair[@]}"; do
             exit 1
           else
             echo "Attempt $retry failed for: $pair"
-            sleep 5  # Adjust the sleep duration between retries if needed
+            sleep 5
           fi
         done
 done
