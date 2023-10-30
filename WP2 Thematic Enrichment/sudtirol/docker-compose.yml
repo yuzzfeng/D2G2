@@ -59,6 +59,17 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  mobility:
+    build:
+      context: python/
+    depends_on:
+      db-edit:
+        condition: service_completed_successfully
+    networks:
+      - citydb-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 networks:
   citydb-net:
     name: citydb-net
