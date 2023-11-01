@@ -37,14 +37,12 @@ terms:		http://purl.org/dc/terms/
 schema:		https://schema.org/
 clvapit:    https://w3id.org/italia/onto/CLV/
 l0:         https://w3id.org/italia/onto/l0/
+sosa:       http://www.w3.org/ns/sosa/
+qudt:       http://qudt.org/schema/qudt/
+qudt-unit:   	http://qudt.org/vocab/unit/
 
 [MappingDeclaration] @collection [[
 ; Construction data - South Tyrol Geoservices
-mappingId	Solid Geometry
-target		:solidgeometry/{"ogc_fid"} a sf:PolyhedralSurface ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double ; geo:hasMetricVolume {"volume_cbm"}^^xsd:double .
-source		SELECT "ogc_fid", ST_ASTEXT(ST_TRANSFORM("geom3d", 4326)) AS "geometry_wkt", ST_AREA("geom3d") AS "area_sqm", ST_VOLUME(ST_MAKESOLID(ST_TRANSFORM("geom3d", 4326))) AS "volume_cbm"
-			FROM "construction_01k"
-
 mappingId	Non-Solid Geometry
 target		:geometry/{"ogc_fid"} a sf:Polygon ; geo:asWKT {"geometry_wkt"}^^geo:wktLiteral ; geo:hasMetricArea {"area_sqm"}^^xsd:double .
 source		SELECT "ogc_fid", ST_ASTEXT(ST_TRANSFORM("ct1a_shape", 4326)) AS "geometry_wkt", ST_AREA("ct1a_shape") AS "area_sqm"
@@ -52,21 +50,53 @@ source		SELECT "ogc_fid", ST_ASTEXT(ST_TRANSFORM("ct1a_shape", 4326)) AS "geomet
 			WHERE "ct1a_shape" IS NOT NULL
 
 mappingId	Building
-target		:cityobject/{"ogc_fid"} a bldg:Building ; bldg:function {"cat1_descr_de"}@de, {"cat1_descr_it"}@it ; :xalAdministrativeAreaName {"muni_muni_de"}@de , {"muni_muni_it"}@it ; bldg:measuredHeight {ct1a_alt}^^xsd:double .
+target		:cityobject/{"ogc_fid"} a bldg:Building ; bldg:function {"cat1_descr_de"}@de, {"cat1_descr_it"}@it ; :xalAdministrativeAreaName {"muni_muni_de"}@de , {"muni_muni_it"}@it ; clvapit:alt {ct1a_alt}^^xsd:double .
 source		SELECT "ogc_fid", "ct1a_alt", "cat1_descr_it", "cat1_descr_de", "muni_muni_it", "muni_muni_de"
 			FROM "construction_01k"
 			WHERE ct1a_alt > 0
 
-[Adminitrative Area Data - Bolzano Geoservices]
+mappingId	Building to 2D Geometry
+target		:cityobject/{"ogc_fid"} geo:hasGeometry :geometry/{ogc_fid} ; bldg:lod1Solid  :solidgeometry/{"ogc_fid"} .
+source		SELECT "ogc_fid", "ct1a_alt", "cat1_descr_it", "cat1_descr_de", "muni_muni_it", "muni_muni_de"
+			FROM "construction_01k"
+
+mappingId	LandUse
+target		:cityobject/{"ogc_fid"} a luse:LandUse ; luse:function {"cat1_descr_de"}@de, {"cat1_descr_it"}@it ; :xalAdministrativeAreaName {"muni_muni_de"}@de , {"muni_muni_it"}@it .
+source		SELECT "ogc_fid", "ct1a_alt", "cat1_descr_it", "cat1_descr_de", "muni_muni_it", "muni_muni_de"
+			FROM "construction_01k"
+			WHERE ct1a_alt = 0 OR ct1a_alt IS NULL
+
+;Adminitrative Area Data - Bolzano Geoservices
 mappingId	municipality
-target		<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/-{istat_code_controlled}> a clvapit:City ; rdfs:label {name_it}@it , {name_de}@de, {name_ld}@lld-latn ; clvapit:hasIdentifier <https://w3id.org/italia/data/identifiers/cities-identifiers/numeric-istat-code/{istat_code}> .
-source		SELECT istat_code, name_it, name_de FROM municipalities
+target		<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/{istat_code_controlled}> a clvapit:City ; rdfs:label {name_it}@it , {name_de}@de, {name_ld}@lld-latn ; clvapit:hasIdentifier <https://w3id.org/italia/data/identifiers/cities-identifiers/numeric-istat-code/{istat_code}> .
+source		SELECT istat_code_controlled, istat_code, name_it, name_de, name_ld FROM municipalities
 
 mappingId	municipality_geom
-target		clvapit:city-{istat_code_controlled} geo:asWKT {wkt}^^geo:wktLiteral .
-source		SELECT istat_code_controlled, ST_AsText(shape) AS wkt FROM municipalities
+target		<https://w3id.org/italia/controlled-vocabulary/territorial-classifications/cities/{istat_code_controlled}> geo:asWKT {wkt}^^geo:wktLiteral .
+source		SELECT istat_code_controlled, ST_ASTEXT(ST_TRANSFORM("shape", 4326)) AS wkt FROM municipalities
 
 mappingId	istat_identifier
-target		clvapit:city-{istat_code_controlled} a clvapit:Identifier ; l0:identifier {istat_code}^^xsd:integer .
+target		<https://w3id.org/italia/data/identifiers/cities-identifiers/numeric-istat-code/{istat_code}> a clvapit:Identifier ; l0:identifier {istat_code}^^xsd:integer .
 source		SELECT istat_code_controlled, istat_code FROM municipalities
+
+;Temperature Data - Bolzano ODH API
+mappingId	temperature_measurements
+target		:observation/{id} a sosa:Observation ; sosa:resultTime {timestamp_val}^^xsd:dateTime ; sosa:hasResult :meteo/observation/{id} .
+source		SELECT id, timestamp_val FROM temperature_measurements
+
+mappingId	station_temperature
+target		:observation/{id} sosa:isObservedBy :meteostation/{station_code}  .
+source		SELECT id, station_code FROM temperature_measurements
+
+mappingId	temperature_values
+target		:meteo/observation/{id} a sosa:Result ; qudt:numericValue {temperature}^^xsd:double ; qudt:unit qudt-unit:DegreeCelsius .
+source		SELECT id, temperature, unit FROM temperature_measurements WHERE unit IN ('°C','[°C]')
+
+mappingId	meteo_station
+target		:meteostation/{station_code} a :Station ; rdfs:label {name}^^xsd:string ; :hasStationCode {station_code} ; geo:hasGeometry :meteostation/geometry/{station_code} .
+source		SELECT * FROM meteo_stations
+
+mappingId	meteo_station_geom
+target		:meteostation/geometry/{station_code}  geo:asWKT "POINT ({latitude} {longitude} )"^^geo:wktLiteral .
+source		SELECT * FROM meteo_stations
 ]]

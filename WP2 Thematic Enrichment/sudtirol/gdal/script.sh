@@ -9,10 +9,13 @@ WFS_CART_URL=https://geoservicesservice_no.civis.bz.it/geoserver/feature_name/ow
 max_retries=3
 
 # Define list of layers
+# Order is : 1) Geoservices number 2) Desired table name 3) feature 4) layer:feature
 table_layer_pair=(
   "1 municipalities p_bz-AdministrativeUnits p_bz-AdministrativeUnits:Municipalities"
   "3 construction_01k gvcc-Cartography gvcc-Cartography:ConstructionAreas-01k"
   "3 roofarea_01k gvcc-Cartography gvcc-Cartography:RoofAreasScale-01k"
+# Data from source below does not match with mobility API station codes
+#  "2 meteo_stations pczs-Meteorology pczs-Meteorology:WeatherStations"
   )
 
 for pair in "${table_layer_pair[@]}"; do

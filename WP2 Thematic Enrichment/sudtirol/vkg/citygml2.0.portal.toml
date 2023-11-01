@@ -1,0 +1,148 @@
+title="South Tyrol CityGML example queries"
+
+[defaultTab]
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+
+# Q1: Get all residential buildings above 1500 meters
+SELECT *
+{
+  ?citygmlentity a bldg:Building .
+  ?citygmlentity clvapit:alt ?altitude .
+  FILTER(?altitude > 1500) .
+  ?citygmlentity bldg:function ?buildingFunction .
+  ## Only "Edificio abitativo" or "Residential building"
+  FILTER(LANG(?buildingFunction) = "it" && CONTAINS(?buildingFunction, "Edificio abitativo")) .
+  ?citygmlentity geo:hasGeometry/geo:asWKT ?geom .
+}
+"""
+
+[[tabGroups]]
+
+name="Examples"
+
+[[tabGroups.tabs]]
+
+name="Residential buildings above 1500m"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+
+# Q1: Get all residential buildings above 1500 meters
+SELECT *
+{
+  ?citygmlentity a bldg:Building .
+  ?citygmlentity clvapit:alt ?altitude .
+  FILTER(?altitude > 1500) .
+  ?citygmlentity bldg:function ?buildingFunction .
+  ## Only "Edificio abitativo" or "Residential building"
+  FILTER(LANG(?buildingFunction) = "it" && CONTAINS(?buildingFunction, "Edificio abitativo")) .
+  ?citygmlentity geo:hasGeometry/geo:asWKT ?geom .
+}
+"""
+
+[[tabGroups.tabs]]
+name="Residential buildings above 1500m in Vipiteno municipality"
+query="""
+PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+
+# Q2: Get all residential buildings above 1500 meters in Curon Venosta
+SELECT ?cadastreGeom
+{
+  ?citygmlentity a bldg:Building .
+  ?citygmlentity clvapit:alt ?altitude .
+  FILTER(?altitude > 1500) .
+  ?citygmlentity bldg:function ?buildingFunction .
+  ## Only "Edificio abitativo" or "Residential building"
+  FILTER(LANG(?buildingFunction) = "it" && CONTAINS(?buildingFunction, "Edificio abitativo")) .
+  ?citygmlentity geo:hasGeometry/geo:asWKT ?cadastreGeom .
+  ?provincia a clvapit:City .
+  ?provincia geo:asWKT ?provinciaGeom .
+  ?provincia rdfs:label ?cityName .
+  FILTER(lang(?cityName) = "it" && CONTAINS(?cityName,"Curon")) .
+  # We actually have the muni name in the cadastre, just a demo
+  FILTER(geof:sfIntersects(?cadastreGeom,?provinciaGeom)) .
+}
+"""
+
+
+[[tabGroups.tabs]]
+name="Weather at my tennis field"
+query="""
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX luse: <http://www.opengis.net/citygml/landuse/2.0/>
+PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
+
+# Q3: Get the meteo stations closest to my tennis field in Kastelruth
+SELECT *
+{
+  ?citygmlentity a luse:LandUse .
+  ?citygmlentity luse:function ?luseFunction .
+  FILTER(CONTAINS(?luseFunction, "campo sportivo: tennis"))
+  ?citygmlentity :xalAdministrativeAreaName ?adminArea .
+  # There is one tennis field in Kastelruth
+  FILTER(lang(?adminArea) = "de" && CONTAINS(?adminArea,"Kastelruth")) .
+  ?citygmlentity geo:hasGeometry/geo:asWKT ?cadastreGeom .
+  ?meteoStation a :Station .
+  ?meteoStation geo:hasGeometry/geo:asWKT ?stationGeom .
+}
+ORDER BY ASC (geof:distance(?cadastreGeom, ?stationGeom, uom:metre))
+LIMIT 3
+"""
+
+
+[[tabGroups.tabs]]
+name="Weather at my tennis field 2"
+query="""
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX luse: <http://www.opengis.net/citygml/landuse/2.0/>
+PREFIX uom: <http://www.opengis.net/def/uom/OGC/1.0/>
+
+# Q3: Get the meteo stations and temperature closest to my tennis field in Kastelruth
+SELECT ?stationGeom ?temperature_celsius
+{
+  ?citygmlentity a luse:LandUse .
+  ?citygmlentity luse:function ?luseFunction .
+  FILTER(CONTAINS(?luseFunction, "campo sportivo: tennis"))
+  ?citygmlentity :xalAdministrativeAreaName ?adminArea .
+  # There is one tennis field in Kastelruth
+  FILTER(lang(?adminArea) = "de" && CONTAINS(?adminArea,"Kastelruth")) .
+  ?citygmlentity geo:hasGeometry/geo:asWKT ?cadastreGeom .
+  ?meteoStation a :Station .
+  ?meteoStation geo:hasGeometry/geo:asWKT ?stationGeom .
+  ?observation sosa:isObservedBy ?meteoStation .
+  ?observation sosa:hasResult ?result .
+  ?result qudt:numericValue ?temperature_celsius .
+}
+ORDER BY ASC (geof:distance(?cadastreGeom, ?stationGeom, uom:metre))
+LIMIT 3
+"""

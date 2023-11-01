@@ -22,3 +22,8 @@ ogrinfo -ro WFS:"https://geoservices3.civis.bz.it/geoserver/gvcc-Cartography/ows
 The ontologies used for administrative areas belong to the Italian Public Administration's Controlled Vocabularies to represent cities and regions.
 
 Github source: https://github.com/italia/daf-ontologie-vocabolari-controllati
+
+### Execution
+```
+docker-compose up
+```
