@@ -2,7 +2,7 @@ title="South Tyrol CityGML example queries"
 
 [defaultTab]
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -30,7 +30,7 @@ name="Examples"
 
 name="Residential buildings above 1500m"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -53,7 +53,7 @@ SELECT *
 [[tabGroups.tabs]]
 name="Residential buildings above 1500m in Vipiteno municipality"
 query="""
-PREFIX : <http://cui.unige.ch/citygml/2.0/>
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
 PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -145,4 +145,53 @@ SELECT ?stationGeom ?temperature_celsius
 }
 ORDER BY ASC (geof:distance(?cadastreGeom, ?stationGeom, uom:metre))
 LIMIT 3
+"""
+
+[[tabGroups.tabs]]
+name="Libraries in South Tyrol"
+query="""
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+
+# Q4: Get all libraries in South Tyrol
+SELECT *
+{
+	?osmlinkage a :Association_OSM_Class .
+	?osmlinkage :hasosmid ?osmentity .
+	?osmlinkage :hasosmclassid ?osmclassname .
+	?osmclassname a lgdo:Library .
+  	OPTIONAL { ?osmentity rdfs:label ?name .}
+  	?osmentity geo:hasGeometry/geo:asWKT ?osmGeom .
+  	BIND("jet,0.8" AS ?osmGeomColor) # Red
+    BIND(?name AS ?osmGeomLabel)
+}
+"""
+
+[[tabGroups.tabs]]
+name="Libraries in South Tyrol"
+query="""
+PREFIX : <https://github.com/yuzzfeng/D2G2/citygml#>
+PREFIX bldg: <http://www.opengis.net/citygml/building/2.0/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX lgdo: <http://linkedgeodata.org/ontology/>
+PREFIX clvapit: <https://w3id.org/italia/onto/CLV/>
+
+# Q4: Get all libraries in South Tyrol
+SELECT *
+{
+	?osmlinkage a :Association_OSM_Class .
+	?osmlinkage :hasosmid ?osmentity .
+	?osmlinkage :hasosmclassid ?osmclassname .
+	?osmclassname a lgdo:Restaurant .
+  	OPTIONAL { ?osmentity rdfs:label ?name .}
+  	?osmentity geo:hasGeometry/geo:asWKT ?osmGeom .
+  	BIND("jet,0.8" AS ?osmGeomColor) # Red
+    BIND(?name AS ?osmGeomLabel)
+    ?osmentity :competitive ?competitor .
+}
 """

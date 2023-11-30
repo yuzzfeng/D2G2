@@ -1292,6 +1292,12 @@
     <owl:ObjectProperty rdf:about="http://www.opengis.net/gml/trianglePatches"/>
 
 
+    <!-- http://www.opengis.net/citygml/2.0/competitive -->
+
+    <owl:ObjectProperty rdf:about="http://www.opengis.net/citygml/2.0/competitive">
+        <owl:symmetricProperty rdf:resource="http://www.opengis.net/citygml/2.0/competitive"/>
+    </owl:ObjectProperty>
+
 
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////

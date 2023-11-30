@@ -13,10 +13,13 @@ max_retries=3
 table_layer_pair=(
   "1 municipalities p_bz-AdministrativeUnits p_bz-AdministrativeUnits:Municipalities"
   "3 construction_01k gvcc-Cartography gvcc-Cartography:ConstructionAreas-01k"
-  "3 roofarea_01k gvcc-Cartography gvcc-Cartography:RoofAreasScale-01k"
-# Data from source below does not match with mobility API station codes
-#  "2 meteo_stations pczs-Meteorology pczs-Meteorology:WeatherStations"
+  "8 road_area p_bz-Inspire p_bz-Inspire:TN.RoadTransportNetwork.RoadArea"
+  "8 road_link p_bz-Inspire p_bz-Inspire:TN.RoadTransportNetwork.RoadLink"
   )
+    # Data from source below does not match with mobility API station codes
+    #  "2 meteo_stations pczs-Meteorology pczs-Meteorology:WeatherStations"
+    # Little value added
+    # "3 roofarea_01k gvcc-Cartography gvcc-Cartography:RoofAreasScale-01k"
 
 for pair in "${table_layer_pair[@]}"; do
   max_retries=3
